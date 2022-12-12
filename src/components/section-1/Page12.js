@@ -135,8 +135,8 @@ const Page12 = () => {
 				<Grid container spacing={2}>
 					{details.row1.map((value, index) => {
 						return (
-							<Grid xs={6} md={3}>
-								<OptionCard key={index} options={value} question={details.question} />
+							<Grid key={index} xs={6} md={3}>
+								<OptionCard options={value} question={details.question} />
 							</Grid>
 						);
 					})}

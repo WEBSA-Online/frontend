@@ -17,6 +17,10 @@ import Page9 from "./section-1/Page9";
 import Page10 from "./section-1/Page10";
 import Page11 from "./section-1/Page11";
 import Page12 from "./section-1/Page12";
+import Page13 from "./section-1/Page13";
+import Page14 from "./section-1/Page14";
+import Page15 from "./section-1/Page15";
+import Page16 from "./section-1/Page16";
 
 import EndPage from "./section-1/EndPage"
 import TimerPage from "./section-1/TimerPage"
@@ -66,6 +70,14 @@ export default function Layout() {
 							return <Page11 />;
 						case 12:
 							return <Page12 />;
+						case 13:
+							return <Page13 />;
+						case 14:
+							return <Page14 />;
+						case 15:
+							return <Page15 />;
+						case 16:
+							return <Page16 />;
 						default:
 							return null;
 					}

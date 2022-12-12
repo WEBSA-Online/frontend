@@ -1,30 +1,44 @@
 import Card from "@mui/material/Card";
 import * as React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {saveMany} from "../../redux/slices/stepSlice";
+import { saveMany } from "../../redux/slices/stepSlice";
 
 const OptionCard = ({ options, question }) => {
-	let selected = false
+	let selected = false;
 	const page = useSelector((state) => state.steps.activeStep);
 	const savedResponse = useSelector((state) => state.steps.responses);
 	const dispatch = useDispatch();
 
+	let checkSelection;
+	let checkMaxNum;
+
 	if (savedResponse[page] !== undefined) {
-		if(savedResponse[page].find((value) => value.answer === options.name)!==undefined){
-			selected = true
-		}
-	}
+		if (
+			savedResponse[page].find((value) => value.answer === options.name) !==
+			undefined
+		) {
+			selected = true;
+			checkSelection =
+				savedResponse[page].find((value) => value.answer === options.name) !==
+				undefined;
+			checkMaxNum = savedResponse[page].length < 3;
+		}	
+	} 
 
-	const checkSelection =
-		savedResponse[page].find((value) => value.answer === options.name) !==
-		undefined;
-
-	const checkMaxNum = savedResponse[page].length < 3;
-	
 	console.log(savedResponse[page].length < 3);
 
 	const handleSave = () => {
-		if (checkSelection || checkMaxNum) {
+		if (page===12){
+			if (checkSelection || savedResponse[page].length < 3) {
+				dispatch(
+					saveMany({
+						question: question,
+						answer: options.name,
+						pageIndex: page,
+					})
+				);
+			} 
+		} else {
 			dispatch(
 				saveMany({
 					question: question,
@@ -32,12 +46,13 @@ const OptionCard = ({ options, question }) => {
 					pageIndex: page,
 				})
 			);
-		}			
+		}
+			
 	};
 
 	return (
 		<Card
-		disabled
+			disabled
 			sx={{
 				border: selected ? `2px solid ${options.style.color}` : `2px solid white`,
 				"&:hover": {
