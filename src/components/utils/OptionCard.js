@@ -10,9 +10,11 @@ const OptionCard = ({ options, question }) => {
 	const dispatch = useDispatch();
 
 	let checkSelection;
-	let checkMaxNum;
+	let counter = 0
 
 	if (savedResponse[page] !== undefined) {
+		counter = savedResponse[page].length;
+		
 		if (
 			savedResponse[page].find((value) => value.answer === options.name) !==
 			undefined
@@ -21,15 +23,17 @@ const OptionCard = ({ options, question }) => {
 			checkSelection =
 				savedResponse[page].find((value) => value.answer === options.name) !==
 				undefined;
-			checkMaxNum = savedResponse[page].length < 3;
+			
 		}	
 	} 
 
-	console.log(savedResponse[page].length < 3);
+	console.log(counter);
+
+	
 
 	const handleSave = () => {
 		if (page===12){
-			if (checkSelection || savedResponse[page].length < 3) {
+			if (checkSelection || counter < 3) {
 				dispatch(
 					saveMany({
 						question: question,

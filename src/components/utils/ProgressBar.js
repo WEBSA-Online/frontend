@@ -15,14 +15,12 @@ import { endProcess, enableTimer } from "../../redux/slices/globalstateSlice";
 
 export default function ProgressMobileStepper() {
 	const theme = useTheme();
-	// const [activeStep, setActiveStep] = React.useState(0);
 	const page = useSelector((state) => state.steps.activeStep);
 	const totalpages = useSelector((state) => state.steps.totalSteps);
 	const isChecked = useSelector((state) => state.globalstate.isChecked);
 	const savedResponse = useSelector((state) => state.steps.responses);
 	const dispatch = useDispatch();
 
-	console.log(totalpages);
 
 	const gotoNextPage = () => {
 		if (
@@ -54,7 +52,7 @@ export default function ProgressMobileStepper() {
 	return (
 		<MobileStepper
 			variant="progress"
-			steps={20}
+			steps={totalpages}
 			position="static"
 			activeStep={page}
 			sx={{ flexGrow: 1, justifyContent: "center", width: "70%" }}
