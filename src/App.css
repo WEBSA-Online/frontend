@@ -1,0 +1,108 @@
+
+p {
+	margin-top: 0;
+	font-family: "Roboto";
+}
+
+body {
+	margin: 0px;
+	padding: 0px;
+  font-family: "Roboto";
+  	line-height: 1.5rem;
+}
+
+.scroll {
+	height: 100%;
+	overflow-x: auto;
+}
+
+.whiteText {
+  color:white;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgb(255, 255, 255); 
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1565c0; 
+  border-radius: 10px;
+}
+
+.timer-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.timer {
+  font-family: "Roboto";
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.text {
+  color: #aaa;
+}
+
+.value {
+  font-size: 40px;
+}
+
+.info {
+  margin: 40px auto 0;
+  text-align: center;
+  font-size: 25px;
+  line-height: 45px;
+}
+
+.option-card {
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+	padding: 12px 10px;
+  /* width: 275px; */
+  height:70%;
+	text-align: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 14px !important;
+  transition: 0.5s !important;
+  flex-direction: column;
+}
+
+.cardgreen {
+  color:#5e8d48;
+  font-size: 35px;
+  margin-bottom: 5px;
+}
+
+.cardblue {
+  color: #1976d2;
+    font-size: 35px;
+  margin-bottom: 5px;
+}
+
+.cardpurple {
+  color: #ad0c7f;
+    font-size: 35px;
+  margin-bottom: 5px;
+}
+
+.cardorange {
+  color:#ffa929;
+    font-size: 35px;
+  margin-bottom: 5px;
+}
+
+.cardselected {
+  color:#fff;
+  font-size: 35px;
+  margin-bottom: 5px;
+}
+
