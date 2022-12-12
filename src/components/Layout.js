@@ -21,10 +21,15 @@ import Page13 from "./section-1/Page13";
 import Page14 from "./section-1/Page14";
 import Page15 from "./section-1/Page15";
 import Page16 from "./section-1/Page16";
+import Page17 from "./section-1/Page17";
+import Page18 from "./section-1/Page18";
+import Page19 from "./section-1/Page19";
+import Page20 from "./section-1/Page20";
 
 import EndPage from "./section-1/EndPage"
 import TimerPage from "./section-1/TimerPage"
 import "animate.css"
+
 
 
 export default function Layout() {
@@ -78,6 +83,14 @@ export default function Layout() {
 							return <Page15 />;
 						case 16:
 							return <Page16 />;
+						case 17:
+							return <Page17 />;
+						case 18:
+							return <Page18 />;
+						case 19:
+							return <Page19 />;
+						case 20:
+							return <Page20 />;
 						default:
 							return null;
 					}

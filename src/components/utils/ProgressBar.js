@@ -22,22 +22,34 @@ export default function ProgressMobileStepper() {
 	const savedResponse = useSelector((state) => state.steps.responses);
 	const dispatch = useDispatch();
 
-	const gotoNextPage =()=> {
-		if (savedResponse[page].answer==="declined" || savedResponse[page].answer==="Not at all comfortable"){
+	console.log(totalpages);
+
+	const gotoNextPage = () => {
+		if (
+			savedResponse[page].answer === "declined" ||
+			savedResponse[page].answer === "Not at all comfortable"
+		) {
 			dispatch(resetStep(0));
 			dispatch(resetResponses());
-			dispatch(endProcess());			
-		} else if(savedResponse[page].answer==="accepted"){
+			dispatch(endProcess());
+		} else if (savedResponse[page].answer === "accepted") {
 			dispatch(enableTimer());
 			dispatch(handleNext());
-		}
-		else {
+		} else {
 			dispatch(handleNext());
-		}	
+		}
 	};
 
-
-	const checkCondition = savedResponse.length === 0 ? isChecked : savedResponse[page] === undefined ? false : savedResponse[page].length === 0 ? false : null;
+	const checkCondition =
+		savedResponse.length === 0
+			? isChecked
+			: savedResponse[page] === undefined
+			? false
+			: savedResponse[page].length === 0
+			? false
+			: savedResponse[page].answer === ""
+			? false
+			: null;
 
 	return (
 		<MobileStepper
@@ -51,7 +63,7 @@ export default function ProgressMobileStepper() {
 					sx={{ color: "black" }}
 					size="small"
 					onClick={gotoNextPage}
-					disabled={page === totalpages - 1 || checkCondition===false}
+					disabled={page === totalpages - 1 || checkCondition === false}
 				>
 					Next
 					{theme.direction === "rtl" ? (
