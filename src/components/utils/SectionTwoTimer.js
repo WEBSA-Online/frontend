@@ -1,21 +1,19 @@
 import React from "react";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 
-
 export default function Timer() {
-
 	const time = (remainingTime) => {
-		if (remainingTime === 0){
+		if (remainingTime === 0) {
 			window.location.reload();
-		} 
-		
+		}
+
 		return (
 			<div className="timer">
 				<div className="value">{remainingTime}</div>
 			</div>
 		);
 	};
-	
+
 	return (
 		<div className="App">
 			{/* <p className="info">
@@ -24,22 +22,8 @@ export default function Timer() {
 				refunded with an internet bundle worth <strong>2GBs.</strong>
 			</p> */}
 			<p className="info">
-				Thank you for accepting to take this assessment. Please note;
+				Thank you for completing <strong>Section 1</strong>;
 			</p>
-			<ol>
-				<li>
-					You must have identification information: Name, Sex, Age, marital status,
-					university, student number, hall of residence.
-				</li>
-				<li>You will be asked to give a username, email and password</li>
-				<li>
-					The second part of this assesment has the AUDIT C for alcohol and DUDIT for
-					drugs
-				</li>
-				<li>
-					You will be refunded with an internet bundle worth <strong>2GBs.</strong>
-				</li>
-			</ol>
 			<div className="timer-wrapper">
 				<CountdownCircleTimer
 					isPlaying

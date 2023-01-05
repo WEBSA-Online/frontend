@@ -1,23 +1,15 @@
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import "animate.css";
-import RadioOptions from "../utils/RadioWithmark";
+import TextField from "../utils/TextField";
 import "animate.css";
 import Stack from "@mui/material/Stack";
 
 const details = {
-	question: "What religion do you belong?",
-	options: [
-		{ name: "Anglican", value: "Anglican" },
-		{ name: "Moslem", value: "Moslem" },
-		{ name: "Catholic", value: "Catholic" },
-		{ name: "Pentecost", value: "Pentecost" },
-		{ name: "None", value: "None" },
-	],
-	direction: "row",
+	question: "Enter student registration number",
 };
 
-const Page9 = () => {
+const Page6 = () => {
 	return (
 		<Box
 			sx={{
@@ -31,10 +23,10 @@ const Page9 = () => {
 				<Stack spacing={2}>
 					<h1>{details.question}</h1>
 				</Stack>
-				<RadioOptions details={details} />
+				<TextField details={details} />
 			</Container>
 		</Box>
 	);
 };
 
-export default Page9;
+export default Page6;

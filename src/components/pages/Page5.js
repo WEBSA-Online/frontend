@@ -43,7 +43,7 @@ const details = {
 	direction: "row",
 };
 
-const Page4 = () => {
+const Page5 = () => {
 	return (
 		<Box
 			sx={{
@@ -64,4 +64,4 @@ const Page4 = () => {
 	);
 };
 
-export default Page4;
+export default Page5;

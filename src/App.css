@@ -15,6 +15,12 @@ body {
   	line-height: 1.5rem;
 }
 
+ol > li {
+  font-size:20px;
+  margin-bottom:20px;
+  line-height: 30px;
+}
+
 .scroll {
 	height: 100%;
 	overflow-x: auto;
@@ -60,7 +66,6 @@ body {
 
 .info {
   margin: 40px auto 0;
-  text-align: center;
   font-size: 25px;
   line-height: 45px;
 }

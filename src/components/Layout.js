@@ -4,49 +4,58 @@ import BottomNavigation from "@mui/material/BottomNavigation";
 import Paper from "@mui/material/Paper";
 import ProgressBar from './utils/ProgressBar'
 import { useSelector } from "react-redux";
-import StartPage from "./section-1/StartPage"
-import Page1 from "./section-1/Page1"
-import Page2 from "./section-1/Page2";
-import Page3 from "./section-1/Page3";
-import Page4 from "./section-1/Page4";
-import Page5 from "./section-1/Page5";
-import Page6 from "./section-1/Page6";
-import Page7 from "./section-1/Page7";
-import Page8 from "./section-1/Page8";
-import Page9 from "./section-1/Page9";
-import Page10 from "./section-1/Page10";
-import Page11 from "./section-1/Page11";
-import Page12 from "./section-1/Page12";
-import Page13 from "./section-1/Page13";
-import Page14 from "./section-1/Page14";
-import Page15 from "./section-1/Page15";
-import Page16 from "./section-1/Page16";
-import Page17 from "./section-1/Page17";
-import Page18 from "./section-1/Page18";
-import Page19 from "./section-1/Page19";
-import Page20 from "./section-1/Page20";
+import StartPage from "./pages/StartPage"
+import Page1 from "./pages/Page1"
+import Page2 from "./pages/Page2";
+import Page3 from "./pages/Page3";
+import Page4 from "./pages/Page4";
+import Page5 from "./pages/Page5";
+import Page6 from "./pages/Page6";
+import Page7 from "./pages/Page7";
+import Page8 from "./pages/Page8";
+import Page9 from "./pages/Page9";
+import Page10 from "./pages/Page10";
+import Page11 from "./pages/Page11";
+import Page12 from "./pages/Page12";
+import Page13 from "./pages/Page13";
+import Page14 from "./pages/Page14";
+import Page15 from "./pages/Page15";
+import Page16 from "./pages/Page16";
+import Page17 from "./pages/Page17";
+import Page18 from "./pages/Page18";
+import Page19 from "./pages/Page19";
+import Page20 from "./pages/Page20";
 
-import EndPage from "./section-1/EndPage"
-import TimerPage from "./section-1/TimerPage"
+import EndPage from "./pages/EndPage"
+import TimerPage from "./pages/TimerPage"
 import "animate.css"
 
 
 
 export default function Layout() {
 	const page = useSelector((state) => state.steps.activeStep);
-	const endProcess = useSelector((state) => state.globalstate.processHasEnded);
+	const pageNavigation = useSelector((state) => state.globalstate.processHasEnded);
 	const showTimer = useSelector((state) => state.globalstate.showTimer);
 	const savedResponse = useSelector((state) => state.steps.responses);
 
 	console.log(savedResponse);
+	console.log(page);
 		
-	return endProcess ? (
+	return pageNavigation ? (
 		<EndPage />
 	) : showTimer ? (
 		<TimerPage />
 	) : (
 		<>
-			<Box className="scroll">
+			<Box
+				className="scroll"
+				sx={{
+					background: page===0 ? "#3f55af": "#e9f1f2",
+					display: "flex",
+					height: "100vh",
+					padding: "0 5%",
+				}}
+			>
 				{(() => {
 					switch (page) {
 						case 0:

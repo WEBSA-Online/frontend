@@ -34,9 +34,12 @@ export default function BasicTextFields({details}) {
 			autoComplete="off"
 		>
 			<TextField
-				defaultValue={isAnsPresent ? savedResponse[page].answer : "Put answer here"}
+				defaultValue={
+					isAnsPresent ? savedResponse[page].answer : ""
+				}
 				onChange={handleSave}
 				variant="standard"
+				size="Normal"
 			/>
 		</Box>
 	);

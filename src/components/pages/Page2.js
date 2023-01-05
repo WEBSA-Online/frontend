@@ -11,27 +11,23 @@ const details = {
 		{ name: "Male", value: "male" },
 		{ name: "Female", value: "female" },
 	],
-	direction: "column",
+	direction: "row",
 };
 
-const Page3 = () => {
+const Page2 = () => {
 	return (
-		<Box
+		<Container
+			fixed
 			sx={{
-				background: "#e9f1f2",
-				display: "flex",
-				height: "100vh",
 				paddingTop: "10%",
 			}}
 		>
-			<Container fixed>
-				<Stack spacing={2}>
-					<h1>{details.question}</h1>
-				</Stack>
-				<RadioOptions details={details} />
-			</Container>
-		</Box>
+			<Stack spacing={2}>
+				<h1>{details.question}</h1>
+			</Stack>
+			<RadioOptions details={details} />
+		</Container>
 	);
 };
 
-export default Page3;
+export default Page2;

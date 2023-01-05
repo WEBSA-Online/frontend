@@ -4,7 +4,7 @@ export const stepSlice = new createSlice({
 	name: "steps",
 	initialState: {
 		activeStep: 0,
-		totalSteps: 24,
+		totalSteps: 30,
 		responses: [],
 		dob: "2023-01-01",
 	},

@@ -19,36 +19,40 @@ import {
 	faDog,
 	faPersonPraying,
 	faVideoCamera,
-	faPeopleLine
+	faPeopleLine,
+   faGamepad,
+   faSquarePersonConfined,
+   faPeopleArrows,
+   faCouch,
 } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 import OptionCard from "../utils/OptionCard";
 
 const details = {
 	question:
-		"What have others said you are good at or what makes you proud of yourself?",
+		"When things are tough or stressful, I get through the tough times by",
 	row1: [
 		{
-			name: "Work or school",
-			value: "Work or school",
+			name: "Prayer",
+			value: "Prayer",
 			style: {
 				code: "cardblue",
 				color: "#1976d2",
 				bgColor: "rgb(230, 245, 250)",
 			},
 			selected: false,
-			icon: <FontAwesomeIcon icon={faBook} />,
+			icon: <FontAwesomeIcon icon={faPersonPraying} />,
 		},
 		{
-			name: "Music",
-			value: "Music",
+			name: "Gaming",
+			value: "Gaming",
 			style: {
 				code: "cardgreen",
 				color: "#5e8d48",
 				bgColor: "rgb(239, 244, 237)",
 			},
 			selected: false,
-			icon: <FontAwesomeIcon icon={faMusic} />,
+			icon: <FontAwesomeIcon icon={faGamepad} />,
 		},
 		{
 			name: "Exercise and Sports",
@@ -62,19 +66,19 @@ const details = {
 			icon: <FontAwesomeIcon icon={faVolleyball} />,
 		},
 		{
-			name: "Writing and reading",
-			value: "Writing and reading",
+			name: "Social media",
+			value: "Social media",
 			style: {
 				code: "cardorange",
 				color: "#ffa929",
 				bgColor: "rgb(255, 246, 234)",
 			},
 			selected: false,
-			icon: <FontAwesomeIcon icon={faPencil} />,
+			icon: <FontAwesomeIcon icon={faMobile} />,
 		},
 		{
-			name: "Being a good friend/ Making friends",
-			value: "Being a good friend/ Making friends",
+			name: "Hanging out with family/ friends",
+			value: "Hanging out with family/ friends",
 			style: {
 				code: "cardpurple",
 				color: "#ad0c7f",
@@ -84,41 +88,41 @@ const details = {
 			icon: <FontAwesomeIcon icon={faUserFriends} />,
 		},
 		{
-			name: "Helping out at home",
-			value: "Helping out at home",
+			name: "Meditation/yoga",
+			value: "Meditation/yoga",
 			style: {
 				code: "cardorange",
 				color: "#ffa929",
 				bgColor: "rgb(255, 246, 234)",
 			},
 			selected: false,
-			icon: <FontAwesomeIcon icon={faPeopleRoof} />,
+			icon: <FontAwesomeIcon icon={faSquarePersonConfined} />,
 		},
 		{
-			name: "Participating in clubs ",
-			value: "Participating in clubs",
+			name: "Making/ listening to music",
+			value: "Making/ listening to music ",
 			style: {
 				code: "cardgreen",
 				color: "#5e8d48",
 				bgColor: "rgb(239, 244, 237)",
 			},
 			selected: false,
-			icon: <FontAwesomeIcon icon={faUsers} />,
+			icon: <FontAwesomeIcon icon={faMusic} />,
 		},
 		{
-			name: "Using technology",
-			value: "Using technology",
+			name: "Reading/ writing",
+			value: "Reading/ writing",
 			style: {
 				code: "cardblue",
 				color: "#1976d2",
 				bgColor: "rgb(230, 245, 250)",
 			},
 			selected: false,
-			icon: <FontAwesomeIcon icon={faMobile} faPalette />,
+			icon: <FontAwesomeIcon icon={faMobile} faPencil />,
 		},
 		{
-			name: "Art/ Crafts",
-			value: "Art/ Crafts",
+			name: "Making art/ drawing",
+			value: "Making art/ drawing",
 			style: {
 				code: "cardgreen",
 				color: "#5e8d48",
@@ -128,48 +132,26 @@ const details = {
 			icon: <FontAwesomeIcon icon={faPalette} />,
 		},
 		{
-			name: "Taking care of animals",
-			value: "Taking care of animals",
+			name: "Talking to someone I trust",
+			value: "Talking to someone I trust",
 			style: {
 				code: "cardpurple",
 				color: "#ad0c7f",
 				bgColor: "rgb(247, 239, 247)",
 			},
 			selected: false,
-			icon: <FontAwesomeIcon icon={faDog} />,
+			icon: <FontAwesomeIcon icon={faPeopleArrows} />,
 		},
 		{
-			name: "Religion/ Spirituality",
-			value: "Religion/ Spirituality",
+			name: "Relaxing/ taking a break",
+			value: "Relaxing/ taking a break",
 			style: {
 				code: "cardblue",
 				color: "#1976d2",
 				bgColor: "rgb(230, 245, 250)",
 			},
 			selected: false,
-			icon: <FontAwesomeIcon icon={faPersonPraying} />,
-		},
-		{
-			name: "Theatre/ dance",
-			value: "Theatre/ dance",
-			style: {
-				code: "cardorange",
-				color: "#ffa929",
-				bgColor: "rgb(255, 246, 234)",
-			},
-			selected: false,
-			icon: <FontAwesomeIcon icon={faVideoCamera} />,
-		},
-		{
-			name: "Leadership",
-			value: "Leadership",
-			style: {
-				code: "cardblue",
-				color: "#1976d2",
-				bgColor: "rgb(230, 245, 250)",
-			},
-			selected: false,
-			icon: <FontAwesomeIcon icon={faPeopleLine} />,
+			icon: <FontAwesomeIcon icon={faCouch} />,
 		},
 		{
 			name: "Other",
@@ -197,32 +179,30 @@ const details = {
 	direction: "row",
 };
 
-const Page10 = () => {
+const Page11 = () => {
 	return (
-		<Box
+		<Container
+			fixed
 			sx={{
 				background: "#e9f1f2",
 				display: "flex",
 				paddingTop: "2%",
-
 				paddingBottom: "10%",
 			}}
 		>
-			<Container fixed>
-				<h1 style={{ lineHeight: "38px" }}>{details.question}</h1>
-				<h2>(You can choose more than one.)</h2>
-				<Grid container spacing={2}>
-					{details.row1.map((value, index) => {
-						return (
-							<Grid xs={6} md={3}>
-								<OptionCard key={index} options={value} question={details.question} />
-							</Grid>
-						);
-					})}
-				</Grid>
-			</Container>
-		</Box>
+			{/* <h1 style={{ lineHeight: "38px" }}>{details.question}</h1>
+			<h2>(You can choose more than one.)</h2>
+			<Grid container spacing={2}>
+				{details.row1.map((value, index) => {
+					return (
+						<Grid xs={6} md={3}>
+							<OptionCard key={index} options={value} question={details.question} />
+						</Grid>
+					);
+				})}
+			</Grid> */}
+		</Container>
 	);
 };
 
-export default Page10;
+export default Page11;

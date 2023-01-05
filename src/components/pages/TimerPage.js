@@ -1,8 +1,6 @@
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import "animate.css";
-import Stack from "@mui/material/Stack";
-import { useSelector, useDispatch } from "react-redux";
 import Timer from "../utils/Timer"
 
 
