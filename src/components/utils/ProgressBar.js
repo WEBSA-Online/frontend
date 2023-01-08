@@ -33,6 +33,9 @@ export default function ProgressMobileStepper() {
 		} else if (savedResponse[page].answer === "accepted") {
 			dispatch(enableTimer());
 			dispatch(handleNext());
+		} else if (savedResponse[10] !==undefined) {
+			dispatch(enableTimer());
+			dispatch(handleNext());
 		} else {
 			dispatch(handleNext());
 		}

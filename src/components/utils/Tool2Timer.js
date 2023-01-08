@@ -16,20 +16,16 @@ export default function Timer() {
 
 	return (
 		<div className="App">
-			{/* <p className="info">
-				Now that you have accepted, Fill the form answering some key questions. It
-				takes only <strong>20 minutes.</strong> Please note that you will be
-				refunded with an internet bundle worth <strong>2GBs.</strong>
-			</p> */}
-			<p className="info">
-				Thank you for completing <strong>Section 1</strong>;
+			<p className="title" style={{ marginBottom: "25px" }}>
+				Thank you for completing <strong>Section One.</strong> Now proceeding to <br />{" "}
+				<strong>The Alcohol Use Disorders Identification Test</strong>
 			</p>
 			<div className="timer-wrapper">
 				<CountdownCircleTimer
 					isPlaying
-					duration={20}
+					duration={5}
 					colors={["#045100", "#00a551", "#1cef38", "#ffe23f", "#e40d19", "#a4050b"]}
-					colorsTime={[20, 15, 7, 5, 2, 0]}
+					colorsTime={[5, 4, 3, 2, 1, 0]}
 				>
 					{({ remainingTime }) => time(remainingTime)}
 				</CountdownCircleTimer>

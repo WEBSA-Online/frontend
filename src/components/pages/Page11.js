@@ -184,7 +184,6 @@ const Page11 = () => {
 		<Container
 			fixed
 			sx={{
-				background: "#e9f1f2",
 				display: "flex",
 				paddingTop: "2%",
 				paddingBottom: "10%",

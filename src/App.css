@@ -70,6 +70,13 @@ ol > li {
   line-height: 45px;
 }
 
+.title {
+  margin: 40px auto 0;
+  font-size: 35px;
+  line-height: 55px;
+  text-align:center;
+}
+
 .option-card {
   font-size: 18px;
   display: flex;

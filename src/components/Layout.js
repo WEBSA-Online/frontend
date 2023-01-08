@@ -50,7 +50,7 @@ export default function Layout() {
 			<Box
 				className="scroll"
 				sx={{
-					background: page===0 ? "#3f55af": "#e9f1f2",
+					background: page === 0 ? "#3f55af" : page > 10 ? "#cfefff" : "#e9f1f2",
 					display: "flex",
 					height: "100vh",
 					padding: "0 5%",
