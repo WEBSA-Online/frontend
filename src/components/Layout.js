@@ -27,6 +27,17 @@ import Page17 from "./pages/Page17";
 import Page18 from "./pages/Page18";
 import Page19 from "./pages/Page19";
 import Page20 from "./pages/Page20";
+import Page21 from "./pages/Page21";
+import Page22 from "./pages/Page22";
+import Page23 from "./pages/Page23";
+import Page24 from "./pages/Page24";
+import Page25 from "./pages/Page25";
+import Page26 from "./pages/Page26";
+import Page27 from "./pages/Page27";
+import Page28 from "./pages/Page28";
+import Page29 from "./pages/Page29";
+import Page30 from "./pages/Page30";
+import Page31 from "./pages/Page30";
 
 import EndPage from "./pages/EndPage"
 import TimerPage from "./pages/TimerPage"
@@ -65,7 +76,7 @@ export default function Layout() {
 			<Box
 				className="scroll"
 				sx={{
-					background: page === 0 ? "#3f55af" : page > 10 ? "#cfefff" : "#e9f1f2",
+					background: page === 0 ? "#3f55af" : page > 10 && page <=20 ? "#cfefff" : page > 20 ? "#f5ffcf" : "#e9f1f2",
 					display: "flex",
 					height: "100vh",
 					padding: "0 5%",
@@ -115,6 +126,28 @@ export default function Layout() {
 							return <Page19 />;
 						case 20:
 							return <Page20 />;
+						case 21:
+							return <Page21 />;
+						case 22:
+							return <Page22 />;
+						case 23:
+							return <Page23 />;
+						case 24:
+							return <Page24 />;
+						case 25:
+							return <Page25 />;
+						case 26:
+							return <Page26 />;
+						case 27:
+							return <Page27 />;
+						case 28:
+							return <Page28 />;
+						case 29:
+							return <Page29 />;
+						case 30:
+							return <Page30 />;
+						case 31:
+							return <Page31 />;
 						default:
 							return null;
 					}

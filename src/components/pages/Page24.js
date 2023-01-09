@@ -4,17 +4,18 @@ import RadioOptions from "../utils/RadioOptions";
 import "animate.css";
 
 const details = {
-	question: "How many drinks containing alcohol do you have on a typical day when you are drinking?",
+	question: "How often are you heavily influenced by drugs",
 	options: [
-		{ name: "1-2", score: 0 },
-		{ name: "3-4", score: 1 },
-		{ name: "5-6", score: 2 },
-		{ name: "7-9", score: 3 },
-		{ name: "10 or more", score: 4 },
+		{ name: "Never", score: 0 },
+		{ name: "Less than often/once a month", score: 1 },
+		{ name: "Every month", score: 2 },
+		{ name: "Every week", score: 3 },
+		{ name: "Daily or almost", score: 4 },
 	],
+	objective: "Heavy use",
 };
 
-const Page12 = () => {
+const Page23 = () => {
 	return (
 		<Container
 			fixed
@@ -28,4 +29,4 @@ const Page12 = () => {
 	);
 };
 
-export default Page12;
+export default Page23;
