@@ -42,6 +42,7 @@ import EndPage from "./pages/EndPage"
 import TimerPage from "./pages/TimerPage"
 import "animate.css"
 
+setInterval(() => localStorage.clear(), 3600000);
 
 
 export default function Layout() {
@@ -51,7 +52,6 @@ export default function Layout() {
 	const showTool2Page = useSelector((state) => state.globalstate.tool2page);
 	const showTool3Page = useSelector((state) => state.globalstate.tool3page);
 	const savedResponse = useSelector((state) => state.steps.responses);
-	const dispatch = useDispatch()
 
 	console.log(page);
 	console.log(savedResponse);
