@@ -1,39 +1,30 @@
-import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import "animate.css";
 import RadioOptions from "../utils/RadioOptions";
 import "animate.css";
-import Stack from "@mui/material/Stack";
 
 const details = {
-	question:
-		"On average, how much screen time do you have a day not counting SCHOOL or WORK?",
+	question: "How often during the last year have you found that you were not able to stop drinking once you had started?",
 	options: [
-		{ name: "1 hour or less", value: "1 hour or less" },
-		{ name: "2 hours", value: "2 hours" },
-		{ name: "3 to 4 hours", value: "3 to 4 hours" },
-		{ name: "More than 4 hours", value: "More than 4 hours" },
+		{ name: "Never", score: 0 },
+		{ name: "Less than a month", score: 1 },
+		{ name: "Monthly", score: 2 },
+		{ name: "Weekly", score: 3 },
+		{ name: "Daily or almost daily", score: 4 },
 	],
-	direction: "row",
 };
 
 const Page13 = () => {
 	return (
-		<Box
+		<Container
+			fixed
 			sx={{
-				background: "#e9f1f2",
-				display: "flex",
-				height: "100vh",
 				paddingTop: "10%",
 			}}
 		>
-			<Container fixed>
-				<Stack spacing={2}>
-					<h1>{details.question}</h1>
-				</Stack>
-				<RadioOptions details={details} />
-			</Container>
-		</Box>
+			<h1 style={{ lineHeight: "38px" }}>{details.question}</h1>
+			<RadioOptions details={details} />
+		</Container>
 	);
 };
 

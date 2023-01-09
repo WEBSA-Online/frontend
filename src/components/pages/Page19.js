@@ -1,36 +1,29 @@
-import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import "animate.css";
 import RadioOptions from "../utils/RadioOptions";
 import "animate.css";
-import Stack from "@mui/material/Stack";
 
 const details = {
-	question: "Have you made any new friends in the last two months?",
+	question:
+		"Have you or someone else been injured because of your drinking?",
 	options: [
-		{ name: "Yes", value: "Yes" },
-		{ name: "No", value: "No" },
+		{ name: "No", score: 0 },
+		{ name: "Yes but not in the last year", score: 2 },
+		{ name: "Yes during the last year", score: 4 },
 	],
-	direction: "column",
 };
 
 const Page19 = () => {
 	return (
-		<Box
+		<Container
+			fixed
 			sx={{
-				background: "#e9f1f2",
-				display: "flex",
-				height: "100vh",
 				paddingTop: "10%",
 			}}
 		>
-			<Container fixed>
-				<Stack spacing={2}>
-					<h1>{details.question}</h1>
-				</Stack>
-				<RadioOptions details={details} />
-			</Container>
-		</Box>
+			<h1 style={{ lineHeight: "38px" }}>{details.question}</h1>
+			<RadioOptions details={details} />
+		</Container>
 	);
 };
 

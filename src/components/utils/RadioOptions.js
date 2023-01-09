@@ -68,8 +68,8 @@ export default function IconsRadio({ details }) {
 							}}
 						>
 							<Radio
-								id={value.value}
-								value={value.value}
+								id={value.name}
+								value={value.name}
 								name="platform"
 								checkedIcon={<CheckCircleRoundedIcon />}
 								onClick={(e) => handleClick(e)}

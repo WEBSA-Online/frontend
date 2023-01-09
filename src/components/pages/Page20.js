@@ -1,31 +1,29 @@
-import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import "animate.css";
-import TextField from "../utils/TextField";
+import RadioOptions from "../utils/RadioOptions";
 import "animate.css";
-import Stack from "@mui/material/Stack";
 
 const details = {
-	question: "Has your social life changed in any way? If so how?",
+	question:
+		"Has a relative, friend, doctor, or other health care worker been concerned about your drinking or suggested you cut down?",
+	options: [
+		{ name: "No", score: 0 },
+		{ name: "Yes but not in the last year", score: 2 },
+		{ name: "Yes during the last year", score: 4 },
+	],
 };
 
 const Page20 = () => {
 	return (
-		<Box
+		<Container
+			fixed
 			sx={{
-				background: "#e9f1f2",
-				display: "flex",
-				height: "100vh",
 				paddingTop: "10%",
 			}}
 		>
-			<Container fixed>
-				<Stack spacing={2}>
-					<h1>{details.question}</h1>
-				</Stack>
-				<TextField details={details} />
-			</Container>
-		</Box>
+			<h1 style={{ lineHeight: "38px" }}>{details.question}</h1>
+			<RadioOptions details={details} />
+		</Container>
 	);
 };
 

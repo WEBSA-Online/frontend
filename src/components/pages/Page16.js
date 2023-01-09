@@ -1,36 +1,31 @@
-import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import "animate.css";
 import RadioOptions from "../utils/RadioOptions";
 import "animate.css";
-import Stack from "@mui/material/Stack";
 
 const details = {
-	question: "Have you ever been hospitalized with a medical problem?",
+	question:
+		"How often during the last year have you needed a first drink in the morning to get yourself going after a heavy drinking session?",
 	options: [
-		{ name: "Yes", value: "Yes" },
-		{ name: "No", value: "No" },
+		{ name: "Never", score: 0 },
+		{ name: "Less than a month", score: 1 },
+		{ name: "Monthly", score: 2 },
+		{ name: "Weekly", score: 3 },
+		{ name: "Daily or almost daily", score: 4 },
 	],
-	direction: "column",
 };
 
 const Page16 = () => {
 	return (
-		<Box
+		<Container
+			fixed
 			sx={{
-				background: "#e9f1f2",
-				display: "flex",
-				height: "100vh",
 				paddingTop: "10%",
 			}}
 		>
-			<Container fixed>
-				<Stack spacing={2}>
-					<h1>{details.question}</h1>
-				</Stack>
-				<RadioOptions details={details} />
-			</Container>
-		</Box>
+			<h1 style={{ lineHeight: "38px" }}>{details.question}</h1>
+			<RadioOptions details={details} />
+		</Container>
 	);
 };
 

@@ -15,6 +15,7 @@ import {
 	endProcess,
 	enableTimer,
 	showTool2page,
+	showTool3page,
 } from "../../redux/slices/globalstateSlice";
 
 export default function ProgressMobileStepper() {
@@ -36,8 +37,11 @@ export default function ProgressMobileStepper() {
 		} else if (savedResponse[page].answer === "accepted") {
 			dispatch(enableTimer());
 			dispatch(handleNext());
-		} else if (savedResponse[10] !== undefined && page===10) {
+		} else if (savedResponse[10] !== undefined && page === 10) {
 			dispatch(showTool2page());
+			dispatch(handleNext());
+		} else if (savedResponse[20] !== undefined && page === 20) {
+			dispatch(showTool3page());
 			dispatch(handleNext());
 		} else {
 			dispatch(handleNext());
@@ -66,12 +70,12 @@ export default function ProgressMobileStepper() {
 			sx={{ flexGrow: 1, justifyContent: "center", width: "70%" }}
 			nextButton={
 				<Button
-					sx={{ color: "black" }}
+					sx={{ color: "black"}}
 					size="small"
 					onClick={gotoNextPage}
 					disabled={
 						page === totalpages - 1 ||
-						(checkCondition === false && isChecked === false)
+						(checkCondition === false)
 					}
 				>
 					Next

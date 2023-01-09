@@ -1,31 +1,31 @@
-import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import "animate.css";
-import TextField from "../utils/TextField";
+import RadioOptions from "../utils/RadioOptions";
 import "animate.css";
-import Stack from "@mui/material/Stack";
 
 const details = {
-	question: "What challenges have you faced in the last one month?",
+	question:
+		"How often during the last year have you been unable to remember what happened the night before because of your drinking?",
+	options: [
+		{ name: "Never", score: 0 },
+		{ name: "Less than a month", score: 1 },
+		{ name: "Monthly", score: 2 },
+		{ name: "Weekly", score: 3 },
+		{ name: "Daily or almost daily", score: 4 },
+	],
 };
 
 const Page18 = () => {
 	return (
-		<Box
+		<Container
+			fixed
 			sx={{
-				background: "#e9f1f2",
-				display: "flex",
-				height: "100vh",
 				paddingTop: "10%",
 			}}
 		>
-			<Container fixed>
-				<Stack spacing={2}>
-					<h1>{details.question}</h1>
-				</Stack>
-				<TextField details={details} />
-			</Container>
-		</Box>
+			<h1 style={{ lineHeight: "38px" }}>{details.question}</h1>
+			<RadioOptions details={details} />
+		</Container>
 	);
 };
 

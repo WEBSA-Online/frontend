@@ -5,7 +5,7 @@ const initialState = {
 	processHasEnded: false,
 	showTimer: false,
 	tool2page: false,
-	tool3page: false,
+	tool3page: true,
 };
 
 const globalstateSlice = createSlice({
@@ -34,7 +34,9 @@ const globalstateSlice = createSlice({
 		showTool2page: (state, actions) => {
 			state.tool2page = !state.tool2page;
 		},
-		
+		showTool3page: (state, actions) => {
+			state.tool3page = !state.tool3page;
+		},
 	},
 });
 
@@ -45,5 +47,6 @@ export const {
 	changeIsChecked,
 	disableTimer,
 	showTool2page,
+	showTool3page,
 } = globalstateSlice.actions;
 export default globalstateSlice.reducer;
