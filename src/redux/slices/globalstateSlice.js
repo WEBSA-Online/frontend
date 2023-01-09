@@ -25,15 +25,25 @@ const globalstateSlice = createSlice({
 		enableTimer: (state) => {
 			state.showTimer = true;
 		},
-		enableTool2Page: (state) => {
-			state.tool2page = true;
+		disableTimer: (state) => {
+			state.showTimer = false;
 		},
-		enableTool3Page: (state) => {
-			state.tool3page = true;
+		changeIsChecked: (state, actions) => {
+			state.isChecked = actions.payload.isChecked;
 		},
+		showTool2page: (state, actions) => {
+			state.tool2page = !state.tool2page;
+		},
+		
 	},
 });
 
-export const { checkButton, endProcess, enableTimer} =
-	globalstateSlice.actions;
+export const {
+	checkButton,
+	endProcess,
+	enableTimer,
+	changeIsChecked,
+	disableTimer,
+	showTool2page,
+} = globalstateSlice.actions;
 export default globalstateSlice.reducer;

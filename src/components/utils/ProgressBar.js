@@ -11,7 +11,11 @@ import {
 	resetStep,
 	resetResponses,
 } from "../../redux/slices/stepSlice";
-import { endProcess, enableTimer } from "../../redux/slices/globalstateSlice";
+import {
+	endProcess,
+	enableTimer,
+	showTool2page,
+} from "../../redux/slices/globalstateSlice";
 
 export default function ProgressMobileStepper() {
 	const theme = useTheme();
@@ -20,7 +24,6 @@ export default function ProgressMobileStepper() {
 	const isChecked = useSelector((state) => state.globalstate.isChecked);
 	const savedResponse = useSelector((state) => state.steps.responses);
 	const dispatch = useDispatch();
-
 
 	const gotoNextPage = () => {
 		if (
@@ -33,8 +36,8 @@ export default function ProgressMobileStepper() {
 		} else if (savedResponse[page].answer === "accepted") {
 			dispatch(enableTimer());
 			dispatch(handleNext());
-		} else if (savedResponse[10] !==undefined) {
-			dispatch(enableTimer());
+		} else if (savedResponse[10] !== undefined && page===10) {
+			dispatch(showTool2page());
 			dispatch(handleNext());
 		} else {
 			dispatch(handleNext());
@@ -42,8 +45,8 @@ export default function ProgressMobileStepper() {
 	};
 
 	const checkCondition =
-		savedResponse.length === 0
-			? isChecked
+		   savedResponse.length === 0
+			? false
 			: savedResponse[page] === undefined
 			? false
 			: savedResponse[page].length === 0
@@ -51,6 +54,8 @@ export default function ProgressMobileStepper() {
 			: savedResponse[page].answer === ""
 			? false
 			: null;
+
+			console.log('check condition', checkCondition);
 
 	return (
 		<MobileStepper
@@ -64,7 +69,10 @@ export default function ProgressMobileStepper() {
 					sx={{ color: "black" }}
 					size="small"
 					onClick={gotoNextPage}
-					disabled={page === totalpages - 1 || checkCondition === false}
+					disabled={
+						page === totalpages - 1 ||
+						(checkCondition === false && isChecked === false)
+					}
 				>
 					Next
 					{theme.direction === "rtl" ? (

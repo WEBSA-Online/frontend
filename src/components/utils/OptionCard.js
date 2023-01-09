@@ -27,8 +27,6 @@ const OptionCard = ({ options, question }) => {
 		}	
 	} 
 
-	console.log(counter);
-
 	
 
 	const handleSave = () => {

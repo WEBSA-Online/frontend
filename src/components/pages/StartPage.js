@@ -3,7 +3,7 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Unstable_Grid2";
 import "animate.css";
-import RadioOptions from "../utils/RadioWithmark"
+import RadioOptions from "../utils/RadioOptions";
 import "animate.css";
 
 const details = {
@@ -65,4 +65,4 @@ const StartPage = () => {
 	);
 };
 
-export default StartPage
+export default StartPage;

@@ -1,7 +1,7 @@
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import "animate.css";
-import RadioOptions from "../utils/RadioWithmark";
+import RadioOptions from "../utils/RadioOptions";
 import "animate.css";
 import Stack from "@mui/material/Stack";
 
@@ -10,10 +10,6 @@ const details = {
 	options: [
 		{ name: "Makerere University", value: "Makerere University" },
 		{
-			name: "Makerere University Business School",
-			value: "Makerere University Business School",
-		},
-		{
 			name: "Kyambogo University",
 			value: "Kyambogo University",
 		},
@@ -21,8 +17,6 @@ const details = {
 			name: "Uganda Martyrs University Nkozi",
 			value: "Uganda Martyrs University Nkozi",
 		},
-	],
-	options2: [
 		{
 			name: "Kampala International University",
 			value: "Kampala International University",
@@ -36,11 +30,14 @@ const details = {
 			value: "Ndejje University",
 		},
 		{
+			name: "Makerere University Business School",
+			value: "Makerere University Business School",
+		},
+		{
 			name: "Others",
 			value: "Others",
 		},
 	],
-	direction: "row",
 };
 
 const Page5 = () => {

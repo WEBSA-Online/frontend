@@ -3,8 +3,10 @@ import Box from "@mui/material/Box";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import Paper from "@mui/material/Paper";
 import ProgressBar from './utils/ProgressBar'
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import {changeIsChecked} from "../redux/slices/globalstateSlice"
 import StartPage from "./pages/StartPage"
+import StartTool2 from "./pages/StartTool2Page";
 import Page1 from "./pages/Page1"
 import Page2 from "./pages/Page2";
 import Page3 from "./pages/Page3";
@@ -36,15 +38,24 @@ export default function Layout() {
 	const page = useSelector((state) => state.steps.activeStep);
 	const pageNavigation = useSelector((state) => state.globalstate.processHasEnded);
 	const showTimer = useSelector((state) => state.globalstate.showTimer);
+	const showTool2Page = useSelector((state) => state.globalstate.tool2page);
 	const savedResponse = useSelector((state) => state.steps.responses);
+	const isChecked = useSelector((state) => state.globalstate.isChecked);
+	const dispatch = useDispatch()
+	
 
-	console.log(savedResponse);
-	console.log(page);
+	// if(page===11){
+	// 	dispatch(changeIsChecked({isChecked:true}))
+	// } else {
+	// 	dispatch(changeIsChecked({ isChecked:false}));
+	// }
 		
 	return pageNavigation ? (
 		<EndPage />
 	) : showTimer ? (
 		<TimerPage />
+	) : showTool2Page ? (
+		<StartTool2 />
 	) : (
 		<>
 			<Box

@@ -1,9 +1,14 @@
 import React from "react";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
+import { useDispatch } from "react-redux";
+import { disableTimer } from "../../redux/slices/globalstateSlice";
 
 export default function Timer() {
+	const dispatch = useDispatch()
+	
 	const time = (remainingTime) => {
 		if (remainingTime === 0) {
+			dispatch(disableTimer())
 			window.location.reload();
 		}
 

@@ -1,9 +1,9 @@
-import Box from "@mui/material/Box";
+
 import Container from "@mui/material/Container";
 import "animate.css";
-import RadioOptions from "../utils/RadioWithmark";
+import RadioOptions from "../utils/RadioOptions";
 import "animate.css";
-import Stack from "@mui/material/Stack";
+
 
 const details = {
 	question: "What is your gender? ",
@@ -19,12 +19,10 @@ const Page2 = () => {
 		<Container
 			fixed
 			sx={{
-				paddingTop: "10%",
+				paddingTop: "5%",
 			}}
 		>
-			<Stack spacing={2}>
-				<h1>{details.question}</h1>
-			</Stack>
+			<h1 style={{ lineHeight: "38px" }}>{details.question}</h1>
 			<RadioOptions details={details} />
 		</Container>
 	);
