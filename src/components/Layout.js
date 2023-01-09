@@ -37,8 +37,7 @@ import Page27 from "./pages/Page27";
 import Page28 from "./pages/Page28";
 import Page29 from "./pages/Page29";
 import Page30 from "./pages/Page30";
-import Page31 from "./pages/Page30";
-
+import Page31 from "./pages/Page31";
 import EndPage from "./pages/EndPage"
 import TimerPage from "./pages/TimerPage"
 import "animate.css"

@@ -28,13 +28,13 @@ export default function ProgressMobileStepper() {
 
 	const gotoNextPage = () => {
 		if (
-			savedResponse[page].answer === "declined" ||
+			savedResponse[page].answer === "I decline" ||
 			savedResponse[page].answer === "Not at all comfortable"
 		) {
 			dispatch(resetStep(0));
 			dispatch(resetResponses());
 			dispatch(endProcess());
-		} else if (savedResponse[page].answer === "accepted") {
+		} else if (savedResponse[page].answer === "I accept") {
 			dispatch(enableTimer());
 			dispatch(handleNext());
 		} else if (savedResponse[10] !== undefined && page === 10) {
@@ -59,7 +59,7 @@ export default function ProgressMobileStepper() {
 			? false
 			: null;
 
-			console.log('check condition', checkCondition);
+			console.log(totalpages);
 
 	return (
 		<MobileStepper

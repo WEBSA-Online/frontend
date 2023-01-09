@@ -1,5 +1,5 @@
 h1 {
-  line-height: 38px;
+  line-height: 43px;
 }
 
 
@@ -16,8 +16,6 @@ body {
 }
 
 ol > li {
-  font-size:20px;
-  margin-bottom:20px;
   line-height: 30px;
 }
 

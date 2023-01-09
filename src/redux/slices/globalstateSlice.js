@@ -5,7 +5,7 @@ const initialState = {
 	processHasEnded: false,
 	showTimer: false,
 	tool2page: false,
-	tool3page: true,
+	tool3page: false,
 };
 
 const globalstateSlice = createSlice({

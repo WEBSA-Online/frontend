@@ -9,11 +9,10 @@ import { useDispatch, useSelector } from "react-redux";
 import Stack from "@mui/material/Stack";
 import Grid from "@mui/material/Unstable_Grid2";
 
-export default function IconsRadio({ details }) {
+export default function IconsRadio({ details, grid}) {
 	const page = useSelector((state) => state.steps.activeStep);
 	const savedResponse = useSelector((state) => state.steps.responses);
 	const dispatch = useDispatch();
-	const itemWidth = 100 / details.options.length;
 
 	const handleClick = (e) => {
 		const selected = e.target.value;
@@ -27,6 +26,7 @@ export default function IconsRadio({ details }) {
 			})
 		);
 	};
+
 
 
 	return (
@@ -52,7 +52,7 @@ export default function IconsRadio({ details }) {
 		>
 			<Grid container spacing={2} sx={{ width: "100%" }}>
 				{details.options.map((value, index) => (
-					<Grid key={index} xs={6} md={4}>
+					<Grid key={index} xs={6} md={grid !== undefined ? grid : 4}>
 						<Sheet
 							key={index}
 							variant="contained"

@@ -3,22 +3,21 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Unstable_Grid2";
 import "animate.css";
-import RadioOptions from "../utils/RadioOptions";
+import RadioOptions from "../utils/RadioOptions"
 import "animate.css";
 
 const details = {
 	question: "Are terms agreed?",
 	options: [
-		{ name: "I accept", value: "accepted" },
-		{ name: "I decline", value: "declined" },
+		{ name: "I accept" },
+		{ name: "I decline"},
 	],
 	direction: "column",
 };
 
 const StartPage = () => {
 	return (
-		<Container
-			fixed
+		<Box
 			sx={{
 				paddingTop: "3%",
 				paddingBottom: "15%",
@@ -58,11 +57,11 @@ const StartPage = () => {
 					</Box>
 				</Grid>
 				<Grid sm={12} md={5} sx={{ padding: "30px 20px" }}>
-					<RadioOptions details={details} />
+					<RadioOptions details={details} grid={12} />
 				</Grid>
 			</Grid>
-		</Container>
+		</Box>
 	);
 };
 
-export default StartPage;
+export default StartPage
