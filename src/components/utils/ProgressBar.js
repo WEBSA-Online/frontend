@@ -22,7 +22,6 @@ export default function ProgressMobileStepper() {
 	const theme = useTheme();
 	const page = useSelector((state) => state.steps.activeStep);
 	const totalpages = useSelector((state) => state.steps.totalSteps);
-	const isChecked = useSelector((state) => state.globalstate.isChecked);
 	const savedResponse = useSelector((state) => state.steps.responses);
 	const dispatch = useDispatch();
 
@@ -70,13 +69,16 @@ export default function ProgressMobileStepper() {
 			sx={{ flexGrow: 1, justifyContent: "center", width: "70%" }}
 			nextButton={
 				<Button
-					sx={{ color: "black"}}
-					size="small"
+					sx={{
+						color: "white",
+						boxShadow: "none",
+						fontWeight: "bold",
+						marginLeft: "5px",
+					}}
+					variant="contained"
+					size="medium"
 					onClick={gotoNextPage}
-					disabled={
-						page === totalpages - 1 ||
-						(checkCondition === false)
-					}
+					disabled={page === totalpages - 1 || checkCondition === false}
 				>
 					Next
 					{theme.direction === "rtl" ? (
@@ -88,10 +90,16 @@ export default function ProgressMobileStepper() {
 			}
 			backButton={
 				<Button
-					sx={{ color: "black" }}
-					size="small"
 					onClick={() => dispatch(handleBack())}
 					disabled={page === 0}
+					variant="contained"
+					size="medium"
+					sx={{
+						color: "white",
+						boxShadow: "none",
+						fontWeight: "bold",
+						marginRight: "5px",
+					}}
 				>
 					{theme.direction === "rtl" ? (
 						<KeyboardArrowRight />

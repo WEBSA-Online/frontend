@@ -1,4 +1,3 @@
-import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import "animate.css";
 import DatePicker from "../utils/DatePicker";

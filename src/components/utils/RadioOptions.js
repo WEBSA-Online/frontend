@@ -6,7 +6,6 @@ import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
 import { checkButton } from "../../redux/slices/globalstateSlice";
 import { saveResponse } from "../../redux/slices/stepSlice";
 import { useDispatch, useSelector } from "react-redux";
-import Stack from "@mui/material/Stack";
 import Grid from "@mui/material/Unstable_Grid2";
 
 export default function IconsRadio({ details, grid}) {
