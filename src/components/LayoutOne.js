@@ -2,9 +2,9 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import Paper from "@mui/material/Paper";
-import ProgressBar from './utils/ProgressBar'
+import ProgressBar from './utils/ProgressBar';
 import { useSelector} from "react-redux";
-import StartPage from "./pages/StartPage"
+import StartPage from "./pages/StartPage";
 import StartTool2 from "./pages/StartTool2Page";
 import StartTool3 from "./pages/StartTool3Page";
 import Page1 from "./pages/Page1"
