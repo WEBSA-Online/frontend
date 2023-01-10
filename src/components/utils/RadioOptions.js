@@ -8,22 +8,22 @@ import { saveResponse } from "../../redux/slices/stepSlice";
 import { useDispatch, useSelector } from "react-redux";
 import Grid from "@mui/material/Unstable_Grid2";
 
-export default function IconsRadio({ details, grid }) {
+export default function IconsRadio({ details, grid}) {
 	const page = useSelector((state) => state.steps.activeStep);
 	const savedResponse = useSelector((state) => state.steps.responses);
 	const dispatch = useDispatch();
-	const [score, setScore] = React.useState(0);
 
 	const handleClick = (e) => {
-		const name = e.target.value;
+		const score =e.target.id
+		const name = e.target.value
 		dispatch(checkButton());
-		if (page > 10) {
+		if(page > 10) {
 			dispatch(
 				saveResponse({
 					question: details.question,
 					answer: name,
 					pageIndex: page,
-					score: score,
+					score: parseInt(score),
 				})
 			);
 		} else {
@@ -36,6 +36,8 @@ export default function IconsRadio({ details, grid }) {
 			);
 		}
 	};
+
+
 
 	return (
 		<RadioGroup
@@ -76,14 +78,11 @@ export default function IconsRadio({ details, grid }) {
 							}}
 						>
 							<Radio
-								id={value.name}
+								id={value.score}
 								value={value.name}
 								name="platform"
 								checkedIcon={<CheckCircleRoundedIcon />}
-								onClick={(e) => {
-									setScore(value.score);
-									handleClick(e);
-								}}
+								onClick={(e) => handleClick(e)}
 							/>
 							<span style={{ fontSize: "20px" }}>{value.name}</span>
 						</Sheet>

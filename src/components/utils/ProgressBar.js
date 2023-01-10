@@ -58,8 +58,6 @@ export default function ProgressMobileStepper() {
 			? false
 			: null;
 
-			console.log(totalpages);
-
 	return (
 		<MobileStepper
 			variant="progress"
@@ -80,7 +78,7 @@ export default function ProgressMobileStepper() {
 					onClick={gotoNextPage}
 					disabled={page === totalpages - 1 || checkCondition === false}
 				>
-					Next
+					{page === totalpages - 1 ? "End" : "Next"}
 					{theme.direction === "rtl" ? (
 						<KeyboardArrowLeft />
 					) : (

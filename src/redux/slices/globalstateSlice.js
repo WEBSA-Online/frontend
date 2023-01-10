@@ -6,6 +6,7 @@ const initialState = {
 	showTimer: false,
 	tool2page: false,
 	tool3page: false,
+	registerpage:false
 };
 
 const globalstateSlice = createSlice({

@@ -4,42 +4,43 @@ import BottomNavigation from "@mui/material/BottomNavigation";
 import Paper from "@mui/material/Paper";
 import ProgressBar from './utils/ProgressBar';
 import { useSelector} from "react-redux";
-import StartPage from "./pages/StartPage";
-import StartTool2 from "./pages/StartTool2Page";
-import StartTool3 from "./pages/StartTool3Page";
-import Page1 from "./pages/Page1"
-import Page2 from "./pages/Page2";
-import Page3 from "./pages/Page3";
-import Page4 from "./pages/Page4";
-import Page5 from "./pages/Page5";
-import Page6 from "./pages/Page6";
-import Page7 from "./pages/Page7";
-import Page8 from "./pages/Page8";
-import Page9 from "./pages/Page9";
-import Page10 from "./pages/Page10";
-import Page11 from "./pages/Page11";
-import Page12 from "./pages/Page12";
-import Page13 from "./pages/Page13";
-import Page14 from "./pages/Page14";
-import Page15 from "./pages/Page15";
-import Page16 from "./pages/Page16";
-import Page17 from "./pages/Page17";
-import Page18 from "./pages/Page18";
-import Page19 from "./pages/Page19";
-import Page20 from "./pages/Page20";
-import Page21 from "./pages/Page21";
-import Page22 from "./pages/Page22";
-import Page23 from "./pages/Page23";
-import Page24 from "./pages/Page24";
-import Page25 from "./pages/Page25";
-import Page26 from "./pages/Page26";
-import Page27 from "./pages/Page27";
-import Page28 from "./pages/Page28";
-import Page29 from "./pages/Page29";
-import Page30 from "./pages/Page30";
-import Page31 from "./pages/Page31";
-import EndPage from "./pages/EndPage"
-import TimerPage from "./pages/TimerPage"
+import StartPage from "./firstAssesment/StartPage";
+import StartTool2 from "./firstAssesment/StartTool2Page";
+import StartTool3 from "./firstAssesment/StartTool3Page";
+import Page1 from "./firstAssesment/Page1"
+import Page2 from "./firstAssesment/Page2";
+import Page3 from "./firstAssesment/Page3";
+import Page4 from "./firstAssesment/Page4";
+import Page5 from "./firstAssesment/Page5";
+import Page6 from "./firstAssesment/Page6";
+import Page7 from "./firstAssesment/Page7";
+import Page8 from "./firstAssesment/Page8";
+import Page9 from "./firstAssesment/Page9";
+import Page10 from "./firstAssesment/Page10";
+import Page11 from "./firstAssesment/Page11";
+import Page12 from "./firstAssesment/Page12";
+import Page13 from "./firstAssesment/Page13";
+import Page14 from "./firstAssesment/Page14";
+import Page15 from "./firstAssesment/Page15";
+import Page16 from "./firstAssesment/Page16";
+import Page17 from "./firstAssesment/Page17";
+import Page18 from "./firstAssesment/Page18";
+import Page19 from "./firstAssesment/Page19";
+import Page20 from "./firstAssesment/Page20";
+import Page21 from "./firstAssesment/Page21";
+import Page22 from "./firstAssesment/Page22";
+import Page23 from "./firstAssesment/Page23";
+import Page24 from "./firstAssesment/Page24";
+import Page25 from "./firstAssesment/Page25";
+import Page26 from "./firstAssesment/Page26";
+import Page27 from "./firstAssesment/Page27";
+import Page28 from "./firstAssesment/Page28";
+import Page29 from "./firstAssesment/Page29";
+import Page30 from "./firstAssesment/Page30";
+import Page31 from "./firstAssesment/Page31";
+import EndPage from "./firstAssesment/EndPage"
+import TimerPage from "./firstAssesment/TimerPage"
+import EndAssesment from "./firstAssesment/AssesmentComplete"
 import "animate.css"
 
 setInterval(() => localStorage.clear(), 3600000);
@@ -75,7 +76,7 @@ export default function Layout() {
 			<Box
 				className="scroll"
 				sx={{
-					background: page === 0 ? "#3f55af" : page > 10 && page <=20 ? "#cfefff" : page > 20 ? "#f5ffcf" : "#e9f1f2",
+					background: page === 0 ? "#3f55af" : page > 10 && page <=20 ? "#cfefff" : page > 20 && page <=31 ? "#f5ffcf" : page===32 ? "#7348CF" : "#e9f1f2",
 					display: "flex",
 					height: "100vh",
 					padding: "0 5%",
@@ -147,6 +148,8 @@ export default function Layout() {
 							return <Page30 />;
 						case 31:
 							return <Page31 />;
+						case 32:
+							return <EndAssesment />;
 						default:
 							return null;
 					}
