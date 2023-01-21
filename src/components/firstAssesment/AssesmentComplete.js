@@ -1,11 +1,14 @@
-import { useDispatch, useSelector } from "react-redux";
+import {  useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrophy } from "@fortawesome/free-solid-svg-icons";
 import Grid from "@mui/material/Unstable_Grid2";
 import { Typography, Stack, Container, Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import { WindowSharp } from "@mui/icons-material";
 
 const Page = () => {
 	const savedResponse = useSelector((state) => state.steps.responses);
+	const navigate = useNavigate()
 
 	const alcoholScores = savedResponse
 		.slice(11, 20)
@@ -21,6 +24,15 @@ const Page = () => {
 
 	// const alcoholScores = 9
 	// const drugScores = 7
+
+	const submit=()=> {
+		navigate("/register")
+	}
+
+	const backtohome = () => {
+		localStorage.clear()
+		navigate("https://websaonline.com");
+	};
 
 
 	return (
@@ -66,6 +78,7 @@ const Page = () => {
 									width: "30%",
 									"&:hover": { color: "#fff", backgroundColor: "#7348cf" },
 								}}
+								onClick={submit}
 							>
 								Continue
 							</Button>
@@ -86,6 +99,20 @@ const Page = () => {
 							<Typography variant="h4" sx={{ color: "white", fontWeight: "bold" }}>
 								You are at low risk.
 							</Typography>
+							<Button
+								variant="contained"
+								size="large"
+								sx={{
+									backgroundColor: "#fff",
+									color: "#7348cf",
+									fontWeight: "bold",
+									width: "30%",
+									"&:hover": { color: "#fff", backgroundColor: "#7348cf" },
+								}}
+								onClick={backtohome}
+							>
+								Continue
+							</Button>
 						</Stack>
 					</Grid>
 				</Grid>

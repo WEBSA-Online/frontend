@@ -43,7 +43,7 @@ import TimerPage from "./firstAssesment/TimerPage"
 import EndAssesment from "./firstAssesment/AssesmentComplete"
 import "animate.css"
 
-setInterval(() => localStorage.clear(), 3600000);
+
 
 
 export default function Layout() {

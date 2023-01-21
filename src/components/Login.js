@@ -5,51 +5,36 @@ import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { API_URL } from "../API";
-import { useSelector } from "react-redux";
 
 export default function Register() {
-	const savedResponse = useSelector((state) => state.steps.responses);
 	const navigate = useNavigate();
 	const [email, setEmail] = React.useState("");
-	const [passwordOne, setPasswordOne] = React.useState("");
-	const [passwordTwo, setPasswordTwo] = React.useState("");
+	const [password, setPassword] = React.useState("");
 	const [success, setSuccess] = React.useState(false);
 	const [loading, setLoading] = React.useState(false);
 	const [error, setError] = React.useState(false);
 	const [errorMsg, setErrorMsg] = React.useState(false);
 
 
-	console.log(savedResponse[1].answer);
-
-	
-
 	const handleSubmit = async () => {
-		setLoading(true)
-		setError(false)
-		if (passwordOne !== passwordTwo) {
+		setLoading(true);
+		setError(false);
+		try {
+			await axios.post(`${API_URL}/login`, {
+				email: email,
+				password: password,
+			});
+			setLoading(false);
+			setSuccess(true);
+			setTimeout(() => {
+				navigate("/home");
+			}, 2000);
+		} catch (err) {
 			setLoading(false);
 			setError(true);
-			setErrorMsg("Passwords dont match. ");
-		} else {
-			try {
-				await axios.post(`${API_URL}/register`, {
-					name: savedResponse[1].answer,
-					email: email,
-					password: passwordOne,
-				});
-				setLoading(false);
-				setSuccess(true)
-				setTimeout(()=>{
-					navigate("/login")
-				},2000)
-			} catch (err) {
-				setLoading(false);
-				setError(true);
-				setErrorMsg(err.response.data.message);
-				console.log(err)
-			}
+			setErrorMsg(err.response.data.message);
+			console.log(err);
 		}
-		
 	};
 
 	return (
@@ -66,7 +51,7 @@ export default function Register() {
 			<>
 				{success ? (
 					<Alert variant="filled" severity="success" sx={{ marginBottom: "10px" }}>
-						You've Successfully registered
+						You've Successfully logged in
 					</Alert>
 				) : error ? (
 					<Alert
@@ -98,22 +83,15 @@ export default function Register() {
 						<TextField
 							margin="normal"
 							fullWidth
-							label="Email"
+							label="Enter Email"
 							onChange={(e) => setEmail(e.target.value)}
 						/>
 						<TextField
 							margin="normal"
 							fullWidth
-							label="Create Password"
+							label="Enter Password"
 							type="password"
-							onChange={(e) => setPasswordOne(e.target.value)}
-						/>
-						<TextField
-							margin="normal"
-							fullWidth
-							label="Confirm Password"
-							type="password"
-							onChange={(e) => setPasswordTwo(e.target.value)}
+							onChange={(e) => setPassword(e.target.value)}
 						/>
 						<Button
 							sx={{
@@ -130,7 +108,7 @@ export default function Register() {
 							{loading ? (
 								<CircularProgress size={30} sx={{ color: "white" }} />
 							) : (
-								"REGISER TO PROCEED"
+								"LOGIN"
 							)}
 						</Button>
 					</>

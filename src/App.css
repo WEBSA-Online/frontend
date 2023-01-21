@@ -1,17 +1,36 @@
+@font-face {
+	font-family: "Poppins-Bold";
+	src: local("Poppins-Bold"), url("../public/fonts/Poppins-Bold.ttf") format("truetype");
+}
+
+@font-face {
+	font-family: "Poppins-Regular";
+	src: local("Poppins-Regular"), url("../public/fonts/Poppins-Regular.ttf") format("truetype");
+}
+
+@font-face {
+	font-family: "Poppins-SemiBold";
+	src: local("Poppins-SemiBold"), url("../public/fonts/Poppins-SemiBold.ttf") format("truetype");
+}
+
+
 h1 {
   line-height: 43px;
 }
 
+h1,h2,h3,h4,h5,h6 {
+  font-family: Poppins-Bold;
+}
 
 p {
 	margin-top: 0;
-	font-family: "Roboto";
+	font-family: Poppins-Regular;
 }
 
 body {
 	margin: 0px;
 	padding: 0px;
-  font-family: "Roboto";
+  font-family: Poppins-Regular;
   	line-height: 1.5rem;
 }
 
