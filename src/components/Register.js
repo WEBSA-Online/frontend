@@ -2,7 +2,7 @@ import React from "react";
 import TextField from "@mui/material/TextField";
 import { Box, Alert, CircularProgress } from "@mui/material";
 import Button from "@mui/material/Button";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { API_URL } from "../API";
 import { useSelector } from "react-redux";
@@ -20,16 +20,14 @@ export default function Register() {
 	const [error, setError] = React.useState(false);
 	const [errorMsg, setErrorMsg] = React.useState(false);
 
-	console.log(savedResponse[1].answer);
-
 	const handleSubmit = async () => {
 		setLoading(true);
 		setError(false);
-		
-		if ((savedResponse[1].answer === undefined)) {
+
+		if (!savedResponse) {
 			setLoading(false);
 			setError(true);
-			setErrorMsg("Name not captured you need to complete 1st screening.");
+			setErrorMsg("Name not captured. 1st complete screening");
 		} else if (passwordOne !== passwordTwo) {
 			setLoading(false);
 			setError(true);
@@ -40,6 +38,7 @@ export default function Register() {
 					name: savedResponse[1].answer,
 					email: email,
 					password: passwordOne,
+					userData: savedResponse,
 				});
 				setLoading(false);
 				setSuccess(true);
@@ -78,7 +77,7 @@ export default function Register() {
 						onClose={() => setError(false)}
 						sx={{ marginBottom: "10px" }}
 					>
-						{errorMsg}
+						{!savedResponse ? <span>{errorMsg} <Link to="/screening" style={{color:"white"}}>here.</Link></span> : errorMsg}
 					</Alert>
 				) : null}
 				<Box
