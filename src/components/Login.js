@@ -15,6 +15,8 @@ export default function Register() {
 	const [error, setError] = React.useState(false);
 	const [errorMsg, setErrorMsg] = React.useState(false);
 
+	console.log(API_URL)
+
 
 	const handleSubmit = async () => {
 		setLoading(true);
@@ -30,10 +32,11 @@ export default function Register() {
 				navigate("/home");
 			}, 2000);
 		} catch (err) {
+			console.log(err);
 			setLoading(false);
 			setError(true);
 			setErrorMsg(err.response.data.message);
-			console.log(err);
+			
 		}
 	};
 

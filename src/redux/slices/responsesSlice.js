@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-	responses:[]
+	responses:[],
+	toolOneComplete:false
 };
 
 const responsesSlice = createSlice({

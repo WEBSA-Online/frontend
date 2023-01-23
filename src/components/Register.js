@@ -6,9 +6,11 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { API_URL } from "../API";
 import { useSelector } from "react-redux";
+import { redirect } from "react-router-dom";
 
 export default function Register() {
-	const savedResponse = useSelector((state) => state.steps.responses);
+	const toolOneComplete = useSelector((state) => state.steps.toolOneComplete);
+	const savedResponse = useSelector((state) => state.steps.toolOneComplete);
 	const navigate = useNavigate();
 	const [email, setEmail] = React.useState("");
 	const [passwordOne, setPasswordOne] = React.useState("");
@@ -19,13 +21,10 @@ export default function Register() {
 	const [errorMsg, setErrorMsg] = React.useState(false);
 
 
-	console.log(savedResponse[1].answer);
-
-	
 
 	const handleSubmit = async () => {
-		setLoading(true)
-		setError(false)
+		setLoading(true);
+		setError(false);
 		if (passwordOne !== passwordTwo) {
 			setLoading(false);
 			setError(true);
@@ -38,18 +37,17 @@ export default function Register() {
 					password: passwordOne,
 				});
 				setLoading(false);
-				setSuccess(true)
-				setTimeout(()=>{
-					navigate("/login")
-				},2000)
+				setSuccess(true);
+				setTimeout(() => {
+					navigate("/login");
+				}, 2000);
 			} catch (err) {
 				setLoading(false);
 				setError(true);
 				setErrorMsg(err.response.data.message);
-				console.log(err)
+				console.log(err);
 			}
 		}
-		
 	};
 
 	return (
