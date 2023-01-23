@@ -95,9 +95,9 @@ export default function Register() {
 						<Button
 							sx={{
 								marginTop: "10px",
-								backgroundColor: "#006266",
+								backgroundColor: "#00a551",
 								fontWeight: 700,
-								"&:hover": { backgroundColor: "#005356" },
+								"&:hover": { backgroundColor: "#00a554" },
 							}}
 							size="large"
 							fullWidth="true"

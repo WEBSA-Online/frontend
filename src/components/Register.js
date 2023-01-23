@@ -10,7 +10,7 @@ import { redirect } from "react-router-dom";
 
 export default function Register() {
 	const toolOneComplete = useSelector((state) => state.steps.toolOneComplete);
-	const savedResponse = useSelector((state) => state.steps.toolOneComplete);
+	const savedResponse = useSelector((state) => state.steps.responses);
 	const navigate = useNavigate();
 	const [email, setEmail] = React.useState("");
 	const [passwordOne, setPasswordOne] = React.useState("");
@@ -20,11 +20,11 @@ export default function Register() {
 	const [error, setError] = React.useState(false);
 	const [errorMsg, setErrorMsg] = React.useState(false);
 
+
 	const handleSubmit = async () => {
 		setLoading(true);
 		setError(false);
-
-		if (!savedResponse) {
+		if (savedResponse[1].answer === undefined) {
 			setLoading(false);
 			setError(true);
 			setErrorMsg("Name not captured. 1st complete screening");
@@ -77,7 +77,16 @@ export default function Register() {
 						onClose={() => setError(false)}
 						sx={{ marginBottom: "10px" }}
 					>
-						{!savedResponse ? <span>{errorMsg} <Link to="/screening" style={{color:"white"}}>here.</Link></span> : errorMsg}
+						{!savedResponse ? (
+							<span>
+								{errorMsg}{" "}
+								<Link to="/screening" style={{ color: "white" }}>
+									here.
+								</Link>
+							</span>
+						) : (
+							errorMsg
+						)}
 					</Alert>
 				) : null}
 				<Box
@@ -120,9 +129,9 @@ export default function Register() {
 						<Button
 							sx={{
 								marginTop: "10px",
-								backgroundColor: "#006266",
+								backgroundColor: "#00a551",
 								fontWeight: 700,
-								"&:hover": { backgroundColor: "#005356" },
+								"&:hover": { backgroundColor: "00a551" },
 							}}
 							size="large"
 							fullWidth="true"
