@@ -11,13 +11,13 @@ export const websaTheme = createTheme({
 		},
 	},
 	typography: {
-		fontFamily: "PublicSans-Regular",
-		fontSize:16,
+		fontFamily: "Poppins-Regular",
+		fontSize: 16,
 		button: {
-			fontFamily: "Comfortaa-Bold",
+			fontFamily: "Poppins-Bold",
 			fontSize: 16,
 			boxShadow: "none",
-			textTransform:"none"
+			textTransform: "none",
 		},
 	},
 	MuiListItemIcon: {

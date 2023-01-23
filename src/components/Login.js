@@ -26,7 +26,7 @@ export default function Register() {
 			setLoading(false);
 			setSuccess(true);
 			setTimeout(() => {
-				navigate("/home");
+				navigate("/");
 			}, 2000);
 		} catch (err) {
 			console.log(err);
