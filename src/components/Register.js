@@ -20,15 +20,20 @@ export default function Register() {
 	const [error, setError] = React.useState(false);
 	const [errorMsg, setErrorMsg] = React.useState(false);
 
-
+	console.log(savedResponse[1].answer);
 
 	const handleSubmit = async () => {
 		setLoading(true);
 		setError(false);
-		if (passwordOne !== passwordTwo) {
+		
+		if ((savedResponse[1].answer === undefined)) {
 			setLoading(false);
 			setError(true);
-			setErrorMsg("Passwords dont match. ");
+			setErrorMsg("Name not captured you need to complete 1st screening.");
+		} else if (passwordOne !== passwordTwo) {
+			setLoading(false);
+			setError(true);
+			setErrorMsg("Passwords dont match.");
 		} else {
 			try {
 				await axios.post(`${API_URL}/register`, {
@@ -42,10 +47,10 @@ export default function Register() {
 					navigate("/login");
 				}, 2000);
 			} catch (err) {
+				console.log(err);
 				setLoading(false);
 				setError(true);
 				setErrorMsg(err.response.data.message);
-				console.log(err);
 			}
 		}
 	};
