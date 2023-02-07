@@ -4,7 +4,6 @@ import { faTrophy } from "@fortawesome/free-solid-svg-icons";
 import Grid from "@mui/material/Unstable_Grid2";
 import { Typography, Stack, Container, Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { WindowSharp } from "@mui/icons-material";
 
 const Page = () => {
 	const savedResponse = useSelector((state) => state.steps.responses);

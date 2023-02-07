@@ -10,9 +10,6 @@ const details = {
 	options: [
 		{ name: "Yes", value: "Yes" },
 		{ name: "No", value: "No" },
-
-	
-
 	],
 	direction: "row",
 };
