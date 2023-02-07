@@ -4,15 +4,26 @@ import Grid from "@mui/material/Unstable_Grid2";
 import { Typography, Stack, Button, Box } from "@mui/material";
 import * as React from "react";
 import ConsentOptions from "./utils/ConsentRadioOption"
+import { useNavigate } from "react-router-dom";
 
 const Page = () => {
 
 	const [consent, setConsent] = React.useState("")
 	const [selected, setSelected] = React.useState(false);
+	const navigate = useNavigate();
 
 	const details = {
 		options: [{ name: "I consent" }, { name: "I don't consent" }],
 		direction: "column",
+	};
+
+	const submit = () => {
+		navigate("/register");
+	};
+
+	const backtohome = () => {
+		localStorage.clear();
+		navigate("https://websaonline.com");
 	};
 	
 	return (
@@ -23,10 +34,59 @@ const Page = () => {
 				height: "100vh",
 				display: "flex",
 				alignItems: "center",
+				justifyContent: "center",
 			}}
 		>
 			{selected ? (
-				<></>
+				<Grid container>
+					<Grid sm={12} md={12}>
+						<Stack sx={{ alignItems: "center" }} spacing={3}>
+							{consent === "I consent" ? (
+								<>
+									<Typography variant="h4" sx={{ color: "white" }}>
+										Thank you! Proceed to the next stage
+									</Typography>
+									<Button
+										variant="contained"
+										size="large"
+										sx={{
+											backgroundColor: "#fff",
+											color: "#093095",
+											fontWeight: "bold",
+											"&:hover": { color: "#fff", backgroundColor: "#093095" },
+										}}
+										onClick={submit}
+									>
+										Continue
+									</Button>
+								</>
+							) : (
+								<>
+									<Typography variant="h4" sx={{ color: "white" }}>
+										Thank you for participating.
+									</Typography>
+									<a
+										style={{textDecoration: "none" }}
+										href="https://websaonline.com/consent"
+									>
+										<Button
+											variant="contained"
+											size="large"
+											sx={{
+												backgroundColor: "#fff",
+												color: "#093095",
+												fontWeight: "bold",
+												"&:hover": { color: "#fff", backgroundColor: "#093095" },
+											}}
+										>
+											Continue
+										</Button>
+									</a>
+								</>
+							)}
+						</Stack>
+					</Grid>
+				</Grid>
 			) : (
 				<Grid container>
 					<Grid xs={12} md={12}>
