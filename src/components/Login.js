@@ -29,10 +29,14 @@ export default function Register() {
 				navigate("/");
 			}, 2000);
 		} catch (err) {
-			console.log(err);
+			console.log(err.message);
 			setLoading(false);
 			setError(true);
-			setErrorMsg(err.response.data.message);			
+			if (err.message==="Network Error") {
+				setErrorMsg("Connection failed");
+			} else {
+				setErrorMsg(err.response.data.message);
+			} 			
 		}
 	};
 

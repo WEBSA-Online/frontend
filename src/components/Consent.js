@@ -67,7 +67,7 @@ const Page = () => {
 									</Typography>
 									<a
 										style={{textDecoration: "none" }}
-										href="https://websaonline.com/consent"
+										href="https://websaonline.com"
 									>
 										<Button
 											variant="contained"

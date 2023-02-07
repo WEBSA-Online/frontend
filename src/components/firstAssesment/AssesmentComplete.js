@@ -25,14 +25,8 @@ const Page = () => {
 	// const drugScores = 7
 
 	const submit=()=> {
-		navigate("/register")
+		navigate("/consent");
 	}
-
-	const backtohome = () => {
-		localStorage.clear()
-		navigate("https://websaonline.com");
-	};
-
 
 	return (
 		<Container
@@ -98,20 +92,24 @@ const Page = () => {
 							<Typography variant="h4" sx={{ color: "white", fontWeight: "bold" }}>
 								You are at low risk.
 							</Typography>
-							<Button
-								variant="contained"
-								size="large"
-								sx={{
-									backgroundColor: "#fff",
-									color: "#7348cf",
-									fontWeight: "bold",
-									width: "30%",
-									"&:hover": { color: "#fff", backgroundColor: "#7348cf" },
-								}}
-								onClick={backtohome}
+							<a
+								style={{ textDecoration: "none" }}
+								href="https://websaonline.com"
 							>
-								Continue
-							</Button>
+								<Button
+									variant="contained"
+									size="large"
+									sx={{
+										backgroundColor: "#fff",
+										color: "#7348cf",
+										fontWeight: "bold",
+										width: "30%",
+										"&:hover": { color: "#fff", backgroundColor: "#7348cf" },
+									}}
+								>
+									Continue
+								</Button>
+							</a>
 						</Stack>
 					</Grid>
 				</Grid>
