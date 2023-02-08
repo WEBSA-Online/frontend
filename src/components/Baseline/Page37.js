@@ -1,21 +1,14 @@
-
 import Container from "@mui/material/Container";
 import "animate.css";
-import RadioOptions from "../utils/RadioOptions";
+import TextField from "../utils/TextField";
 import "animate.css";
 
-
 const details = {
-	question: "Type of residence",
-	options: [
-		{ name: "Rural ", value: "Rural" },
-		{ name: "Urban", value: "Urban" },
-
-	],
-	direction: "row",
+	question:
+		"District of previous residence if applicable  ? Country if not Ugandan",
 };
 
-const Page36 = () => {
+const Page37 = () => {
 	return (
 		<Container
 			fixed
@@ -24,7 +17,7 @@ const Page36 = () => {
 			}}
 		>
 			<h1 style={{ lineHeight: "38px" }}>{details.question}</h1>
-			<RadioOptions details={details} />
+			<TextField details={details} />
 		</Container>
 	);
 };

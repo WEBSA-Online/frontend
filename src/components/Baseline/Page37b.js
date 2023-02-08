@@ -1,4 +1,3 @@
-
 import Container from "@mui/material/Container";
 import "animate.css";
 import RadioOptions from "../utils/RadioOptions";
@@ -6,14 +5,11 @@ import "animate.css";
 import { useSelector } from "react-redux";
 import TextField from "../utils/TextField";
 
-
 const details = {
-	question: "What is your Religion? ",
+	question: "Type of residence?",
 	options: [
-		{ name: "Catholic", value: "Catholic" },
-		{ name: "Protestant", value: "Protestant" },
-            { name: "Muslim", value: "Muslim" },
-            { name: "Other specify", value: "Other specify" },
+		{ name: "Rural", value: "Rural" },
+		{ name: "Urban", value: "Urban" },
 	],
 	direction: "row",
 };

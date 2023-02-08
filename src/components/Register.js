@@ -44,6 +44,7 @@ export default function Register() {
 				setSuccess(true);
 				setTimeout(() => {
 					navigate("/login");
+					localStorage.clear();
 				}, 2000);
 			} catch (err) {
 				console.log(err);

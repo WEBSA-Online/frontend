@@ -37,8 +37,6 @@ export default function IconsRadio({ details, grid}) {
 		}
 	};
 
-
-
 	return (
 		<RadioGroup
 			aria-label="platform"

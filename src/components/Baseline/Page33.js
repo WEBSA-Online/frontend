@@ -10,8 +10,7 @@ const details = {
 	options: [
 		{ name: "Hall of residence owned/administered by university", value: "Hall of residence owned/administered by university" },
 		{ name: "Private Hostel", value: "Private Hostel" },
-            { name: "Reside at home", value: "Reside at home" },
-            { name: "Other specify", value: "Other specify" },
+      { name: "Reside at home", value: "Reside at home" },
 	],
 	direction: "row",
 };
@@ -25,7 +24,7 @@ const Page33 = () => {
 			}}
 		>
 			<h1 style={{ lineHeight: "38px" }}>{details.question}</h1>
-			<RadioOptions details={details} />
+			<RadioOptions details={details} grid={6} />
 		</Container>
 	);
 };

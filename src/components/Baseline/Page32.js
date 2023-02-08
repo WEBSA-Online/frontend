@@ -6,12 +6,13 @@ import "animate.css";
 
 
 const details = {
-	question: "What is your Religion? ",
+	question: "Your academic program year of study?",
 	options: [
-		{ name: "Catholic", value: "Catholic" },
-		{ name: "Protestant", value: "Protestant" },
-            { name: "Muslim", value: "Muslim" },
-            { name: "Other specify", value: "Other specify" },
+		{ name: "One", value: "One" },
+		{ name: "Two", value: "Two" },
+		{ name: "Three", value: "Three" },
+		{ name: "Four", value: "Four" },
+		{ name: "Five", value: "Five" },
 	],
 	direction: "row",
 };
@@ -25,7 +26,7 @@ const Page32 = () => {
 			}}
 		>
 			<h1 style={{ lineHeight: "38px" }}>{details.question}</h1>
-			<RadioOptions details={details} />
+			<RadioOptions details={details}/>
 		</Container>
 	);
 };

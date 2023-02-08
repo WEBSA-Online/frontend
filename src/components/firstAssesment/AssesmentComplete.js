@@ -25,7 +25,7 @@ const Page = () => {
 	// const drugScores = 7
 
 	const submit=()=> {
-		navigate("/consent");
+		navigate("/consent")
 	}
 
 	return (
@@ -60,7 +60,6 @@ const Page = () => {
 									side of drug use disorder.
 								</Typography>
 							)}
-
 							<Button
 								variant="contained"
 								size="large"
@@ -92,10 +91,7 @@ const Page = () => {
 							<Typography variant="h4" sx={{ color: "white", fontWeight: "bold" }}>
 								You are at low risk.
 							</Typography>
-							<a
-								style={{ textDecoration: "none" }}
-								href="https://websaonline.com"
-							>
+							<a href="https://websaonline.com">
 								<Button
 									variant="contained"
 									size="large"

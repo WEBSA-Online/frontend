@@ -5,6 +5,7 @@ import RadioOptions from "../utils/RadioOptions";
 import "animate.css";
 
 
+
 const details = {
 	question: "Who pays your fees (tuition, accommodation, functional and others)?",
 	options: [
@@ -17,6 +18,7 @@ const details = {
 };
 
 const Page34 = () => {
+	
 	return (
 		<Container
 			fixed
@@ -24,8 +26,9 @@ const Page34 = () => {
 				paddingTop: "10%",
 			}}
 		>
+			
 			<h1 style={{ lineHeight: "38px" }}>{details.question}</h1>
-			<RadioOptions details={details} />
+			<RadioOptions details={details} grid={12} />
 		</Container>
 	);
 };

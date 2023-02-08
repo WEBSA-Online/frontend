@@ -17,7 +17,7 @@ const details = {
 	direction: "row",
 };
 
-const Page36 = () => {
+const Page38 = () => {
 	return (
 		<Container
 			fixed

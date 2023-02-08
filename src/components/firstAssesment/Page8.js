@@ -17,6 +17,8 @@ const Page8 = () => {
 	const savedResponse = useSelector((state) => state.steps.responses);
 	const previousResponse = savedResponse[7].answer;
 
+	console.log(savedResponse[7].answer);
+
 	return (
 		<Container
 			fixed
@@ -26,11 +28,13 @@ const Page8 = () => {
 		>
 			<Stack spacing={2}>
 				<h1>
-					{previousResponse === "hall of residence"
+					{
+					previousResponse === "I am in a hall of residence"
 						? details.question
-						: previousResponse === "private hostel"
+						: previousResponse === "I am in a private hostel"
 						? details.question2
-						: details.question3}
+						: details.question3
+					}
 				</h1>
 			</Stack>
 			<TextField details={details} />
