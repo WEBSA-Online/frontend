@@ -6,7 +6,7 @@ import "animate.css";
 import Stack from "@mui/material/Stack";
 
 const details = {
-	question: "In the last 30 days what is the number of standard drinks taken in last drinking session?",
+	question: "In the last 30 days, what is the number of standard drinks that was taken in last drinking session?",
 };
 
 const Page51 = () => {

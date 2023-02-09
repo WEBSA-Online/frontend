@@ -1,20 +1,18 @@
-
 import Container from "@mui/material/Container";
 import "animate.css";
 import RadioOptions from "../utils/RadioOptions";
 import "animate.css";
 
 const details = {
-	question: "In the last 30 days did you take 4 or more drinks at one time [For Women]?",
+	question: "Do you own a smart phone (and you are not using somebody else’s?",
 	options: [
 		{ name: "Yes", value: "Yes" },
 		{ name: "No", value: "No" },
-
 	],
 	direction: "row",
 };
 
-const Page50 = () => {
+const Page34 = () => {
 	return (
 		<Container
 			fixed
@@ -28,4 +26,4 @@ const Page50 = () => {
 	);
 };
 
-export default Page50;
+export default Page34;

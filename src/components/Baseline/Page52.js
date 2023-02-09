@@ -6,7 +6,7 @@ import "animate.css";
 import Stack from "@mui/material/Stack";
 
 const details = {
-	question: "In the last 30 days what is the number of times you have come home drunk?",
+	question: "In the last 30 days, what is the number of times you went home drunk?",
 };
 
 const Page52 = () => {

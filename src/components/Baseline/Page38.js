@@ -12,7 +12,6 @@ const details = {
 		{ name: "Every 2-3 hours", value: "Every 2-3 hours" },
 		{ name: "Every 4-6 hours", value: "Every 4-6 hours" },
 		{ name: "7+hours", value: "7+hours" },
-
 	],
 	direction: "row",
 };

@@ -6,13 +6,10 @@ import "animate.css";
 
 
 const details = {
-	question: "In last 30 days did take 5 or more drinks at one time [MEN)?",
+	question: "In the last 30 days, did you take 5 or more drinks at one time [For Men]?",
 	options: [
 		{ name: "Yes", value: "Yes" },
 		{ name: "No", value: "No" },
-
-	
-
 	],
 	direction: "row",
 };

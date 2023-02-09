@@ -30,7 +30,17 @@ const OptionCard = ({ options, question }) => {
 	
 
 	const handleSave = () => {
-		if (page===12){
+		if (page===15){
+			if (checkSelection || counter < 1) {
+				dispatch(
+					saveMany({
+						question: question,
+						answer: options.name,
+						pageIndex: page,
+					})
+				);
+			}
+		} else {
 			if (checkSelection || counter < 3) {
 				dispatch(
 					saveMany({
@@ -39,17 +49,8 @@ const OptionCard = ({ options, question }) => {
 						pageIndex: page,
 					})
 				);
-			} 
-		} else {
-			dispatch(
-				saveMany({
-					question: question,
-					answer: options.name,
-					pageIndex: page,
-				})
-			);
-		}
-			
+			}
+		}			
 	};
 
 	return (
@@ -71,9 +72,6 @@ const OptionCard = ({ options, question }) => {
 			className="option-card"
 			onClick={() => handleSave()}
 		>
-			<span className={selected ? "cardselected" : options.style.code}>
-				{options.icon}
-			</span>
 			{options.name}
 		</Card>
 	);

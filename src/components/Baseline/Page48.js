@@ -8,10 +8,8 @@ import "animate.css";
 const details = {
 	question: "Whats your Gender?",
 	options: [
-		{ name: "Man", value: "1" },
-		{ name: "Woman", value: "2" },
-		{ name: "2-4 times a month", value: "2" },
-	
+		{ name: "Man", value: "Man" },
+		{ name: "Woman", value: "Woman" },	
 
 	],
 	direction: "row",

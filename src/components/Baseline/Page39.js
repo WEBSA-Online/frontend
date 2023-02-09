@@ -4,18 +4,16 @@ import "animate.css";
 import RadioOptions from "../utils/RadioOptions";
 import "animate.css";
 
-
 const details = {
 	question: "Arm on study",
 	options: [
 		{ name: "On Control Arm", value: "On Control Arm" },
 		{ name: "On Intervention Arm", value: "On Intervention Arm" },
-
 	],
 	direction: "row",
 };
 
-const Page36 = () => {
+const Page39 = () => {
 	return (
 		<Container
 			fixed

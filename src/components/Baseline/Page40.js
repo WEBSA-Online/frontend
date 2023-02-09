@@ -6,16 +6,15 @@ import "animate.css";
 
 
 const details = {
-	question: "Arm on study",
+	question: "Academic progression on the degree program",
 	options: [
-		{ name: "Normal", value: "Normal},
+		{ name: "Normal", value: "Normal" },
 		{ name: "Not Normal(there are retakes)", value: "Not Normal" },
-
 	],
 	direction: "row",
 };
 
-const Page36 = () => {
+const Page40 = () => {
 	return (
 		<Container
 			fixed

@@ -24,7 +24,7 @@ const Page33 = () => {
 			}}
 		>
 			<h1 style={{ lineHeight: "38px" }}>{details.question}</h1>
-			<RadioOptions details={details} grid={6} />
+			<RadioOptions details={details} grid={12} />
 		</Container>
 	);
 };

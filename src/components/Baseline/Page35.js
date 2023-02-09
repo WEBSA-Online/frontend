@@ -31,7 +31,7 @@ const Page32 = () => {
 				paddingTop: "10%",
 			}}
 		>
-			{!savedResponse[3] ? (
+			{!savedResponse[4] ? (
 				<>
 					<h1 style={{ lineHeight: "38px" }}>{details.question}</h1>
 					<RadioOptions details={details} grid={12} />

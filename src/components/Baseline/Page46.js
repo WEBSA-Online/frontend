@@ -12,8 +12,7 @@ const details = {
 		{ name: "Once a month or less often", value: "1" },
 		{ name: "2-4 times a month", value: "2" },
 		{ name: "2-3 times  A week", value: "3" },
-            { name: "4 times a week or more", value: "4" },
-
+      { name: "4 times a week or more", value: "4" },
 	],
 	direction: "row",
 };

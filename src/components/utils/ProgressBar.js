@@ -24,6 +24,8 @@ export default function ProgressMobileStepper() {
 	const totalpages = useSelector((state) => state.steps.totalSteps);
 	const savedResponse = useSelector((state) => state.steps.responses);
 	const dispatch = useDispatch();
+	  const pathname = window.location.pathname;
+
 
 	const gotoNextPage = () => {
 		if (
@@ -36,10 +38,14 @@ export default function ProgressMobileStepper() {
 		} else if (savedResponse[page].answer === "I accept") {
 			dispatch(enableTimer());
 			dispatch(handleNext());
-		} else if (savedResponse[10] !== undefined && page === 10) {
+		} else if (savedResponse[10] !== undefined && page === 10 && pathname !=="/baseline") {
 			dispatch(showTool2page());
 			dispatch(handleNext());
-		} else if (savedResponse[20] !== undefined && page === 20) {
+		} else if (
+			savedResponse[20] !== undefined &&
+			page === 20 &&
+			pathname !== "/baseline"
+		) {
 			dispatch(showTool3page());
 			dispatch(handleNext());
 		} else {

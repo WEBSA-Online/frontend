@@ -9,9 +9,8 @@ export default function BasicTextFields({details}) {
 			const savedResponse = useSelector((state) => state.steps.responses);
 			const dispatch = useDispatch();
 
-			console.log(savedResponse[page].answer)
+			console.log(savedResponse[page]);
 			
-
 			let isAnsPresent = false;
 			if (savedResponse[page] !== undefined) {
 				isAnsPresent = true;
@@ -38,7 +37,7 @@ export default function BasicTextFields({details}) {
 		>
 			<TextField
 				defaultValue={
-					savedResponse[page].answer === "Other specify" ? "Type answer" : isAnsPresent ? savedResponse[page].answer : ""
+					isAnsPresent ? savedResponse[page].answer==="Other specify" ? "" : savedResponse[page].answer: ""
 				}
 				onChange={handleSave}
 				variant="standard"
