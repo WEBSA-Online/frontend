@@ -5,11 +5,12 @@ import RadioOptions from "../utils/RadioOptions";
 import "animate.css";
 
 
+
 const details = {
 	question: "Whats your Gender?",
 	options: [
-		{ name: "Man", value: "Man" },
-		{ name: "Woman", value: "Woman" },	
+		{ name: "Male", value: "Man" },
+		{ name: "Female", value: "Woman" },	
 
 	],
 	direction: "row",

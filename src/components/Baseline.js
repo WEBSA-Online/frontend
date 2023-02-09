@@ -136,48 +136,46 @@ export default function Layout() {
 						case 19:
 							return <Page49 />;
 						case 20:
-							return <Page50 />;
-						case 21:
 							return <Page51 />;
-						case 22:
+						case 21:
 							return <Page52 />;
-						case 23:
+						case 22:
 							return <Page53 />;
-						case 24:
+						case 23:
 							return <Page54 />;
-						case 25:
+						case 24:
 							return <Page55 />;
-						case 26:
+						case 25:
 							return <Page56 />;
-						case 27:
+						case 26:
 							return <Page57 />;
-						case 28:
+						case 27:
 							return <Page58 />;
-						case 29:
+						case 28:
 							return <Page59 />;
-						case 30:
+						case 29:
 							return <Page60 />;
-						case 31:
+						case 30:
 							return <Page61 />;
-						case 32:
+						case 31:
 							return <Page62 />;
-						case 33:
+						case 32:
 							return <Page63 />;
-						case 34:
+						case 33:
 							return <Page64 />;
-						case 35:
+						case 34:
 							return <Page65 />;
-						case 36:
+						case 35:
 							return <Page66 />;
-						case 37:
+						case 36:
 							return <Page67 />;
-						case 38:
+						case 37:
 							return <Page68 />;
-						case 39:
+						case 38:
 							return <Page69 />;
-						case 40:
+						case 39:
 							return <Page70 />;
-						case 41:
+						case 40:
 							return <Page71 />;
 						default:
 							return null;
@@ -189,7 +187,7 @@ export default function Layout() {
 					sx={{ position: "fixed", bottom: 0, left: 0, right: 0 }}
 					elevation={10}
 				>
-					<BottomNavigation sx={{ height: "60px" }}>
+					<BottomNavigation sx={{ height: "65px" }}>
 						<ProgressBar />
 					</BottomNavigation>
 				</Paper>
