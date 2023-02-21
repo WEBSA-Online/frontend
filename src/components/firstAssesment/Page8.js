@@ -28,13 +28,11 @@ const Page8 = () => {
 		>
 			<Stack spacing={2}>
 				<h1>
-					{
-					previousResponse === "I am in a hall of residence"
+					{previousResponse === "I am in a hall of residence"
 						? details.question
 						: previousResponse === "I am in a private hostel"
 						? details.question2
-						: details.question3
-					}
+						: details.question3}
 				</h1>
 			</Stack>
 			<TextField details={details} />

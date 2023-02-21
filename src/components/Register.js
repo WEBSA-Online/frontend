@@ -33,10 +33,12 @@ export default function Register() {
 			setError(true);
 			setErrorMsg("Passwords dont match.");
 		} else {
+			console.log(savedResponse[10].answer.length);
 			try {
 				await axios.post(`${API_URL}/register`, {
 					name: savedResponse[1].answer,
 					email: email,
+					phone: savedResponse[10].answer,
 					password: passwordOne,
 					userData: savedResponse,
 				});
@@ -142,7 +144,7 @@ export default function Register() {
 							{loading ? (
 								<CircularProgress size={30} sx={{ color: "white" }} />
 							) : (
-								"REGISER TO PROCEED"
+								"REGISTER TO PROCEED"
 							)}
 						</Button>
 					</>

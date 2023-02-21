@@ -5,6 +5,8 @@ import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { API_URL } from "../API";
+import { useDispatch } from "react-redux";
+import { updateToken, getUserDetails } from "../redux/slices/authSlice";
 
 export default function Register() {
 	const navigate = useNavigate();
@@ -14,15 +16,20 @@ export default function Register() {
 	const [loading, setLoading] = React.useState(false);
 	const [error, setError] = React.useState(false);
 	const [errorMsg, setErrorMsg] = React.useState(false);
+	const dispatch = useDispatch();
+	
 
 	const handleSubmit = async () => {
 		setLoading(true);
 		setError(false);
 		try {
-			await axios.post(`${API_URL}/login`, {
+			const response = await axios.post(`${API_URL}/login`, {
 				email: email,
 				password: password,
 			});
+			dispatch(updateToken(response.data.accessToken));
+			const reponse2 = await axios.get(`${API_URL}/users/${email}`);
+			dispatch(getUserDetails(reponse2.data));
 			setLoading(false);
 			setSuccess(true);
 			setTimeout(() => {

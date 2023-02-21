@@ -10,7 +10,7 @@ const details = {
 	options: [
 		{ name: "I am in a hall of residence", value: "hall of residence" },
 		{
-			name: "I am in a private hostel ",
+			name: "I am in a private hostel",
 			value: "private hostel",
 		},
 		{ name: "I stay home", value: "home" },

@@ -21,10 +21,17 @@ import {
 export default function ProgressMobileStepper() {
 	const theme = useTheme();
 	const page = useSelector((state) => state.steps.activeStep);
-	const totalpages = useSelector((state) => state.steps.totalSteps);
+	const assesmentOneSteps = useSelector((state) => state.steps.assesmentOneSteps);
+	const baselineSteps = useSelector((state) => state.steps.baselineSteps);
 	const savedResponse = useSelector((state) => state.steps.responses);
 	const dispatch = useDispatch();
-	  const pathname = window.location.pathname;
+	const pathname = window.location.pathname;
+	const totalpages =
+		pathname === "/baseline" ? baselineSteps : assesmentOneSteps;
+
+	console.log(totalpages)
+
+
 
 
 	const gotoNextPage = () => {

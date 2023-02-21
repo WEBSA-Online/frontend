@@ -49,7 +49,9 @@ import Page68 from "./baseline/Page68";
 import Page69 from "./baseline/Page69";
 import Page70 from "./baseline/Page70";
 import Page71 from "./baseline/Page71";
+import BaselineComplete from "./baseline/BaselineComplete";
 import "animate.css";
+
 
 export default function Layout() {
 	const page = useSelector((state) => state.steps.activeStep);
@@ -57,15 +59,17 @@ export default function Layout() {
 	const showTool2Page = useSelector((state) => state.globalstate.tool2page);
 	const showTool3Page = useSelector((state) => state.globalstate.tool3page);
 	const savedResponse = useSelector((state) => state.steps.responses);
+	const pathname = window.location.pathname;
 
-   const pathname = window.location.pathname;
+	const assesmentOneSteps = useSelector((state) => state.steps);
+	const baselineSteps = useSelector((state) => state.steps.baselineSteps);
+	const totalpages =
+		pathname === "/baseline" ? baselineSteps : assesmentOneSteps;
 
-   console.log(savedResponse);
-
-	const pageHeight = pathname==='/baseline' && page >=12 && page <=15 ? true : false
+	const pageHeight =
+		pathname === "/baseline" && page >= 12 && page <= 15 ? true : false;
 
 	console.log(pageHeight);
-
 
 	return pageNavigation ? (
 		<StartPage />
@@ -79,14 +83,14 @@ export default function Layout() {
 				className="scroll"
 				sx={{
 					background:
-						pathname === "/baseline"
+						page === totalpages - 1
+							? "#7348CF"
+							: pathname === "/baseline"
 							? "rgb(230, 245, 250)"
 							: page > 10 && page <= 20
 							? "#cfefff"
 							: page > 20 && page <= 31
 							? "#f5ffcf"
-							: page === 32
-							? "#7348CF"
 							: "#e9f1f2",
 					display: "flex",
 					height: pageHeight ? "100%" : "100vh",
@@ -177,6 +181,8 @@ export default function Layout() {
 							return <Page70 />;
 						case 40:
 							return <Page71 />;
+						case 41:
+							return <BaselineComplete />;
 						default:
 							return null;
 					}

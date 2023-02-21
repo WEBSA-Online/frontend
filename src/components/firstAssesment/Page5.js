@@ -33,10 +33,6 @@ const details = {
 			name: "Makerere University Business School",
 			value: "Makerere University Business School",
 		},
-		{
-			name: "Others",
-			value: "Others",
-		},
 	],
 };
 

@@ -5,6 +5,7 @@ import thunk from "redux-thunk";
 import steps from "./slices/stepSlice"
 import isCheckedReducer from "./slices/globalstateSlice"
 import responses from "./slices/responsesSlice"
+import auth from "./slices/authSlice";
 
 const persistConfig = {
 	key: "root",
@@ -13,6 +14,7 @@ const persistConfig = {
 
 const stepsReducer = persistReducer(persistConfig, steps);
 const responseReducer = persistReducer(persistConfig, responses);
+const authReducer = persistReducer(persistConfig, auth);
 
 
 export const store = configureStore({
@@ -20,6 +22,7 @@ export const store = configureStore({
 		steps: stepsReducer,
 		globalstate: isCheckedReducer,
 		responses: responseReducer,
+		auth: authReducer,
 	},
 	middleware: [thunk],
 });

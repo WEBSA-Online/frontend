@@ -4,9 +4,10 @@ export const stepSlice = new createSlice({
 	name: "steps",
 	initialState: {
 		activeStep: 0,
-		totalSteps: 33,
+		assesmentOneSteps: 33,
 		responses: [],
 		dob: "2023-01-01",
+		baselineSteps:42
 	},
 	reducers: {
 		saveResponse: (state, actions) => {
