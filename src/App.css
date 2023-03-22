@@ -1,25 +1,32 @@
 @font-face {
 	font-family: "Poppins-Bold";
-	src: local("Poppins-Bold"), url("../public/fonts/Poppins-Bold.ttf") format("truetype");
+	src: local("Poppins-Bold"),
+		url("../public/fonts/Poppins-Bold.ttf") format("truetype");
 }
 
 @font-face {
 	font-family: "Poppins-Regular";
-	src: local("Poppins-Regular"), url("../public/fonts/Poppins-Regular.ttf") format("truetype");
+	src: local("Poppins-Regular"),
+		url("../public/fonts/Poppins-Regular.ttf") format("truetype");
 }
 
 @font-face {
 	font-family: "Poppins-SemiBold";
-	src: local("Poppins-SemiBold"), url("../public/fonts/Poppins-SemiBold.ttf") format("truetype");
+	src: local("Poppins-SemiBold"),
+		url("../public/fonts/Poppins-SemiBold.ttf") format("truetype");
 }
-
 
 h1 {
-  line-height: 43px;
+	line-height: 43px;
 }
 
-h1,h2,h3,h4,h5,h6 {
-  font-family: Poppins-Bold;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: Poppins-Bold;
 }
 
 p {
@@ -30,12 +37,12 @@ p {
 body {
 	margin: 0px;
 	padding: 0px;
-  font-family: Poppins-Regular;
-  	line-height: 1.5rem;
+	font-family: Poppins-Regular;
+	line-height: 1.5rem;
 }
 
 ol > li {
-  line-height: 30px;
+	line-height: 30px;
 }
 
 .scroll {
@@ -44,102 +51,112 @@ ol > li {
 }
 
 .whiteText {
-  color:white;
+	color: white;
 }
 
 ::-webkit-scrollbar {
-  width: 5px;
+	width: 5px;
 }
 
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px rgb(255, 255, 255); 
-  border-radius: 10px;
+	box-shadow: inset 0 0 5px rgb(255, 255, 255);
+	border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1565c0; 
-  border-radius: 10px;
+	background: #1565c0;
+	border-radius: 10px;
 }
 
 .timer-wrapper {
-  display: flex;
-  justify-content: center;
+	display: flex;
+	justify-content: center;
 }
 
 .timer {
-  font-family: "Roboto";
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+	font-family: "Roboto";
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .text {
-  color: #aaa;
+	color: #aaa;
 }
 
 .value {
-  font-size: 40px;
+	font-size: 40px;
 }
 
 .info {
-  margin: 40px auto 0;
-  font-size: 25px;
-  line-height: 45px;
+	margin: 40px auto 0;
+	font-size: 25px;
+	line-height: 45px;
 }
 
 .title {
-  margin: 40px auto 0;
-  font-size: 35px;
-  line-height: 55px;
-  text-align:center;
+	margin: 40px auto 0;
+	font-size: 35px;
+	line-height: 55px;
+	text-align: center;
 }
 
 .option-card {
-  font-size: 18px;
-  display: flex;
-  justify-content: center;
+	font-size: 18px;
+	display: flex;
+	justify-content: center;
 	padding: 12px 10px;
-  /* width: 275px; */
-  height:70%;
+	/* width: 275px; */
+	height: 70%;
 	text-align: center;
-  align-items: center;
-  cursor: pointer;
-  border-radius: 14px !important;
-  transition: 0.5s !important;
-  flex-direction: column;
+	align-items: center;
+	cursor: pointer;
+	border-radius: 14px !important;
+	transition: 0.5s !important;
+	flex-direction: column;
 }
 
 .cardgreen {
-  color:#5e8d48;
-  font-size: 35px;
-  margin-bottom: 5px;
+	color: #5e8d48;
+	font-size: 35px;
+	margin-bottom: 5px;
 }
 
 .cardblue {
-  color: #1976d2;
-    font-size: 35px;
-  margin-bottom: 5px;
+	color: #1976d2;
+	font-size: 35px;
+	margin-bottom: 5px;
 }
 
 .cardpurple {
-  color: #ad0c7f;
-    font-size: 35px;
-  margin-bottom: 5px;
+	color: #ad0c7f;
+	font-size: 35px;
+	margin-bottom: 5px;
 }
 
 .cardorange {
-  color:#ffa929;
-    font-size: 35px;
-  margin-bottom: 5px;
+	color: #ffa929;
+	font-size: 35px;
+	margin-bottom: 5px;
 }
 
 .cardselected {
-  color:#fff;
-  font-size: 35px;
-  margin-bottom: 5px;
+	color: #fff;
+	font-size: 35px;
+	margin-bottom: 5px;
 }
 
 .highlight-text-yellow {
-  color:#ffff00
+	color: #ffff00;
 }
 
+/* Start page */
+/* .startpage-tor {
+	padding: "30px 20px !important";
+} */
+
+/* @media (max-width: 600px) {
+	.startpage-tor {
+		padding: "0 20px 50px 20px !important";
+	}
+} */

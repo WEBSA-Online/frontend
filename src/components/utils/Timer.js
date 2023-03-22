@@ -1,3 +1,4 @@
+import { Button } from "@mui/material";
 import React from "react";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 
@@ -17,15 +18,15 @@ export default function Timer() {
 	};
 	
 	return (
-		<div className="App">
+		<div>
 			{/* <p className="info">
 				Now that you have accepted, Fill the form answering some key questions. It
 				takes only <strong>20 minutes.</strong> Please note that you will be
 				refunded with an internet bundle worth <strong>2GBs.</strong>
 			</p> */}
-			<p className="info">
+			<h3>
 				Thank you for accepting to take this assessment. Please note;
-			</p>
+			</h3>
 			<ol>
 				<li>
 					You must have identification information: Name, Sex, Age, marital status,
@@ -41,14 +42,17 @@ export default function Timer() {
 				</li>
 			</ol>
 			<div className="timer-wrapper">
-				<CountdownCircleTimer
+				{/* <CountdownCircleTimer
 					isPlaying
-					duration={20}
+					duration={180}
 					colors={["#045100", "#00a551", "#1cef38", "#ffe23f", "#e40d19", "#a4050b"]}
-					colorsTime={[20, 15, 7, 5, 2, 0]}
+					colorsTime={[5, 2, 0]}
 				>
 					{({ remainingTime }) => time(remainingTime)}
-				</CountdownCircleTimer>
+				</CountdownCircleTimer> */}
+				{/* <Button variant="contained" color="primary" size="large">
+					Continue
+				</Button> */}
 			</div>
 		</div>
 	);

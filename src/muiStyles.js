@@ -19,6 +19,24 @@ export const websaTheme = createTheme({
 			boxShadow: "none",
 			textTransform: "none",
 		},
+		h1: {
+			fontFamily: "Poppins-Bold",
+		},
+		h2: {
+			fontFamily: "Poppins-Bold",
+		},
+		h3: {
+			fontFamily: "Poppins-Bold",
+		},
+		h4: {
+			fontFamily: "Poppins-Bold",
+		},
+		h5: {
+			fontFamily: "Poppins-Bold",
+		},
+		h6: {
+			fontFamily: "Poppins-Bold",
+		},
 	},
 	MuiListItemIcon: {
 		styleOverrides: {

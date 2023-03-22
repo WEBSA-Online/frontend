@@ -60,7 +60,7 @@ export default function IconsRadio({ details, grid}) {
 		>
 			<Grid container spacing={2} sx={{ width: "100%" }}>
 				{details.options.map((value, index) => (
-					<Grid key={index} xs={6} md={grid !== undefined ? grid : 4}>
+					<Grid key={index} xs={12} md={grid !== undefined ? grid : 4}>
 						<Sheet
 							key={index}
 							variant="contained"

@@ -2,15 +2,12 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Unstable_Grid2";
 import "animate.css";
-import RadioOptions from "../utils/RadioOptions"
+import RadioOptions from "../utils/RadioOptions";
 import "animate.css";
 
 const details = {
 	question: "Are terms agreed?",
-	options: [
-		{ name: "I accept" },
-		{ name: "I decline"},
-	],
+	options: [{ name: "I accept" }, { name: "I decline" }],
 	direction: "column",
 };
 
@@ -25,7 +22,10 @@ const StartPage = () => {
 			<Grid container>
 				<Grid sm={12} md={7} sx={{ marginBottom: "20px" }}>
 					<Box className="scroll">
-						<Typography variant="h4" sx={{ color: "white" }}>
+						<Typography
+							variant="h4"
+							sx={{ color: "white", fontFamily: "Poppins-Bold", marginBottom: "5px" }}
+						>
 							Our Policy on Confidentiality
 						</Typography>
 						<p className="whiteText">
@@ -55,7 +55,16 @@ const StartPage = () => {
 						</p>
 					</Box>
 				</Grid>
-				<Grid sm={12} md={5} sx={{ padding: "30px 20px" }}>
+				<Grid
+					sm={12}
+					md={5}
+					sx={{
+						padding: {
+							xs: "0px 0px 50px 0px",
+							md: "30px 20px",
+						},
+					}}
+				>
 					<RadioOptions details={details} grid={12} />
 				</Grid>
 			</Grid>
@@ -63,4 +72,4 @@ const StartPage = () => {
 	);
 };
 
-export default StartPage
+export default StartPage;

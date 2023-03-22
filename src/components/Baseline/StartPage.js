@@ -22,7 +22,10 @@ const StartPage = () => {
 			<Container fixed>
 				<Grid sm={12} md={12} sx={{ marginBottom: "20px" }}>
 					<Stack spacing={2}>
-						<Typography variant="h4" sx={{ color: "white", fontWeight: "bold" }}>
+						<Typography
+							variant="h4"
+							sx={{ color: "white", fontWeight: "bold", fontFamily: "Poppins-Bold" }}
+						>
 							Hi {userDetails.name}
 						</Typography>
 						<Typography variant="h5" sx={{ color: "white" }}>
