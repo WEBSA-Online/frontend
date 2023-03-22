@@ -17,11 +17,13 @@ const StartPage = () => {
 			sx={{
 				paddingTop: "3%",
 				paddingBottom: "15%",
+				// height: "100% !important",
+				// overflow: "auto",
 			}}
 		>
 			<Grid container>
 				<Grid sm={12} md={7} sx={{ marginBottom: "20px" }}>
-					<Box className="scroll">
+					<Box>
 						<Typography
 							variant="h4"
 							sx={{ color: "white", fontFamily: "Poppins-Bold", marginBottom: "5px" }}

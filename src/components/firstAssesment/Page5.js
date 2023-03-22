@@ -40,12 +40,9 @@ const Page5 = () => {
 	return (
 		<Box
 			sx={{
-				background: "#e9f1f2",
 				display: "flex",
-				height: "100vh",
 				paddingTop: "5%",
 			}}
-			className="scroll"
 		>
 			<Container fixed>
 				<Stack spacing={2}>

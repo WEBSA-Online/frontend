@@ -27,6 +27,7 @@ h4,
 h5,
 h6 {
 	font-family: Poppins-Bold;
+  line-height: 30px;
 }
 
 p {
@@ -39,12 +40,10 @@ body {
 	padding: 0px;
 	font-family: Poppins-Regular;
 	line-height: 1.5rem;
-
-  min-height: -webkit-fill-available;
 }
 
 html {
-  height: -webkit-fill-available;
+	height: 100%;
 }
 
 ol > li {
@@ -52,7 +51,7 @@ ol > li {
 }
 
 .scroll {
-	height: 100% !important;
+	height: calc(100vh - 80px);
 	overflow-x: auto;
 }
 
@@ -62,6 +61,7 @@ ol > li {
 
 ::-webkit-scrollbar {
 	width: 5px;
+	height: 5px;
 }
 
 ::-webkit-scrollbar-track {
@@ -76,7 +76,7 @@ ol > li {
 
 .timer-wrapper {
 	display: flex;
-	justify-content: center;
+	justify-content: flex-start;
 }
 
 .timer {
@@ -156,13 +156,17 @@ ol > li {
 	color: #ffff00;
 }
 
-/* Start page */
-/* .startpage-tor {
-	padding: "30px 20px !important";
-} */
+@media (max-width: 600px) {
+	h1 {
+		font-size: 22px;
+    line-height: 30px !important;
+  }
 
-/* @media (max-width: 600px) {
-	.startpage-tor {
-		padding: "0 20px 50px 20px !important";
+	h4 {
+		font-size: 22px;
 	}
-} */
+	.timer-wrapper {
+		display: flex;
+		justify-content: center;
+	}
+}

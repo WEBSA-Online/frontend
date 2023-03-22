@@ -38,10 +38,20 @@ export const websaTheme = createTheme({
 			fontFamily: "Poppins-Bold",
 		},
 	},
-	MuiListItemIcon: {
-		styleOverrides: {
-			root: {
-				color: "red !important",
+	components: {
+		MuiListItemIcon: {
+			styleOverrides: {
+				root: {
+					color: "red !important",
+				},
+			},
+		},
+		MuiContainer: {
+			styleOverrides: {
+				root: {
+					boxShadow: "none",
+					padding:0
+				},
 			},
 		},
 	},

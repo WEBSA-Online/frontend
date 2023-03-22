@@ -13,10 +13,8 @@ const Page6 = () => {
 	return (
 		<Box
 			sx={{
-				background: "#e9f1f2",
 				display: "flex",
-				height: "100vh",
-				paddingTop: "10%",
+				alignItems:"center"
 			}}
 		>
 			<Container fixed>

@@ -19,9 +19,10 @@ const StartPage = () => {
 		<Box
 			sx={{
 				backgroundColor: "#3f55af",
-				height: "100vh",
+				height: { sm: "auto", md: "100vh" },
 				display: "flex",
 				alignItems: "center",
+				padding: { xs: "3%" },
 			}}
 		>
 			<Container fixed>
@@ -33,17 +34,25 @@ const StartPage = () => {
 									icon={faFaceSmile}
 									style={{ color: "yellow", fontSize: "50px" }}
 								/>
-								<Typography variant="h4" sx={{ color: "white" }}>
+								<Typography
+									variant="h4"
+									sx={{
+										fontFamily: "Poppins-Bold",
+										color: "white",
+										textAlign: "center",
+									}}
+								>
 									Thank you for completing section one
 								</Typography>
 								<Button
 									variant="contained"
 									size="large"
 									sx={{
+										fontFamily: "Poppins-Bold",
 										backgroundColor: "#fff",
 										color: "#3f55af",
 										fontWeight: "bold",
-										width: "30%",
+										width: { md: "30%", sm: "50%", xs: "100%" },
 										"&:hover": { color: "#fff" },
 									}}
 									onClick={() => setProceed(true)}
@@ -56,10 +65,25 @@ const StartPage = () => {
 				) : (
 					<Grid sm={12} md={12} sx={{ marginBottom: "20px" }}>
 						<Stack spacing={2}>
-							<Typography variant="h4" sx={{ color: "white", fontWeight: "bold" }}>
+							<Typography
+								variant="h4"
+								sx={{
+									fontFamily: "Poppins-Bold",
+									color: "white",
+									fontWeight: "bold",
+									fontSize: { xs: "22px" },
+								}}
+							>
 								The Alcohol Use Disorders Identification Test
 							</Typography>
-							<Typography variant="h5" sx={{ color: "white" }}>
+							<Typography
+								variant="h5"
+								sx={{
+									fontFamily: "Poppins-Regular",
+									color: "white",
+									fontSize: { xs: "18px" },
+								}}
+							>
 								Because alcohol use can affect your health and can interfere with
 								certain medications and treatments, it is important that we ask some
 								questions about your use of alcohol. Your answers will remain
@@ -72,7 +96,7 @@ const StartPage = () => {
 									backgroundColor: "#fff",
 									color: "#3f55af",
 									fontWeight: "bold",
-									width: "20%",
+									width: { md: "20%", sm: "50%", xs: "100%" },
 									"&:hover": { color: "#fff" },
 								}}
 								onClick={() => dispatch(showTool2page())}

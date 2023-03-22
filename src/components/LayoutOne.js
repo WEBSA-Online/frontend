@@ -77,10 +77,19 @@ export default function Layout() {
 			<Box
 				className="scroll"
 				sx={{
-					background: page === 0 ? "#3f55af" : page > 10 && page <=20 ? "#cfefff" : page > 20 && page <=31 ? "#f5ffcf" : page===32 ? "#7348CF" : "#e9f1f2",
+					background:
+						page === 0
+							? "#3f55af"
+							: page > 10 && page <= 20
+							? "#cfefff"
+							: page > 20 && page <= 31
+							? "#f5ffcf"
+							: page === 32
+							? "#7348CF"
+							: "#e9f1f2",
 					display: "flex",
-					height: "100vh",
-					padding: "0 5%",
+					// height: "calc(100vh - 80px)",
+					padding: { md: "0 5%" , xs:0},
 				}}
 			>
 				{(() => {
@@ -161,7 +170,7 @@ export default function Layout() {
 					sx={{ position: "fixed", bottom: 0, left: 0, right: 0 }}
 					elevation={10}
 				>
-					<BottomNavigation sx={{ height: "80px" }}>
+					<BottomNavigation sx={{ height: { xs: "80px", md: "80px" } }}>
 						<ProgressBar />
 					</BottomNavigation>
 				</Paper>

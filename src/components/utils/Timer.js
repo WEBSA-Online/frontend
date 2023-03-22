@@ -22,13 +22,13 @@ export default function Timer() {
 	}
 	
 	return (
-		<Box sx={{height:"100% !important", overflow:"auto"}}>
+		<Box className="scroll" sx={{padding:"10% 0 0 0"}}>
 			{/* <p className="info">
 				Now that you have accepted, Fill the form answering some key questions. It
 				takes only <strong>20 minutes.</strong> Please note that you will be
 				refunded with an internet bundle worth <strong>2GBs.</strong>
 			</p> */}
-			<h3>Thank you for accepting to take this assessment. Please note;</h3>
+			<h2>Thank you for accepting to take this assessment. Please note;</h2>
 			<ol>
 				<li>
 					You must have identification information: Name, Sex, Age, marital status,

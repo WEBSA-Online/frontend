@@ -43,21 +43,44 @@ const Page = () => {
 								icon={faTrophy}
 								style={{ color: "yellow", fontSize: "60px" }}
 							/>
-							<Typography variant="h5" sx={{ color: "white" }}>
+							<Typography
+								variant="h5"
+								sx={{ fontFamily: "Poppins-Bold", color: "white", textAlign: "center" }}
+							>
 								Thanks for participating in the screening.
 							</Typography>
 							{alcoholScores >= 8 && (
-								<Typography variant="h4" sx={{ color: "white", fontWeight: "bold" }}>
-									Your score on Audit is{" "}
-									<span class="highlight-text-yellow">{alcoholScores}</span> which is on
-									high side of alcohol use disorder.
+								<Typography
+									variant="h4"
+									sx={{
+										fontFamily: "Poppins-Regular",
+										color: "white",
+										fontWeight: "bold",
+										textAlign: "center",
+										fontSize: { xs: "18px" },
+									}}
+								>
+									Your are on{" "}
+									<span class="highlight-text-yellow">
+										the High Risk side of alcohol use disorder.
+									</span>
 								</Typography>
 							)}
 							{drugScores >= 25 && (
-								<Typography variant="h4" sx={{ color: "white", fontWeight: "bold" }}>
-									Your DUDIT score is{" "}
-									<span class="highlight-text-yellow">{drugScores}</span> and its on high
-									side of drug use disorder.
+								<Typography
+									variant="h4"
+									sx={{
+										color: "white",
+										fontWeight: "bold",
+										fontFamily: "Poppins-Regular",
+										textAlign: "center",
+										fontSize: { xs: "18px" },
+									}}
+								>
+									Your are on{" "}
+									<span class="highlight-text-yellow">
+										the High Risk side of drug use disorder.
+									</span>
 								</Typography>
 							)}
 							<Button
@@ -67,7 +90,7 @@ const Page = () => {
 									backgroundColor: "#fff",
 									color: "#7348cf",
 									fontWeight: "bold",
-									width: "30%",
+									width: { md: "20%", sm: "50%", xs: "100%" },
 									"&:hover": { color: "#fff", backgroundColor: "#7348cf" },
 								}}
 								onClick={submit}
@@ -85,10 +108,20 @@ const Page = () => {
 								icon={faTrophy}
 								style={{ color: "yellow", fontSize: "80px" }}
 							/>
-							<Typography variant="h5" sx={{ color: "white" }}>
+							<Typography
+								variant="h5"
+								sx={{ color: "white", fontFamily: "Poppins-Bold" }}
+							>
 								Thanks for participating in the screening.
 							</Typography>
-							<Typography variant="h4" sx={{ color: "white", fontWeight: "bold" }}>
+							<Typography
+								variant="h4"
+								sx={{
+									color: "white",
+									fontWeight: "bold",
+									fontFamily: "Poppins-Regular",
+								}}
+							>
 								You are at low risk.
 							</Typography>
 							<a href="https://websaonline.com">
@@ -99,7 +132,7 @@ const Page = () => {
 										backgroundColor: "#fff",
 										color: "#7348cf",
 										fontWeight: "bold",
-										width: "30%",
+										width: { md: "20%", sm: "50%", xs: "100%" },
 										"&:hover": { color: "#fff", backgroundColor: "#7348cf" },
 									}}
 								>

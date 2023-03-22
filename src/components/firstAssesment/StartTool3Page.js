@@ -18,9 +18,10 @@ const StartPage = () => {
 		<Box
 			sx={{
 				backgroundColor: "#3f55af",
-				height: "100vh",
+				height: { sm: "auto", md: "100vh" },
 				display: "flex",
 				alignItems: "center",
+				padding: { xs: "3%" },
 			}}
 		>
 			<Container fixed>
@@ -32,7 +33,14 @@ const StartPage = () => {
 									icon={faFaceSmileWink}
 									style={{ color: "yellow", fontSize: "50px" }}
 								/>
-								<Typography variant="h4" sx={{ color: "white" }}>
+								<Typography
+									variant="h4"
+									sx={{
+										fontFamily: "Poppins-Bold",
+										color: "white",
+										textAlign: "center",
+									}}
+								>
 									You are almost there
 								</Typography>
 								<Button
@@ -42,7 +50,7 @@ const StartPage = () => {
 										backgroundColor: "#fff",
 										color: "#3f55af",
 										fontWeight: "bold",
-										width: "30%",
+										width: { md: "30%", sm: "50%", xs: "100%" },
 										"&:hover": { color: "#fff" },
 									}}
 									onClick={() => setProceed(true)}
@@ -55,22 +63,50 @@ const StartPage = () => {
 				) : (
 					<Grid sm={12} md={12} sx={{ marginBottom: "20px" }}>
 						<Stack spacing={2}>
-							<Typography variant="h4" sx={{ color: "white", fontWeight: "bold" }}>
+							<Typography
+								variant="h4"
+								sx={{
+									fontFamily: "Poppins-Bold",
+									color: "white",
+									fontSize: { xs: "22px" },
+								}}
+							>
 								DUDIT- Drug Use Disorders Identification Test
 							</Typography>
-							<Typography variant="h5" sx={{ color: "white" }}>
+							<Typography
+								variant="h5"
+								sx={{
+									fontFamily: "Poppins-Regular",
+									color: "white",
+									fontSize: { xs: "18px" },
+								}}
+							>
 								Here are a few questions about drugs including marijuana. Please answer
 								as correctly and honestly as possible by indicating which answer is
 								right for you. Your answers will remain confidential within, so please
 								be honest.
 							</Typography>
-							<Typography variant="h5" sx={{ color: "white" }}>
+							<Typography
+								variant="h5"
+								sx={{
+									fontFamily: "Poppins-Regular",
+									color: "white",
+									fontSize: { xs: "18px" },
+								}}
+							>
 								In the event that these results need to be shared as part of your care
 								plan, we will discuss with you why sharing is necessary, seek your
 								consent to share and ask you to sign a Release of Information Form.
 							</Typography>
-							<Typography variant="h5" sx={{ color: "white" }}>
-                        You may refuse at any time to have these results shared.
+							<Typography
+								variant="h5"
+								sx={{
+									fontFamily: "Poppins-Regular",
+									color: "white",
+									fontSize: { xs: "18px" },
+								}}
+							>
+								You may refuse at any time to have these results shared.
 							</Typography>
 							<Button
 								variant="contained"
@@ -79,7 +115,7 @@ const StartPage = () => {
 									backgroundColor: "#fff",
 									color: "#3f55af",
 									fontWeight: "bold",
-									width: "20%",
+									width: { md: "20%", sm: "50%", xs: "100%" },
 									"&:hover": { color: "#fff" },
 								}}
 								onClick={() => dispatch(showTool3page())}

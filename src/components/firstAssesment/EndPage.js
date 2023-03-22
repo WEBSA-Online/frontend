@@ -21,8 +21,14 @@ const EndPage = () => {
 		>
 			<Container fixed>
 				<Stack spacing={2}>
-					<h2 style={{ fontSize: "50px", color: "white" }}>All done!</h2>
-					<p style={{fontSize: "40px", color: "white" }}>
+					<h2
+						style={{ fontFamily: "Poppins-Bold", fontSize: "50px", color: "white" }}
+					>
+						All done!
+					</h2>
+					<p
+						style={{ fontFamily: "Poppins-Regular", fontSize: "40px", color: "white" }}
+					>
 						Thank you for sharing your responses.
 					</p>
 				</Stack>
