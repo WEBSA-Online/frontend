@@ -165,7 +165,7 @@ const Page43 = () => {
 		>
 			<Container fixed>
 				<h1 style={{ lineHeight: "30px" }}>{details.question}</h1>
-				<h2>(You can choose up to 3)</h2>
+				<h3>(You can choose up to 3)</h3>
 				<Grid container spacing={2}>
 					{details.row1.map((value, index) => {
 						return (

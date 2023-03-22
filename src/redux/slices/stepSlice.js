@@ -6,7 +6,7 @@ export const stepSlice = new createSlice({
 		activeStep: 0,
 		assesmentOneSteps: 33,
 		responses: [],
-		baselineSteps: 42,
+		baselineSteps: 41,
 	},
 	reducers: {
 		saveResponse: (state, actions) => {

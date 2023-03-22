@@ -12,6 +12,8 @@ const OptionCard = ({ options, question }) => {
 	let checkSelection;
 	let counter = 0
 
+	console.log(page)
+
 	if (savedResponse[page] !== undefined) {
 		counter = savedResponse[page].length;
 		
@@ -28,7 +30,7 @@ const OptionCard = ({ options, question }) => {
 	} 	
 
 	const handleSave = () => {
-		if (page===15){
+		if (page===14){
 			if (checkSelection || counter < 1) {
 				dispatch(
 					saveMany({
