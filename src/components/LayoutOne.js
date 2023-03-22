@@ -79,7 +79,7 @@ export default function Layout() {
 				sx={{
 					background: page === 0 ? "#3f55af" : page > 10 && page <=20 ? "#cfefff" : page > 20 && page <=31 ? "#f5ffcf" : page===32 ? "#7348CF" : "#e9f1f2",
 					display: "flex",
-					// height: "100vh",
+					height: "100vh",
 					padding: "0 5%",
 				}}
 			>

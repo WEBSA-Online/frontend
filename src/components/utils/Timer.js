@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import { Button, Box } from "@mui/material";
 import React from "react";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 
@@ -11,22 +11,24 @@ export default function Timer() {
 		} 
 		
 		return (
-			<div className="timer">
-				<div className="value">{remainingTime}</div>
-			</div>
+			<Box className="timer">
+				<Box className="value">{remainingTime}</Box>
+			</Box>
 		);
 	};
+
+	const handleClick=()=>{
+		window.location.reload();
+	}
 	
 	return (
-		<div>
+		<Box sx={{height:"100% !important", overflow:"auto"}}>
 			{/* <p className="info">
 				Now that you have accepted, Fill the form answering some key questions. It
 				takes only <strong>20 minutes.</strong> Please note that you will be
 				refunded with an internet bundle worth <strong>2GBs.</strong>
 			</p> */}
-			<h3>
-				Thank you for accepting to take this assessment. Please note;
-			</h3>
+			<h3>Thank you for accepting to take this assessment. Please note;</h3>
 			<ol>
 				<li>
 					You must have identification information: Name, Sex, Age, marital status,
@@ -41,7 +43,7 @@ export default function Timer() {
 					You will be refunded with an internet bundle worth <strong>2GBs.</strong>
 				</li>
 			</ol>
-			<div className="timer-wrapper">
+			<Box className="timer-wrapper">
 				{/* <CountdownCircleTimer
 					isPlaying
 					duration={180}
@@ -50,10 +52,15 @@ export default function Timer() {
 				>
 					{({ remainingTime }) => time(remainingTime)}
 				</CountdownCircleTimer> */}
-				{/* <Button variant="contained" color="primary" size="large">
+				<Button
+					variant="contained"
+					color="primary"
+					size="large"
+					onClick={handleClick}
+				>
 					Continue
-				</Button> */}
-			</div>
-		</div>
+				</Button>
+			</Box>
+		</Box>
 	);
 }

@@ -39,6 +39,12 @@ body {
 	padding: 0px;
 	font-family: Poppins-Regular;
 	line-height: 1.5rem;
+
+  min-height: -webkit-fill-available;
+}
+
+html {
+  height: -webkit-fill-available;
 }
 
 ol > li {
@@ -46,7 +52,7 @@ ol > li {
 }
 
 .scroll {
-	height: 100%;
+	height: 100% !important;
 	overflow-x: auto;
 }
 
