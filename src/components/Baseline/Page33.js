@@ -20,7 +20,7 @@ const Page33 = () => {
 		<Container
 			fixed
 			sx={{
-				paddingTop: "10%",
+				paddingTop: "2%",
 			}}
 		>
 			<h1 style={{ lineHeight: "38px" }}>{details.question}</h1>

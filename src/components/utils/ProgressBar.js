@@ -8,8 +8,11 @@ import { useDispatch, useSelector } from "react-redux";
 import {
 	handleNext,
 	handleBack,
+	handleSkip,
 	resetStep,
 	resetResponses,
+	updateSteps,
+	updateBaselineSteps,
 } from "../../redux/slices/stepSlice";
 import {
 	endProcess,
@@ -26,13 +29,10 @@ export default function ProgressMobileStepper() {
 	const savedResponse = useSelector((state) => state.steps.responses);
 	const dispatch = useDispatch();
 	const pathname = window.location.pathname;
-	const totalpages =
-		pathname === "/baseline" ? baselineSteps : assesmentOneSteps;
-
-	console.log(totalpages)
+	const totalpages = pathname === "/baseline" ? baselineSteps : assesmentOneSteps;
 
 
-
+	console.log("total pages",totalpages);
 
 	const gotoNextPage = () => {
 		if (
@@ -45,7 +45,24 @@ export default function ProgressMobileStepper() {
 		} else if (savedResponse[page].answer === "I accept") {
 			dispatch(enableTimer());
 			dispatch(handleNext());
-		} else if (savedResponse[10] !== undefined && page === 10 && pathname !=="/baseline") {
+		} else if (
+			page === 11 &&
+			pathname !== "/baseline" &&
+			savedResponse[page].answer === "Never"
+		) {
+			dispatch(showTool3page());
+			dispatch(handleSkip(10));
+		} else if (
+			page === 21 &&
+			pathname !== "/baseline" &&
+			savedResponse[page].answer === "Never"
+		) {
+			dispatch(handleSkip(11));
+		} else if (
+			savedResponse[10] !== undefined &&
+			page === 10 &&
+			pathname !== "/baseline"
+		) {
 			dispatch(showTool2page());
 			dispatch(handleNext());
 		} else if (
@@ -61,9 +78,11 @@ export default function ProgressMobileStepper() {
 	};
 
 	const checkCondition =
-		   savedResponse.length === 0
+		savedResponse.length === 0
 			? false
 			: savedResponse[page] === undefined
+			? false
+			: savedResponse[page] === null
 			? false
 			: savedResponse[page].length === 0
 			? false

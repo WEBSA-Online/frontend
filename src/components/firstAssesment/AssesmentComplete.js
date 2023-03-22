@@ -9,15 +9,20 @@ const Page = () => {
 	const savedResponse = useSelector((state) => state.steps.responses);
 	const navigate = useNavigate()
 
-	const alcoholScores = savedResponse
-		.slice(11, 20)
-		.reduce((accumulator, curValue) => {
-			return accumulator + curValue.score;
-		}, 0);
+	let alcoholScores;
+	let drugScores;
 
-	const drugScores = savedResponse
-		.slice(21)
-		.reduce((accumulator, curValue) => {
+	console.log(savedResponse[11].answer);
+
+	if (savedResponse[11].answer!=="Never")
+		alcoholScores = savedResponse
+			.slice(11, 20)
+			.reduce((accumulator, curValue) => {
+				return accumulator + curValue.score;
+			}, 0);
+
+	if (savedResponse[21].answer !== "Never")
+		drugScores = savedResponse.slice(21).reduce((accumulator, curValue) => {
 			return accumulator + curValue.score;
 		}, 0);
 
@@ -124,7 +129,7 @@ const Page = () => {
 							>
 								You are at low risk.
 							</Typography>
-							<a href="https://websaonline.com">
+							<a href="https://websaonline.com" style={{ textDecoration: "none", width:"100%" }}>
 								<Button
 									variant="contained"
 									size="large"
@@ -132,7 +137,7 @@ const Page = () => {
 										backgroundColor: "#fff",
 										color: "#7348cf",
 										fontWeight: "bold",
-										width: { md: "20%", sm: "50%", xs: "100%" },
+										width: { md: "30%", sm: "50%", xs: "100%" },
 										"&:hover": { color: "#fff", backgroundColor: "#7348cf" },
 									}}
 								>

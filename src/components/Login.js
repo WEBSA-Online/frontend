@@ -75,7 +75,7 @@ export default function Register() {
 				) : null}
 				<Box
 					sx={{
-						width: "400px",
+						width: { xs: "80%", sm: "30%", md: "30%" },
 						maxWidth: "100%",
 						padding: "40px 30px",
 						backgroundColor: "white",

@@ -169,7 +169,7 @@ const Page43 = () => {
 				<Grid container spacing={2}>
 					{details.row1.map((value, index) => {
 						return (
-							<Grid key={index} xs={index === 12 ? 12 : 6} md={index === 12 ? 9 : 3}>
+							<Grid key={index} xs={index === 12 ? 12 : 12} md={index === 12 ? 9 : 3}>
 								<OptionCard options={value} question={details.question} />
 							</Grid>
 						);

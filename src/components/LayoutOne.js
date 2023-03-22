@@ -88,7 +88,6 @@ export default function Layout() {
 							? "#7348CF"
 							: "#e9f1f2",
 					display: "flex",
-					// height: "calc(100vh - 80px)",
 					padding: { md: "0 5%" , xs:0},
 				}}
 			>

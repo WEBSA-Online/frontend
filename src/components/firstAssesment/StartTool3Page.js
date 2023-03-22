@@ -18,7 +18,7 @@ const StartPage = () => {
 		<Box
 			sx={{
 				backgroundColor: "#3f55af",
-				height: { sm: "auto", md: "100vh" },
+				height: !proceed ? "100vh" : { sm: "auto", md: "100vh" },
 				display: "flex",
 				alignItems: "center",
 				padding: { xs: "3%" },

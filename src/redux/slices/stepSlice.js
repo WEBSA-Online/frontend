@@ -6,8 +6,7 @@ export const stepSlice = new createSlice({
 		activeStep: 0,
 		assesmentOneSteps: 33,
 		responses: [],
-		dob: "2023-01-01",
-		baselineSteps:42
+		baselineSteps: 42,
 	},
 	reducers: {
 		saveResponse: (state, actions) => {
@@ -59,6 +58,15 @@ export const stepSlice = new createSlice({
 		dob: (state, actions) => {
 			state.dob = actions.payload;
 		},
+		updateSteps: (state, actions) => {
+			state.assesmentOneSteps = actions.payload;
+		},
+		updateBaselineSteps: (state, actions) => {
+			state.baselineSteps = actions.payload;
+		},
+		handleSkip: (state, actions) => {
+			state.activeStep = state.activeStep + actions.payload;
+		},
 	},
 });
 
@@ -70,6 +78,9 @@ export const {
 	resetResponses,
 	dob,
 	saveMany,
+	updateSteps,
+	updateBaselineSteps,
+	handleSkip,
 } = stepSlice.actions;
 
 export default stepSlice.reducer;

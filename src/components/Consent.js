@@ -1,5 +1,3 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrophy } from "@fortawesome/free-solid-svg-icons";
 import Grid from "@mui/material/Unstable_Grid2";
 import { Typography, Stack, Button, Box } from "@mui/material";
 import * as React from "react";
@@ -20,10 +18,10 @@ const Page = () => {
 		navigate("/register");
 	};
 
-	const backtohome = () => {
-		localStorage.clear();
-		navigate("https://websaonline.com");
-	};
+	// const backtohome = () => {
+	// 	localStorage.clear();
+	// 	navigate("https://websaonline.com");
+	// };
 
 	return (
 		<Box

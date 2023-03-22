@@ -42,7 +42,7 @@ export default function IconsRadio({ details, grid}) {
 			aria-label="platform"
 			overlay
 			defaultValue={
-				savedResponse[page] === undefined ? "" : savedResponse[page].answer
+				savedResponse[page] === undefined ? "" : (savedResponse[page] === null ? "" : savedResponse[page].answer)
 			}
 			name="platform"
 			sx={{
@@ -82,7 +82,7 @@ export default function IconsRadio({ details, grid}) {
 								checkedIcon={<CheckCircleRoundedIcon />}
 								onClick={(e) => handleClick(e)}
 							/>
-							<span style={{ fontSize: "20px" }}>{value.name}</span>
+							<span style={{fontSize: "19px" }}>{value.name}</span>
 						</Sheet>
 					</Grid>
 				))}

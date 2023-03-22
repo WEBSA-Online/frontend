@@ -16,7 +16,6 @@ import Page36 from "./baseline/Page36";
 import Page37 from "./baseline/Page37";
 import Page37b from "./baseline/Page37b";
 import Page38 from "./baseline/Page38";
-import Page39 from "./baseline/Page39";
 import Page40 from "./baseline/Page40";
 import Page41 from "./baseline/Page41";
 import Page42 from "./baseline/Page42";
@@ -93,8 +92,8 @@ export default function Layout() {
 							? "#f5ffcf"
 							: "#e9f1f2",
 					display: "flex",
-					height: pageHeight ? "100%" : "100vh",
-					padding: "0 5%",
+					// height: pageHeight ? "100%" : "100vh",
+					padding: { md: "0 5%", xs: 0 },
 				}}
 			>
 				{(() => {
@@ -118,27 +117,27 @@ export default function Layout() {
 						case 8:
 							return <Page38 />;
 						case 9:
-							return <Page39 />;
-						case 10:
 							return <Page40 />;
-						case 11:
+						case 10:
 							return <Page41 />;
-						case 12:
+						case 11:
 							return <Page42 />;
-						case 13:
+						case 12:
 							return <Page43 />;
-						case 14:
+						case 13:
 							return <Page44 />;
-						case 15:
+						case 14:
 							return <Page45 />;
-						case 16:
+						case 15:
 							return <Page46 />;
-						case 17:
+						case 16:
 							return <Page47 />;
-						case 18:
+						case 17:
 							return <Page48 />;
-						case 19:
+						case 18:
 							return <Page49 />;
+						case 19:
+							return <Page50 />;
 						case 20:
 							return <Page51 />;
 						case 21:
@@ -193,7 +192,7 @@ export default function Layout() {
 					sx={{ position: "fixed", bottom: 0, left: 0, right: 0 }}
 					elevation={10}
 				>
-					<BottomNavigation sx={{ height: "65px" }}>
+					<BottomNavigation sx={{ height: { xs: "80px", md: "80px" } }}>
 						<ProgressBar />
 					</BottomNavigation>
 				</Paper>

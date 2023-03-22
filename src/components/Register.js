@@ -20,14 +20,16 @@ export default function Register() {
 	const [error, setError] = React.useState(false);
 	const [errorMsg, setErrorMsg] = React.useState(false);
 
+	console.log(API_URL);
+
 
 	const handleSubmit = async () => {
 		setLoading(true);
 		setError(false);
-		if (savedResponse[1].answer === undefined) {
+		if(savedResponse[1] === undefined) {
 			setLoading(false);
 			setError(true);
-			setErrorMsg("Name not captured. 1st complete screening");
+			setErrorMsg("Looks like you haven't completed screening. Complete");
 		} else if (passwordOne !== passwordTwo) {
 			setLoading(false);
 			setError(true);
@@ -80,11 +82,11 @@ export default function Register() {
 						onClose={() => setError(false)}
 						sx={{ marginBottom: "10px" }}
 					>
-						{!savedResponse ? (
+						{savedResponse[1] === undefined ? (
 							<span>
 								{errorMsg}{" "}
 								<Link to="/screening" style={{ color: "white" }}>
-									here.
+									here
 								</Link>
 							</span>
 						) : (
@@ -94,7 +96,7 @@ export default function Register() {
 				) : null}
 				<Box
 					sx={{
-						width: "400px",
+						width: { xs: "80%", sm: "30%", md: "30%" },
 						maxWidth: "100%",
 						padding: "40px 30px",
 						backgroundColor: "white",

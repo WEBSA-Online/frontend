@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 const StartPage = () => {
 	const dispatch = useDispatch();
 	const userDetails = useSelector((state) => state.auth.userDetails);
+
 	return (
 		<Box
 			sx={{
@@ -30,10 +31,6 @@ const StartPage = () => {
 						</Typography>
 						<Typography variant="h5" sx={{ color: "white" }}>
 							We commend you for reaching this far!
-						</Typography>
-						<Typography variant="h5" sx={{ color: "white" }}>
-							You've been selected for the{" "}
-							<span style={{ color: "yellow" }}>{userDetails.selection} arm</span>.
 						</Typography>
 						<Typography variant="h5" sx={{ color: "white" }}>
 							On this stage, you are going to do a baseline assesment where we add more

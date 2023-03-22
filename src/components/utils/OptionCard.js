@@ -25,9 +25,7 @@ const OptionCard = ({ options, question }) => {
 				undefined;
 			
 		}	
-	} 
-
-	
+	} 	
 
 	const handleSave = () => {
 		if (page===15){
@@ -68,6 +66,7 @@ const OptionCard = ({ options, question }) => {
 				},
 				backgroundColor: selected && `${options.style.color}`,
 				color: selected && "white",
+				marginBottom:{xs:"15px"}
 			}}
 			className="option-card"
 			onClick={() => handleSave()}

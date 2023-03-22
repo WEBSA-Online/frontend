@@ -19,7 +19,7 @@ const StartPage = () => {
 		<Box
 			sx={{
 				backgroundColor: "#3f55af",
-				height: { sm: "auto", md: "100vh" },
+				height: "100vh",
 				display: "flex",
 				alignItems: "center",
 				padding: { xs: "3%" },
@@ -71,7 +71,7 @@ const StartPage = () => {
 									fontFamily: "Poppins-Bold",
 									color: "white",
 									fontWeight: "bold",
-									fontSize: { xs: "22px" },
+									fontSize: { xs: "22px", sm:"25px", md:"25px" },
 								}}
 							>
 								The Alcohol Use Disorders Identification Test
