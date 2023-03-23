@@ -6,7 +6,11 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { API_URL } from "../API";
 import { useDispatch } from "react-redux";
-import { updateToken, getUserDetails } from "../redux/slices/authSlice";
+import {
+	updateToken,
+	getUserDetails,
+	getTimeOfLogin,
+} from "../redux/slices/authSlice";
 
 export default function Register() {
 	const navigate = useNavigate();
@@ -30,6 +34,7 @@ export default function Register() {
 			dispatch(updateToken(response.data.accessToken));
 			const reponse2 = await axios.get(`${API_URL}/users/${email}`);
 			dispatch(getUserDetails(reponse2.data));
+			dispatch(getTimeOfLogin(Date.now()));
 			setLoading(false);
 			setSuccess(true);
 			setTimeout(() => {

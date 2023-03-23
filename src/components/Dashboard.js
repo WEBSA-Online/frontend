@@ -158,9 +158,10 @@ export default function PersistentDrawerLeft() {
 					</DrawerHeader>
 					<List>
 						{[
-							"Personal Information",
+							"Profile",
 							"Motivational Interviewing",
 							"Practical Advice",
+							"Resources",
 						].map((text, index) => (
 							<ListItem key={text} disablePadding>
 								<ListItemButton>
