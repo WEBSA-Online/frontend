@@ -27,7 +27,7 @@ const EndPage = () => {
 						All done!
 					</h2>
 					<p
-						style={{ fontFamily: "Poppins-Regular", fontSize: "40px", color: "white" }}
+						style={{ fontFamily: "Poppins-Regular", fontSize: "30px", color: "white", lineHeight:"40px" }}
 					>
 						Thank you for sharing your responses.
 					</p>

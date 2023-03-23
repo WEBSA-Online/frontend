@@ -41,7 +41,7 @@ export default function BasicTextFields({details}) {
 				}
 				onChange={handleSave}
 				variant="standard"
-				size="Normal"
+				size="normal"
 			/>
 		</Box>
 	);

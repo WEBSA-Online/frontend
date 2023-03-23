@@ -19,6 +19,7 @@ const StartPage = () => {
 				paddingBottom: "15%",
 				// height: "100% !important",
 				// overflow: "auto",
+				padding: { md: "3% 0 15% 0", xs: "3% 5% 15% 5%" },
 			}}
 		>
 			<Grid container>

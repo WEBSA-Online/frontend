@@ -22,10 +22,7 @@ const BaselineComplete = () => {
 	const navigate = useNavigate();
 	const [loading, setLoading] = React.useState(false);
 	const [error, setError] = React.useState({status:false, msg:""});
-
-	console.log(page);
-	console.log(savedResponse);
-
+	
 	const submit = async () => {
 		setLoading(true);
 		try {

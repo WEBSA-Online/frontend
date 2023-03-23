@@ -8,12 +8,17 @@ import "./App.css";
 import Layout from "./components/LayoutOne";
 import Register from "./components/Register";
 import Login from "./components/Login";
-import Home from "./components/Home";
+import Home from "./components/pages/Home";
 import Dashboard from "./components/Dashboard";
 import PrivateRoutes from "./components/utils/PrivateRoutes";
 import Consent from "./components/Consent"
 import Baseline from "./components/Baseline"
 import CheckBaseline from "./components/utils/CheckBaslineRoute"
+import Practical from "./components/pages/PracticalAdvice"
+import MInterviewing from "./components/pages/MInterviewing";
+import Personal from "./components/pages/Personal";
+import Resources from "./components/pages/Resources";
+
 
 function App() {
 	setInterval(() => localStorage.clear(), 900000);
@@ -25,6 +30,14 @@ function App() {
 					<Route element={<CheckBaseline />}>
 						<Route element={<Dashboard />}>
 							<Route path="/" element={<Home />} exact />
+							<Route path="/practical-advice" element={<Practical />} exact />
+							<Route path="/resources" element={<Resources />} exact />
+							<Route path="/profile" element={<Personal />} exact />
+							<Route
+								path="/motivational-interviewing"
+								element={<MInterviewing />}
+								exact
+							/>
 						</Route>
 					</Route>
 				</Route>
