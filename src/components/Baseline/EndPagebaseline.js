@@ -2,14 +2,9 @@ import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import "animate.css";
 import Stack from "@mui/material/Stack";
-import { useSelector } from "react-redux";
-
 
 const EndPagebaseline = () => {
-	const page = useSelector((state) => state.steps.activeStep);
-	const savedResponse = useSelector((state) => state.responses.responses);
-
-  
+ 
 	return (
 		<Box
 			sx={{

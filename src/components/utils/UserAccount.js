@@ -3,16 +3,22 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Avatar from "./Avatar";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { updateToken } from "../../redux/slices/authSlice";
 
 export default function UserMenu({ username }) {
 	const [anchorEl, setAnchorEl] = React.useState(null);
 	const open = Boolean(anchorEl);
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
 	const handleClick = (event) => {
 		setAnchorEl(event.currentTarget);
 	};
 	const handleClose = () => {
 		setAnchorEl(null);
+	};
+	const handleLogout = () => {
+		dispatch(updateToken(""));
 	};
 
 	return (
@@ -22,16 +28,17 @@ export default function UserMenu({ username }) {
 				aria-controls={open ? "basic-menu" : undefined}
 				aria-haspopup="true"
 				aria-expanded={open ? "true" : undefined}
-				onClick={handleClick}
+				onClick={handleLogout}
 				style={{ cursor: "pointer" }}
 			>
-				<Avatar
+				{/* <Avatar
 					username={username}
 					aria-controls={open ? "basic-menu" : undefined}
 					aria-haspopup="true"
 					aria-expanded={open ? "true" : undefined}
 					onClick={handleClick}
-				/>
+				/> */}
+				<p>Logout</p>
 			</span>
 			<Menu
 				id="basic-menu"

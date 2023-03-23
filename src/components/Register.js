@@ -144,7 +144,7 @@ export default function Register() {
 							onClick={handleSubmit}
 						>
 							{loading ? (
-								<CircularProgress size={30} sx={{ color: "white" }} />
+								<CircularProgress size={30} sx={{ color: "#7348CF" }} />
 							) : (
 								"REGISTER TO PROCEED"
 							)}
