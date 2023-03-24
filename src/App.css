@@ -27,13 +27,13 @@ h4,
 h5,
 h6 {
 	font-family: Poppins-Bold;
-  line-height: 30px;
+	line-height: 30px;
 }
 
 p {
 	margin-top: 0;
 	font-family: Poppins-Regular;
-	font-size:16px;
+	font-size: 16px;
 	line-height: 30px;
 }
 
@@ -48,9 +48,8 @@ html {
 	height: 100%;
 }
 a {
-	text-decoration:none;
+	text-decoration: none;
 }
-
 
 .MuiListItemButton-root:hover {
 	background-color: #c7f0dc !important;
@@ -58,7 +57,7 @@ a {
 }
 
 a:visited {
-	color:black;
+	color: black;
 }
 
 ol > li {
@@ -66,8 +65,8 @@ ol > li {
 }
 
 .scroll {
-	height: calc(100vh - 80px);
-	overflow-x: auto;
+	min-height: calc(100vh - 80px);
+	overflow: auto;
 }
 
 .whiteText {
@@ -76,7 +75,7 @@ ol > li {
 
 ::-webkit-scrollbar {
 	width: 5px;
-	height: 5px;
+	height: 3px;
 }
 
 ::-webkit-scrollbar-track {
@@ -172,14 +171,14 @@ ol > li {
 }
 
 .MuiInputLabel-root {
-  font-size: 25px !important;
+	font-size: 25px !important;
 }
 
 @media (max-width: 600px) {
 	h1 {
 		font-size: 22px;
-    line-height: 30px !important;
-  }
+		line-height: 30px !important;
+	}
 
 	h4 {
 		font-size: 22px;
@@ -188,4 +187,12 @@ ol > li {
 		display: flex;
 		justify-content: center;
 	}
+	
+}
+
+@media (max-width: 480px) {
+/* .scroll {
+		min-height: calc(100vh - 130px);
+		overflow: scroll;
+	} */
 }

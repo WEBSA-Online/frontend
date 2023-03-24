@@ -4,7 +4,7 @@ export const stepSlice = new createSlice({
 	name: "steps",
 	initialState: {
 		activeStep: 0,
-		assesmentOneSteps: 33,
+		assesmentOneSteps: 31,
 		responses: [],
 		baselineSteps: 41,
 	},

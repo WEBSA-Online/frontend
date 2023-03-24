@@ -8,16 +8,19 @@ import { saveResponse } from "../../redux/slices/stepSlice";
 import { useDispatch, useSelector } from "react-redux";
 import Grid from "@mui/material/Unstable_Grid2";
 
-export default function IconsRadio({ details, grid}) {
+export default function IconsRadio({ details, grid, setContional }) {
 	const page = useSelector((state) => state.steps.activeStep);
 	const savedResponse = useSelector((state) => state.steps.responses);
 	const dispatch = useDispatch();
+	const pathname = window.location.pathname;
 
 	const handleClick = (e) => {
-		const score =e.target.id
-		const name = e.target.value
+		const score = e.target.id;
+		const name = e.target.value;
+		console.log(name);
+		if (pathname === "/baseline" && (page===2 || page===4)) setContional(name);
 		dispatch(checkButton());
-		if(page > 10) {
+		if (page > 10 && pathname !== "/baseline") {
 			dispatch(
 				saveResponse({
 					question: details.question,
@@ -42,7 +45,11 @@ export default function IconsRadio({ details, grid}) {
 			aria-label="platform"
 			overlay
 			defaultValue={
-				savedResponse[page] === undefined ? "" : (savedResponse[page] === null ? "" : savedResponse[page].answer)
+				savedResponse[page] === undefined
+					? ""
+					: savedResponse[page] === null
+					? ""
+					: savedResponse[page].answer
 			}
 			name="platform"
 			sx={{
@@ -82,7 +89,7 @@ export default function IconsRadio({ details, grid}) {
 								checkedIcon={<CheckCircleRoundedIcon />}
 								onClick={(e) => handleClick(e)}
 							/>
-							<span style={{fontSize: "19px" }}>{value.name}</span>
+							<span style={{ fontSize: "19px" }}>{value.name}</span>
 						</Sheet>
 					</Grid>
 				))}

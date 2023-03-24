@@ -26,7 +26,6 @@ import Page46 from "./baseline/Page46";
 import Page47 from "./baseline/Page47";
 import Page48 from "./baseline/Page48";
 import Page49 from "./baseline/Page49";
-import Page50 from "./baseline/Page50";
 import Page51 from "./baseline/Page51";
 import Page52 from "./baseline/Page52";
 import Page53 from "./baseline/Page53";
@@ -57,18 +56,18 @@ export default function Layout() {
 	const pageNavigation = useSelector((state) => state.globalstate.startbaseline);
 	const showTool2Page = useSelector((state) => state.globalstate.tool2page);
 	const showTool3Page = useSelector((state) => state.globalstate.tool3page);
-	const savedResponse = useSelector((state) => state.steps.responses);
 	const pathname = window.location.pathname;
 
 	const assesmentOneSteps = useSelector((state) => state.steps);
 	const baselineSteps = useSelector((state) => state.steps.baselineSteps);
+	const savedResponse = useSelector((state) => state.steps.responses);
 	const totalpages =
 		pathname === "/baseline" ? baselineSteps : assesmentOneSteps;
 
-	const pageHeight =
-		pathname === "/baseline" && page >= 12 && page <= 15 ? true : false;
+	const pageHeight = pathname === "/baseline" && page >= 12 && page <= 15 ? true : false;
 
-	console.log(pageHeight);
+	console.log(page);
+	console.log(savedResponse);
 
 	return pageNavigation ? (
 		<StartPage />
@@ -94,6 +93,7 @@ export default function Layout() {
 					display: "flex",
 					// height: pageHeight ? "100%" : "100vh",
 					padding: { md: "0 5%", xs: 0 },
+					height:{xs:pathname === "/baseline" && page >=11 && page <=14 ? "1600px" : "700px" }
 				}}
 			>
 				{(() => {
@@ -137,50 +137,48 @@ export default function Layout() {
 						case 18:
 							return <Page49 />;
 						case 19:
-							return <Page50 />;
-						case 20:
 							return <Page51 />;
-						case 21:
+						case 20:
 							return <Page52 />;
-						case 22:
+						case 21:
 							return <Page53 />;
-						case 23:
+						case 22:
 							return <Page54 />;
-						case 24:
+						case 23:
 							return <Page55 />;
-						case 25:
+						case 24:
 							return <Page56 />;
-						case 26:
+						case 25:
 							return <Page57 />;
-						case 27:
+						case 26:
 							return <Page58 />;
-						case 28:
+						case 27:
 							return <Page59 />;
-						case 29:
+						case 28:
 							return <Page60 />;
-						case 30:
+						case 29:
 							return <Page61 />;
-						case 31:
+						case 30:
 							return <Page62 />;
-						case 32:
+						case 31:
 							return <Page63 />;
-						case 33:
+						case 32:
 							return <Page64 />;
-						case 34:
+						case 33:
 							return <Page65 />;
-						case 35:
+						case 34:
 							return <Page66 />;
-						case 36:
+						case 35:
 							return <Page67 />;
-						case 37:
+						case 36:
 							return <Page68 />;
-						case 38:
+						case 37:
 							return <Page69 />;
-						case 39:
+						case 38:
 							return <Page70 />;
-						case 40:
+						case 39:
 							return <Page71 />;
-						case 41:
+						case 40:
 							return <BaselineComplete />;
 						default:
 							return null;

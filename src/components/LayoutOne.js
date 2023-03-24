@@ -2,12 +2,12 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import Paper from "@mui/material/Paper";
-import ProgressBar from './utils/ProgressBar';
-import { useSelector} from "react-redux";
+import ProgressBar from "./utils/ProgressBar";
+import { useSelector } from "react-redux";
 import StartPage from "./firstAssesment/StartPage";
 import StartTool2 from "./firstAssesment/StartTool2Page";
 import StartTool3 from "./firstAssesment/StartTool3Page";
-import Page1 from "./firstAssesment/Page1"
+import Page1 from "./firstAssesment/Page1";
 import Page2 from "./firstAssesment/Page2";
 import Page3 from "./firstAssesment/Page3";
 import Page4 from "./firstAssesment/Page4";
@@ -21,7 +21,6 @@ import Page11 from "./firstAssesment/Page11";
 import Page12 from "./firstAssesment/Page12";
 import Page13 from "./firstAssesment/Page13";
 import Page14 from "./firstAssesment/Page14";
-import Page15 from "./firstAssesment/Page15";
 import Page16 from "./firstAssesment/Page16";
 import Page17 from "./firstAssesment/Page17";
 import Page18 from "./firstAssesment/Page18";
@@ -38,32 +37,25 @@ import Page28 from "./firstAssesment/Page28";
 import Page29 from "./firstAssesment/Page29";
 import Page30 from "./firstAssesment/Page30";
 import Page31 from "./firstAssesment/Page31";
-import EndPage from "./firstAssesment/EndPage"
-import TimerPage from "./firstAssesment/TimerPage"
-import EndAssesment from "./firstAssesment/AssesmentComplete"
-import "animate.css"
-
-
-
+import EndPage from "./firstAssesment/EndPage";
+import TimerPage from "./firstAssesment/TimerPage";
+import EndAssesment from "./firstAssesment/AssesmentComplete";
+import "animate.css";
 
 export default function Layout() {
 	const page = useSelector((state) => state.steps.activeStep);
-	const pageNavigation = useSelector((state) => state.globalstate.processHasEnded);
+	const pageNavigation = useSelector(
+		(state) => state.globalstate.processHasEnded
+	);
 	const showTimer = useSelector((state) => state.globalstate.showTimer);
 	const showTool2Page = useSelector((state) => state.globalstate.tool2page);
 	const showTool3Page = useSelector((state) => state.globalstate.tool3page);
 	const savedResponse = useSelector((state) => state.steps.responses);
 
 	console.log(page);
-	console.log(savedResponse);
-	console.log(showTimer);
+	// console.log(savedResponse);
+	// console.log(showTimer);
 
-	// if(page===11){
-	// 	dispatch(changeIsChecked({isChecked:true}))
-	// } else {
-	// 	dispatch(changeIsChecked({ isChecked:false}));
-	// }
-		
 	return pageNavigation ? (
 		<EndPage />
 	) : showTimer ? (
@@ -84,11 +76,12 @@ export default function Layout() {
 							? "#cfefff"
 							: page > 20 && page <= 31
 							? "#f5ffcf"
-							: page === 32
+							: page === 30
 							? "#7348CF"
 							: "#e9f1f2",
 					display: "flex",
-					padding: { md: "0 5%" , xs:0},
+					padding: { md: "0 5%", xs: 0 },
+					height: { xs: page === 5 ? "850px" : page !==0 ? "700px" : "100%" },
 				}}
 			>
 				{(() => {
@@ -124,40 +117,38 @@ export default function Layout() {
 						case 14:
 							return <Page14 />;
 						case 15:
-							return <Page15 />;
-						case 16:
 							return <Page16 />;
-						case 17:
+						case 16:
 							return <Page17 />;
-						case 18:
+						case 17:
 							return <Page18 />;
-						case 19:
+						case 18:
 							return <Page19 />;
-						case 20:
+						case 19:
 							return <Page20 />;
-						case 21:
+						case 20:
 							return <Page21 />;
-						case 22:
+						case 21:
 							return <Page22 />;
-						case 23:
+						case 22:
 							return <Page23 />;
-						case 24:
+						case 23:
 							return <Page24 />;
-						case 25:
+						case 24:
 							return <Page25 />;
-						case 26:
+						case 25:
 							return <Page26 />;
-						case 27:
+						case 26:
 							return <Page27 />;
-						case 28:
+						case 27:
 							return <Page28 />;
-						case 29:
+						case 28:
 							return <Page29 />;
-						case 30:
+						case 29:
 							return <Page30 />;
-						case 31:
+						case 30:
 							return <Page31 />;
-						case 32:
+						case 31:
 							return <EndAssesment />;
 						default:
 							return null;
@@ -177,4 +168,3 @@ export default function Layout() {
 		</>
 	);
 }
-

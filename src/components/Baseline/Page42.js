@@ -161,6 +161,7 @@ const Page42 = () => {
 				display: "flex",
 				paddingTop: "2%",
 				paddingBottom: "10%",
+				height: { xs: "850px" },
 			}}
 		>
 			<Container fixed>

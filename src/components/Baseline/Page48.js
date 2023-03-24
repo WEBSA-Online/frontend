@@ -7,7 +7,7 @@ import "animate.css";
 
 
 const details = {
-	question: "Whats your Gender?",
+	question: "What's your Gender?",
 	options: [
 		{ name: "Male", value: "Man" },
 		{ name: "Female", value: "Woman" },	

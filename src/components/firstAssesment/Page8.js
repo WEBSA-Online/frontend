@@ -9,7 +9,7 @@ import { useSelector} from "react-redux";
 const details = {
 	question: "Name of hall or university managed accommodation?",
 	question2: "Name of hostel",
-	question3: "name of place where you stay/reside",
+	question3: "Name of place where you stay/reside",
 };
 
 const Page8 = () => {

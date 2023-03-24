@@ -15,13 +15,10 @@ import ListItemText from "@mui/material/ListItemText";
 import { Outlet } from "react-router-dom";
 import { ThemeProvider } from "@mui/material/styles";
 import { websaTheme } from "../muiStyles";
-import UserAccount from "./utils/UserAccount"
+import UserAccount from "./utils/UserAccount";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
-import {
-	faXmark,
-} from "@fortawesome/free-solid-svg-icons";
-
+import {	faXmark } from "@fortawesome/free-solid-svg-icons";
 
 const drawerWidth = 280;
 
@@ -71,8 +68,8 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 }));
 
 export default function PersistentDrawerLeft() {
-	const theme = useTheme();
-	const [open, setOpen] = React.useState(true);
+	// const theme = useTheme();
+	const [open, setOpen] = React.useState(false);
 
 	const handleDrawerOpen = () => {
 		setOpen(true);

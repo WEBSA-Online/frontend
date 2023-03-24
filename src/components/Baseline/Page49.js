@@ -20,7 +20,6 @@ const details = {
 const Page49 = () => {
 	const savedResponse = useSelector((state) => state.steps.responses);
 	const page = useSelector((state) => state.steps.activeStep);
-	console.log(page)
 
 	
 	return (

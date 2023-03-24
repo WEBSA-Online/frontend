@@ -149,6 +149,14 @@ export default function Register() {
 								"REGISTER TO PROCEED"
 							)}
 						</Button>
+						<Box style={{ marginTop: "10px", textAlign:"center" }}>
+							<Link
+								to="/screening"
+								style={{fontSize: "15px", color: "blue" }}
+							>
+								Take screening
+							</Link>
+						</Box>
 					</>
 				</Box>
 			</>

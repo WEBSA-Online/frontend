@@ -6,7 +6,7 @@ import "animate.css";
 
 
 const details = {
-	question: "In the last 30 days, have you experienced: Feeling depressed",
+	question: "In the last 30 days, have you experienced: Feeling sad",
 	options: [
 		{ name: "Yes", value: "Yes" },
 		{ name: "No", value: "No" },

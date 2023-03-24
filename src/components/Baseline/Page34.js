@@ -3,6 +3,9 @@ import Container from "@mui/material/Container";
 import "animate.css";
 import RadioOptions from "../utils/RadioOptions";
 import "animate.css";
+import React from "react"
+import TextField from "../utils/TextField";
+
 
 const details = {
 	question: "Who pays your fees (tuition, accommodation, functional and others)?",
@@ -15,7 +18,12 @@ const details = {
 	direction: "row",
 };
 
+const details2 = {
+	question: "Specify your other source of paying tuition",
+};
+
 const Page34 = () => {
+		const [conditionals, setContional] = React.useState("");
 	
 	return (
 		<Container
@@ -24,9 +32,17 @@ const Page34 = () => {
 				paddingTop: "10%",
 			}}
 		>
-			
-			<h1 style={{ lineHeight: "38px" }}>{details.question}</h1>
-			<RadioOptions details={details} grid={12} />
+			{conditionals === "Other specify" ? (
+				<>
+					<h1 style={{ lineHeight: "38px" }}>{details2.question}</h1>
+					<TextField details={details} />
+				</>
+			) : (
+				<>
+					<h1 style={{ lineHeight: "38px" }}>{details.question}</h1>
+					<RadioOptions details={details} grid={12} setContional={setContional} />
+				</>
+			)}
 		</Container>
 	);
 };

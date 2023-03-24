@@ -46,6 +46,12 @@ export default function ProgressMobileStepper() {
 			dispatch(enableTimer());
 			dispatch(handleNext());
 		} else if (
+			page===19 &&
+			pathname === "/baseline" &&
+			savedResponse[page].answer === "No"
+		) {
+			dispatch(handleSkip(2));
+		} else if (
 			page === 11 &&
 			pathname !== "/baseline" &&
 			savedResponse[page].answer === "Never"
@@ -57,7 +63,7 @@ export default function ProgressMobileStepper() {
 			pathname !== "/baseline" &&
 			savedResponse[page].answer === "Never"
 		) {
-			dispatch(handleSkip(11));
+			dispatch(handleSkip(10));
 		} else if (
 			savedResponse[10] !== undefined &&
 			page === 10 &&
@@ -96,7 +102,7 @@ export default function ProgressMobileStepper() {
 			steps={totalpages}
 			position="static"
 			activeStep={page}
-			sx={{ flexGrow: 1, justifyContent: "center", width: "70%" }}
+			sx={{ flexGrow: 1, justifyContent: "center", width: "70%"}}
 			nextButton={
 				<Button
 					sx={{
