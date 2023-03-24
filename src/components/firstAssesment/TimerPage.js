@@ -14,7 +14,7 @@ const TimerPage = () => {
 				background: "#e9f1f2",
 				display: "flex",
 				height: "100vh",
-				paddingTop: "0",
+				paddingBottom: {xs:"100px"},
 			}}
 		>
 			<Container fixed>

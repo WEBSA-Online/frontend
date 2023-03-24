@@ -50,9 +50,9 @@ export default function Layout() {
 	const showTimer = useSelector((state) => state.globalstate.showTimer);
 	const showTool2Page = useSelector((state) => state.globalstate.tool2page);
 	const showTool3Page = useSelector((state) => state.globalstate.tool3page);
-	const savedResponse = useSelector((state) => state.steps.responses);
 
-	console.log(page);
+
+	console.log("Page", page);
 	// console.log(savedResponse);
 	// console.log(showTimer);
 
@@ -74,14 +74,16 @@ export default function Layout() {
 							? "#3f55af"
 							: page > 10 && page <= 20
 							? "#cfefff"
-							: page > 20 && page <= 31
+							: page > 20 && page <= 30
 							? "#f5ffcf"
-							: page === 30
+							: page === 31
 							? "#7348CF"
 							: "#e9f1f2",
 					display: "flex",
 					padding: { md: "0 5%", xs: 0 },
-					height: { xs: page === 5 ? "850px" : page !==0 ? "700px" : "100%" },
+					height: {
+						xs: page === 5 ? "850px" : page === 11 || page === 21 ? "650px" : "100%",
+					},
 				}}
 			>
 				{(() => {

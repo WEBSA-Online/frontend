@@ -115,7 +115,7 @@ const Page = () => {
 							/>
 							<Typography
 								variant="h5"
-								sx={{ color: "white", fontFamily: "Poppins-Bold" }}
+								sx={{ color: "white", fontFamily: "Poppins-Bold", textAlign:"center" }}
 							>
 								Thanks for participating in the screening.
 							</Typography>
@@ -125,11 +125,12 @@ const Page = () => {
 									color: "white",
 									fontWeight: "bold",
 									fontFamily: "Poppins-Regular",
+									fontSize:{sm:"22px", xs:"18px"}
 								}}
 							>
 								You are at low risk.
 							</Typography>
-							<a href="https://websaonline.com" style={{ textDecoration: "none", width:"100%" }}>
+							<a href="https://websaonline.com" style={{ textDecoration: "none", width:"100%",textAlign:"center" }}>
 								<Button
 									variant="contained"
 									size="large"
