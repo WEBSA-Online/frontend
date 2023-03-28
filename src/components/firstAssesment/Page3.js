@@ -5,7 +5,7 @@ import "animate.css";
 import Stack from "@mui/material/Stack";
 
 const details = {
-	question: "Your Birthday is",
+	question: "What is Your Birthdate?",
 };
 
 const Page3 = () => {

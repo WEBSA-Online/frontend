@@ -72,9 +72,9 @@ export default function Layout() {
 					background:
 						page === 0
 							? "#3f55af"
-							: page > 10 && page <= 20
+							: page > 10 && page <= 19
 							? "#cfefff"
-							: page > 20 && page <= 30
+							: page > 19 && page <= 30
 							? "#f5ffcf"
 							: page === 31
 							? "#7348CF"

@@ -67,6 +67,9 @@ export const stepSlice = new createSlice({
 		handleSkip: (state, actions) => {
 			state.activeStep = state.activeStep + actions.payload;
 		},
+		handleSkipBack: (state, actions) => {
+			state.activeStep = state.activeStep - actions.payload;
+		},
 	},
 });
 
@@ -81,6 +84,7 @@ export const {
 	updateSteps,
 	updateBaselineSteps,
 	handleSkip,
+	handleSkipBack,
 } = stepSlice.actions;
 
 export default stepSlice.reducer;

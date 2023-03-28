@@ -11,6 +11,9 @@ import {
 	getUserDetails,
 	getTimeOfLogin,
 } from "../redux/slices/authSlice";
+import { resetResponses } from "../redux/slices/stepSlice";
+
+
 
 export default function Register() {
 	const navigate = useNavigate();
@@ -24,6 +27,7 @@ export default function Register() {
 	
 
 	const handleSubmit = async () => {
+		dispatch(resetResponses());
 		setLoading(true);
 		setError(false);
 		try {

@@ -36,11 +36,11 @@ export default function Timer() {
 				</li>
 				<li>You will be asked to give a username, email and password</li>
 				<li>
-					The second part of this assesment has the AUDIT C for alcohol and DUDIT for
+					The second part of this assesment has the AUDIT for alcohol and DUDIT for
 					drugs
 				</li>
 				<li>
-					You will be refunded with an internet bundle worth <strong>2GBs.</strong>
+					You will be refunded with an internet bundle worth<strong>500MBs.</strong>
 				</li>
 			</ol>
 			<Box className="timer-wrapper">

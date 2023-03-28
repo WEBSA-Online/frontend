@@ -11,8 +11,7 @@ import {
 	handleSkip,
 	resetStep,
 	resetResponses,
-	updateSteps,
-	updateBaselineSteps,
+	handleSkipBack
 } from "../../redux/slices/stepSlice";
 import {
 	endProcess,
@@ -31,9 +30,6 @@ export default function ProgressMobileStepper() {
 	const pathname = window.location.pathname;
 	const totalpages = pathname === "/baseline" ? baselineSteps : assesmentOneSteps;
 
-
-	console.log("total pages",totalpages);
-
 	const gotoNextPage = () => {
 		if (
 			savedResponse[page].answer === "I decline" ||
@@ -46,7 +42,7 @@ export default function ProgressMobileStepper() {
 			dispatch(enableTimer());
 			dispatch(handleNext());
 		} else if (
-			page===19 &&
+			page===18 &&
 			pathname === "/baseline" &&
 			savedResponse[page].answer === "No"
 		) {
@@ -57,9 +53,9 @@ export default function ProgressMobileStepper() {
 			savedResponse[page].answer === "Never"
 		) {
 			dispatch(showTool3page());
-			dispatch(handleSkip(10));
+			dispatch(handleSkip(9));
 		} else if (
-			page === 21 &&
+			page === 20 &&
 			pathname !== "/baseline" &&
 			savedResponse[page].answer === "Never"
 		) {
@@ -72,8 +68,8 @@ export default function ProgressMobileStepper() {
 			dispatch(showTool2page());
 			dispatch(handleNext());
 		} else if (
-			savedResponse[20] !== undefined &&
-			page === 20 &&
+			savedResponse[19] !== undefined &&
+			page === 19 &&
 			pathname !== "/baseline"
 		) {
 			dispatch(showTool3page());

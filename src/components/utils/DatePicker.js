@@ -1,22 +1,20 @@
 import * as React from "react";
-import dayjs from "dayjs";
 import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
 import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { addDays, subYears } from "date-fns";
 import { useDispatch, useSelector } from "react-redux";
 import { saveResponse } from "../../redux/slices/stepSlice";
-import { checkButton } from "../../redux/slices/globalstateSlice";
 import moment from "moment";
 import Button from "@mui/material/Button";
 
 export default function ResponsiveDatePickers() {
-	const page = useSelector((state) => state.steps.activeStep);
-	const savedResponse = useSelector((state) => state.responses.responses);	
+	const page = useSelector((state) => state.steps.activeStep);	
 	const [showBtn, setShowBtn] = React.useState(false);
 	const dispatch = useDispatch();
-	const [value, setValue] = React.useState("2023-01-01");
+	const [value, setValue] = React.useState("2003-01-01");
 
 	const saveDateOfBirth = () => {
 		dispatch(
@@ -37,10 +35,12 @@ export default function ResponsiveDatePickers() {
 					disableFuture
 					openTo="year"
 					views={["year", "month", "day"]}
+					minDate={subYears(new Date("January 1, 2003 00:00:00 GMT"), 5)}
+					maxDate={subYears(new Date("December 31, 2008 00:00:00 GMT"), 5)}
 					value={value}
 					onChange={(newValue) => {
 						setValue(newValue);
-					  setShowBtn(true);
+						setShowBtn(true);
 					}}
 					renderInput={(params) => <TextField {...params} />}
 				/>
