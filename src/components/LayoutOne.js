@@ -69,6 +69,7 @@ export default function Layout() {
 			<Box
 				className="scroll"
 				sx={{
+					zIndex: "10",
 					background:
 						page === 0
 							? "#3f55af"
@@ -81,8 +82,9 @@ export default function Layout() {
 							: "#e9f1f2",
 					display: "flex",
 					padding: { md: "0 5%", xs: 0 },
+					// position:"sticky",
 					height: {
-						xs: page === 5 ? "850px" : page === 11 || page === 21 ? "650px" : "100%",
+						xs: page === 5 ? "850px" : page === 11 || page === 21 ? "650px" : "500px",
 					},
 				}}
 			>
@@ -159,7 +161,7 @@ export default function Layout() {
 			</Box>
 			<Box>
 				<Paper
-					sx={{ position: "fixed", bottom: 0, left: 0, right: 0 }}
+					sx={{ position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 100 }}
 					elevation={10}
 				>
 					<BottomNavigation sx={{ height: { xs: "80px", md: "80px" } }}>

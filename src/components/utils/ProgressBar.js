@@ -11,7 +11,7 @@ import {
 	handleSkip,
 	resetStep,
 	resetResponses,
-	handleSkipBack
+	handleSkipBack,
 } from "../../redux/slices/stepSlice";
 import {
 	endProcess,
@@ -23,12 +23,15 @@ import {
 export default function ProgressMobileStepper() {
 	const theme = useTheme();
 	const page = useSelector((state) => state.steps.activeStep);
-	const assesmentOneSteps = useSelector((state) => state.steps.assesmentOneSteps);
+	const assesmentOneSteps = useSelector(
+		(state) => state.steps.assesmentOneSteps
+	);
 	const baselineSteps = useSelector((state) => state.steps.baselineSteps);
 	const savedResponse = useSelector((state) => state.steps.responses);
 	const dispatch = useDispatch();
 	const pathname = window.location.pathname;
-	const totalpages = pathname === "/baseline" ? baselineSteps : assesmentOneSteps;
+	const totalpages =
+		pathname === "/baseline" ? baselineSteps : assesmentOneSteps;
 
 	const gotoNextPage = () => {
 		if (
@@ -42,7 +45,7 @@ export default function ProgressMobileStepper() {
 			dispatch(enableTimer());
 			dispatch(handleNext());
 		} else if (
-			page===18 &&
+			page === 18 &&
 			pathname === "/baseline" &&
 			savedResponse[page].answer === "No"
 		) {
@@ -79,6 +82,17 @@ export default function ProgressMobileStepper() {
 		}
 	};
 
+	const backToPage = () => {
+		if (page === 20 && pathname !== "/baseline") {
+			dispatch(handleSkipBack(9));
+		} else if (page === 31 && pathname !== "/baseline") {
+			dispatch(handleSkipBack(10));
+		} else {
+			dispatch(handleBack());
+		}
+		console.log(page);
+	};
+
 	const checkCondition =
 		savedResponse.length === 0
 			? false
@@ -98,7 +112,7 @@ export default function ProgressMobileStepper() {
 			steps={totalpages}
 			position="static"
 			activeStep={page}
-			sx={{ flexGrow: 1, justifyContent: "center", width: "70%"}}
+			sx={{ flexGrow: 1, justifyContent: "center", width: "70%" }}
 			nextButton={
 				<Button
 					sx={{
@@ -122,7 +136,7 @@ export default function ProgressMobileStepper() {
 			}
 			backButton={
 				<Button
-					onClick={() => dispatch(handleBack())}
+					onClick={() => backToPage()}
 					disabled={page === 0}
 					variant="contained"
 					size="medium"

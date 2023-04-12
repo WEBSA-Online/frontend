@@ -114,7 +114,7 @@ const Page = () => {
 							/>
 							<Typography
 								variant="h5"
-								sx={{ color: "white", fontFamily: "Poppins-Bold", textAlign:"center" }}
+								sx={{ color: "white", fontFamily: "Poppins-Bold", textAlign: "center" }}
 							>
 								Thanks for participating in the screening.
 							</Typography>
@@ -124,12 +124,15 @@ const Page = () => {
 									color: "white",
 									fontWeight: "bold",
 									fontFamily: "Poppins-Regular",
-									fontSize:{sm:"22px", xs:"18px"}
+									fontSize: { sm: "22px", xs: "18px" },
 								}}
 							>
 								You are at low risk.
 							</Typography>
-							<a href="https://websaonline.com" style={{ textDecoration: "none", width:"100%",textAlign:"center" }}>
+							<a
+								href="https://websaonline.com"
+								style={{ textDecoration: "none", width: "100%", textAlign: "center" }}
+							>
 								<Button
 									variant="contained"
 									size="large"
@@ -140,6 +143,7 @@ const Page = () => {
 										width: { md: "30%", sm: "50%", xs: "100%" },
 										"&:hover": { color: "#fff", backgroundColor: "#7348cf" },
 									}}
+									onClick={localStorage.clear()}
 								>
 									End
 								</Button>
