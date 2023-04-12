@@ -19,10 +19,11 @@ import UserAccount from "./utils/UserAccount";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import {	faXmark } from "@fortawesome/free-solid-svg-icons";
+import { useSelector } from "react-redux";
 
 const drawerWidth = 280;
 
-const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
+const Main = styled("main", {shouldForwardProp: (prop) => prop !== "open" })(
 	({ theme, open }) => ({
 		flexGrow: 1,
 		padding: theme.spacing(3),
@@ -70,6 +71,9 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 export default function PersistentDrawerLeft() {
 	// const theme = useTheme();
 	const [open, setOpen] = React.useState(false);
+	const userDetails = useSelector((state) => state.auth.userDetails);
+
+	console.log(userDetails.selection);
 
 	const handleDrawerOpen = () => {
 		setOpen(true);
@@ -95,24 +99,36 @@ export default function PersistentDrawerLeft() {
 							justifyContent: "space-between",
 						}}
 					>
-						<span
-							color="inherit"
-							aria-label="open drawer"
-							onClick={handleDrawerOpen}
-							edge="start"
-							style={{
-								mr: 2,
-								...(open && { display: "none" }),
-								display: "flex",
-								alignItems: "center",
-								cursor: "pointer",
-							}}
-						>
-							<MenuIcon sx={{ color: "#fff", fontSize: "22px", marginRight: "5px" }} />
-							<Typography variant="h6" sx={{ color: "#fff", fontSize: "20px" }}>
-								Menu
-							</Typography>
-						</span>
+						{userDetails.selection === "control" ? null : (
+							<span
+								color="inherit"
+								aria-label="open drawer"
+								onClick={handleDrawerOpen}
+								edge="start"
+								style={{
+									mr: 2,
+									...(open && { display: "none" }),
+									display: "flex",
+									alignItems: "center",
+									cursor: "pointer",
+								}}
+							>
+								<MenuIcon
+									sx={{ color: "#fff", fontSize: "22px", marginRight: "5px" }}
+								/>
+								<Typography
+									variant="h6"
+									sx={{
+										color: "#fff",
+										fontSize: "20px",
+										display: { xs: "none", md: "block" },
+									}}
+								>
+									Menu
+								</Typography>
+							</span>
+						)}
+
 						<Typography
 							variant="h6"
 							noWrap

@@ -93,7 +93,12 @@ export default function Layout() {
 					display: "flex",
 					// height: pageHeight ? "100%" : "100vh",
 					padding: { md: "0 5%", xs: 0 },
-					height:{xs:pathname === "/baseline" && page >=11 && page <=14 ? "1600px" : "700px" }
+					height: {
+						xs:
+							pathname === "/baseline" && page >= 11 && page <= 14
+								? "1600px"
+								: "700px",
+					},
 				}}
 			>
 				{(() => {
@@ -187,7 +192,7 @@ export default function Layout() {
 			</Box>
 			<Box>
 				<Paper
-					sx={{ position: "fixed", bottom: 0, left: 0, right: 0 }}
+					sx={{ position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 100}}
 					elevation={10}
 				>
 					<BottomNavigation sx={{ height: { xs: "80px", md: "80px" } }}>

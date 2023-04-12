@@ -9,10 +9,9 @@ const details = {
 	question: "How often have you used the primary drug in last week?",
 	options: [
 		{ name: "Never", value: "0" },
-		{ name: "Once a month or less often", value: "1" },
-		{ name: "2-4 times a month", value: "2" },
-		{ name: "2-3 times  A week", value: "3" },
-      { name: "4 times a week or more", value: "4" },
+		{ name: "Only once", value: "1" },
+		{ name: "2-4 times", value: "2" },
+      { name: "4 times or more", value: "3" },
 	],
 	direction: "row",
 };

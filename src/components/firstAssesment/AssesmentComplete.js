@@ -25,11 +25,9 @@ const Page = () => {
 			return accumulator + curValue.score;
 		}, 0);
 
-	// const alcoholScores = 9
-	// const drugScores = 7
-
 	const submit=()=> {
 		navigate("/consent")
+		localStorage.clear();
 	}
 
 	return (

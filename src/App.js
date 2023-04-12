@@ -18,15 +18,28 @@ import Practical from "./components/pages/PracticalAdvice"
 import MInterviewing from "./components/pages/MInterviewing";
 import Personal from "./components/pages/Personal";
 import Resources from "./components/pages/Resources";
+import { useDispatch } from "react-redux";
+import { resetResponses, resetStep } from "./redux/slices/stepSlice";
+import React from "react";
 
 
 function App() {
-	setInterval(() => localStorage.clear(), 900000);
+	const [isPageLoaded, setIsPageLoaded] = React.useState(false);
+	const dispatch = useDispatch();
+
+	React.useEffect(() => {
+		setIsPageLoaded(true);
+	}, []);
+	
 	const previousPageUrl = document.referrer;
-	console.log(previousPageUrl);
-	if(previousPageUrl === "https://websaonline.com/") {
-		localStorage.clear();
+
+	if (isPageLoaded && previousPageUrl === "https://websaonline.com/") {
+		dispatch(resetResponses());
+		dispatch(resetStep(0));
 	}
+		
+
+	setInterval(() => localStorage.clear(), 900000);
 		return (
 			<Router>
 				<Routes>

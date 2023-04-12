@@ -1,10 +1,12 @@
 import * as React from "react";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import Avatar from "./Avatar";
+import { Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { updateToken } from "../../redux/slices/authSlice";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 
 export default function UserMenu({ username }) {
 	const [anchorEl, setAnchorEl] = React.useState(null);
@@ -40,7 +42,19 @@ export default function UserMenu({ username }) {
 					aria-expanded={open ? "true" : undefined}
 					onClick={handleClick}
 				/> */}
-				<p>Logout</p>
+				<Typography sx={{ marginBottm: 0, display: { sm: "none", xs: "block" } }}>
+					<FontAwesomeIcon
+						icon={faRightFromBracket}
+						sx={{
+							color: "white",
+							fontSize: "60px",
+							display: { xs: "block", sm: "none" },
+						}}
+					/>
+				</Typography>
+				<Typography sx={{ marginBottm: 0, display: { sm: "block", xs: "none" } }}>
+					Logout
+				</Typography>
 			</span>
 			<Menu
 				id="basic-menu"

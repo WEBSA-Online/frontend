@@ -51,7 +51,6 @@ export default function Layout() {
 	const showTool2Page = useSelector((state) => state.globalstate.tool2page);
 	const showTool3Page = useSelector((state) => state.globalstate.tool3page);
 
-
 	console.log("Page", page);
 	// console.log(savedResponse);
 	// console.log(showTimer);
@@ -84,7 +83,16 @@ export default function Layout() {
 					padding: { md: "0 5%", xs: 0 },
 					// position:"sticky",
 					height: {
-						xs: page === 5 ? "850px" : page === 11 || page === 21 ? "650px" : "500px",
+						xs:
+							page === 0
+								? "100%"
+								: page === 5
+								? "850px"
+								: page === 11 || page === 21
+								? "650px"
+								: page > 21 && page <= 30
+								? "700px"
+								: "550px",
 					},
 				}}
 			>

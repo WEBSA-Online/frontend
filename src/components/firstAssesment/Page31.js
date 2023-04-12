@@ -9,7 +9,7 @@ const details = {
 	options: [
 		{ name: "No", score: 0 },
 		{ name: "Yes, but not over the last year", score: 2 },
-		{ name: "Yes, over the last year", score: 4 },
+		{ name: "Yes, over the last year", score: 4},
 	],
 	objective: "Concern from others",
 };

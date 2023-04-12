@@ -11,7 +11,7 @@ import {
 	getUserDetails,
 	getTimeOfLogin,
 } from "../redux/slices/authSlice";
-import { resetResponses } from "../redux/slices/stepSlice";
+import { resetResponses, resetStep } from "../redux/slices/stepSlice";
 
 
 
@@ -29,13 +29,16 @@ export default function Register() {
 	React.useEffect(() => {
 		setIsPageLoaded(true);	
 	}, []);
+		
 
 	if(isPageLoaded) {
-		localStorage.clear();
-	}	
+		dispatch(resetResponses());
+		dispatch(resetStep(0));
+	}
+
+	console.log(isPageLoaded)
 
 	const handleSubmit = async () => {
-		dispatch(resetResponses());
 		setLoading(true);
 		setError(false);
 		try {
