@@ -22,8 +22,8 @@ const details = {
 			value: "Kampala International University",
 		},
 		{
-			name: "Uganda Christine University",
-			value: "Uganda Christine University",
+			name: "Uganda Christian University",
+			value: "Uganda Christian University",
 		},
 		{
 			name: "Ndejje University",

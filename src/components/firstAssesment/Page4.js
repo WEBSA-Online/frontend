@@ -9,7 +9,8 @@ const details = {
 	question: "What is your Martial Status?",
 	options: [
 		{ name: "Single", value: "Single" },
-		{ name: "Married/Cohabiting", value: "Married/Cohabiting" },
+		{ name: "Cohabiting", value: "Cohabiting" },
+		{ name: "Married", value: "Married" },
 		{ name: "Other", value: "Other" },
 	],
 	direction: "row",

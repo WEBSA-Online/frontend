@@ -59,7 +59,7 @@ export default function ProgressMobileStepper() {
 			pathname !== "/baseline" &&
 			savedResponse[page].answer === "Never"
 		) {
-			dispatch(handleSkip(10));
+			dispatch(handleSkip(11));
 		} else if (
 			savedResponse[10] !== undefined &&
 			page === 10 &&

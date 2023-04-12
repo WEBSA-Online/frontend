@@ -40,7 +40,7 @@ export default function Timer() {
 					drugs
 				</li>
 				<li>
-					You will be refunded with an internet bundle worth<strong>500MBs.</strong>
+					You will be refunded with an internet bundle worth<strong> 500MBs.</strong>
 				</li>
 			</ol>
 			<Box className="timer-wrapper">

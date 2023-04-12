@@ -12,16 +12,15 @@ const Page = () => {
 	let alcoholScores;
 	let drugScores;
 
-	console.log(savedResponse[11].answer);
 
 	if (savedResponse[11].answer!=="Never")
 		alcoholScores = savedResponse
-			.slice(11, 20)
+			.slice(11, 19)
 			.reduce((accumulator, curValue) => {
 				return accumulator + curValue.score;
 			}, 0);
 
-	if (savedResponse[21].answer !== "Never")
+	if (savedResponse[20].answer !== "Never")
 		drugScores = savedResponse.slice(21).reduce((accumulator, curValue) => {
 			return accumulator + curValue.score;
 		}, 0);
@@ -142,7 +141,7 @@ const Page = () => {
 										"&:hover": { color: "#fff", backgroundColor: "#7348cf" },
 									}}
 								>
-									Continue
+									End
 								</Button>
 							</a>
 						</Stack>
