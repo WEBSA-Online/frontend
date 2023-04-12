@@ -22,34 +22,38 @@ import Resources from "./components/pages/Resources";
 
 function App() {
 	setInterval(() => localStorage.clear(), 900000);
-	return (
-		<Router>
-			<Routes>
-				<Route element={<PrivateRoutes />}>
-					<Route path="/baseline" element={<Baseline />} />
-					<Route element={<CheckBaseline />}>
-						<Route element={<Dashboard />}>
-							<Route path="/" element={<Home />} exact />
-							<Route path="/practical-advice" element={<Practical />} exact />
-							<Route path="/resources" element={<Resources />} exact />
-							<Route path="/profile" element={<Personal />} exact />
-							<Route
-								path="/motivational-interviewing"
-								element={<MInterviewing />}
-								exact
-							/>
+	const previousPageUrl = document.referrer;
+	if (previousPageUrl === "https://websaonline.com/"){
+		localStorage.clear();
+	}
+		return (
+			<Router>
+				<Routes>
+					<Route element={<PrivateRoutes />}>
+						<Route path="/baseline" element={<Baseline />} />
+						<Route element={<CheckBaseline />}>
+							<Route element={<Dashboard />}>
+								<Route path="/" element={<Home />} exact />
+								<Route path="/practical-advice" element={<Practical />} exact />
+								<Route path="/resources" element={<Resources />} exact />
+								<Route path="/profile" element={<Personal />} exact />
+								<Route
+									path="/motivational-interviewing"
+									element={<MInterviewing />}
+									exact
+								/>
+							</Route>
 						</Route>
 					</Route>
-				</Route>
-				<Route path="/screening" element={<Layout />} />
-				<Route path="/baseline" element={<Layout />} />
-				<Route path="/consent" element={<Consent />} />
-				<Route path="/register" element={<Register />} />
+					<Route path="/screening" element={<Layout />} />
+					<Route path="/baseline" element={<Layout />} />
+					<Route path="/consent" element={<Consent />} />
+					<Route path="/register" element={<Register />} />
 
-				<Route path="/login" element={<Login />} />
-			</Routes>
-		</Router>
-	);
+					<Route path="/login" element={<Login />} />
+				</Routes>
+			</Router>
+		);
 }
 
 export default App;

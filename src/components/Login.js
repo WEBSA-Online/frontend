@@ -24,7 +24,15 @@ export default function Register() {
 	const [error, setError] = React.useState(false);
 	const [errorMsg, setErrorMsg] = React.useState(false);
 	const dispatch = useDispatch();
-	
+	const [isPageLoaded, setIsPageLoaded] = React.useState(false);
+
+	React.useEffect(() => {
+		setIsPageLoaded(true);	
+	}, []);
+
+	if(isPageLoaded) {
+		localStorage.clear();
+	}	
 
 	const handleSubmit = async () => {
 		dispatch(resetResponses());
