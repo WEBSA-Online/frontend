@@ -19,6 +19,8 @@ export default function UserMenu({ username }) {
 	};
 	const handleLogout = () => {
 		dispatch(updateToken(""));
+		navigate("/login");
+		localStorage.clear();
 	};
 
 	return (
@@ -49,7 +51,7 @@ export default function UserMenu({ username }) {
 					"aria-labelledby": "basic-button",
 				}}
 			>
-				<MenuItem onClick={() => navigate("/login")}>Logout</MenuItem>
+				<MenuItem onClick={handleLogout}>Logout</MenuItem>
 			</Menu>
 		</div>
 	);

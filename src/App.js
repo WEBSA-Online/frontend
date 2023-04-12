@@ -23,7 +23,8 @@ import Resources from "./components/pages/Resources";
 function App() {
 	setInterval(() => localStorage.clear(), 900000);
 	const previousPageUrl = document.referrer;
-	if (previousPageUrl === "https://websaonline.com/"){
+	console.log(previousPageUrl);
+	if(previousPageUrl === "https://websaonline.com/") {
 		localStorage.clear();
 	}
 		return (

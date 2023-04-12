@@ -86,7 +86,7 @@ export default function ProgressMobileStepper() {
 		if (page === 20 && pathname !== "/baseline") {
 			dispatch(handleSkipBack(9));
 		} else if (page === 31 && pathname !== "/baseline") {
-			dispatch(handleSkipBack(10));
+			dispatch(handleSkipBack(11));
 		} else {
 			dispatch(handleBack());
 		}
