@@ -26,6 +26,7 @@
     "formik": "^2.2.9",
     "i": "^0.3.7",
     "jwt-decode": "^3.1.2",
+    "lottie-react": "^2.4.0",
     "moment": "^2.29.4",
     "npm": "^9.2.0",
     "react": "^18.2.0",
@@ -64,5 +65,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.3.1"
   }
 }

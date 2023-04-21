@@ -1,27 +1,26 @@
 import * as React from "react";
-import { styled, useTheme } from "@mui/material/styles";
+import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import CssBaseline from "@mui/material/CssBaseline";
 import MuiAppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
-import List from "@mui/material/List";
-import Typography from "@mui/material/Typography";
-import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemText from "@mui/material/ListItemText";
-import { Outlet } from "react-router-dom";
-import { ThemeProvider } from "@mui/material/styles";
-import { websaTheme } from "../muiStyles";
-import UserAccount from "./utils/UserAccount";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "react-router-dom";
-import {	faXmark } from "@fortawesome/free-solid-svg-icons";
-import { useSelector } from "react-redux";
+import { Outlet, Link } from "react-router-dom";
 
+
+import UserAccount from "./utils/UserAccount";
+
+import { useSelector } from "react-redux";
+import Logo from "../images/websa-logo-updated.png"
 const drawerWidth = 280;
+
+export const pages = [
+	{ name: "Home", link: "/" },
+	{ name: "Motivational Interviewing", link: "/motivational-interviewing" },
+	{ name: "Profile", link: "/profile" },
+	{ name: "Practical Advice", link: "/practical-advice" },
+	{ name: "Resources", link: "/resources" },
+];
 
 const Main = styled("main", {shouldForwardProp: (prop) => prop !== "open" })(
 	({ theme, open }) => ({
@@ -83,23 +82,19 @@ export default function PersistentDrawerLeft() {
 		setOpen(false);
 	};
 
+	console.log(window.location.pathname)
 	return (
-		<ThemeProvider theme={websaTheme}>
-			<Box sx={{ display: "flex" }}>
-				<CssBaseline />
-				<AppBar
-					position="fixed"
-					open={open}
-					sx={{ backgroundColor: "#00a551", boxShadow: "none" }}
-				>
-					<Toolbar
-						sx={{
-							display: "flex",
-							alignItems: "center",
-							justifyContent: "space-between",
-						}}
-					>
-						{userDetails.selection === "control" ? null : (
+		<Box>
+			<CssBaseline />
+
+			<Toolbar
+				sx={{
+					display: "flex",
+					alignItems: "center",
+					justifyContent: "space-between",
+				}}
+			>
+				{/* {userDetails.selection === "control" ? null : (
 							<span
 								color="inherit"
 								aria-label="open drawer"
@@ -127,82 +122,36 @@ export default function PersistentDrawerLeft() {
 									Menu
 								</Typography>
 							</span>
-						)}
+						)} */}
 
-						<Typography
-							variant="h6"
-							noWrap
-							component="div"
-							sx={{ color: "#fff", fontWeight: "700" }}
-						>
-							Websa Online
-						</Typography>
-						<span>
-							<UserAccount />
-						</span>
-					</Toolbar>
-				</AppBar>
-				<Drawer
-					sx={{
-						width: drawerWidth,
-						flexShrink: 0,
-						"& .MuiDrawer-paper": {
-							width: drawerWidth,
-							boxSizing: "border-box",
-							backgroundColor: "#f7f7f7",
-						},
-					}}
-					variant="persistent"
-					anchor="left"
-					open={open}
-				>
-					<DrawerHeader>
-						<IconButton onClick={handleDrawerClose}>
-							<FontAwesomeIcon
-								icon={faXmark}
-								className="fontAwesomeIcons"
-								style={{ fontSize: "18px" }}
-							/>
-						</IconButton>
-					</DrawerHeader>
-					<List>
-						{[
-							{ name: "Profile", link: "/profile" },
-							{
-								name: "Motivational Interviewing",
-								link: "/motivational-interviewing",
-							},
-							{ name: "Practical Advice", link: "/practical-advice" },
-							{ name: "Resources", link: "/resources" },
-						].map((value, index) => (
-							<ListItem key={index} disablePadding>
-								<ListItemButton
-									sx={{
-										"&hover": {
-											backgroundColor: "green",
-										},
-									}}
-								>
-									<Link to={value.link}>
-										<ListItemText
-											sx={{
-												"&hover": {
-													color: "white",
-												},
-											}}
-											primary={value.name}
-										/>
-									</Link>
-								</ListItemButton>
-							</ListItem>
-						))}
-					</List>
-				</Drawer>
-				<Main open={open}>
-					<DrawerHeader />
+				<img src={Logo} alt="Websa logo" className="max-w-[57%]" />
+				<span>
+					<UserAccount />
+				</span>
+			</Toolbar>
+
+			<div
+				open={open}
+				className={`min-h-screen bg-websa-green w-full flex flex-col items-center py-[10%] md:py-[3%]`}
+			>
+				<div className="w-[90%] md:w-[80%]">
 					<Outlet />
-				</Main>
-			</Box>
-		</ThemeProvider>
+				</div>
+				<ul className="mt-6">
+					{pages.map((value) => {
+						return (
+							<li className="md:inline-block mb-4 md:mr-6 md:mb-0">
+								{" "}
+								<Link to={value.link}>
+									<span className="text-green-200 hover:text-white hover:underline">
+										{value.name}
+									</span>
+								</Link>
+							</li>
+						);
+					})}
+				</ul>
+			</div>
+		</Box>
 	);
 }

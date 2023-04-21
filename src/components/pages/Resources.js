@@ -2,17 +2,15 @@ import React from "react";
 
 export default function Home() {
 	return (
-		<div
-			style={{
-				display: "flex",
-				justifyContent: "center",
-				flexDirection: "column",
-			}}
-		>
-			<h2>Helpful Resources For you</h2>
-			<p style={{}}>
-				To be uploaded very soon
-			</p>
+		<div className="mt-6 divide-y">
+			<div className="bg-slate-200 p-6 rounded-t-lg">
+				<p className="font-websa-bold text-xl">Resources</p>
+			</div>
+			<div className="bg-white p-6">
+				<p>
+					Rescources to be uploaded soon
+				</p>
+			</div>
 		</div>
 	);
 }

@@ -5,6 +5,7 @@ import {
 	Navigate,
 } from "react-router-dom";
 import "./App.css";
+import "./index.css";
 import Layout from "./components/LayoutOne";
 import Register from "./components/Register";
 import Login from "./components/Login";
@@ -63,7 +64,6 @@ function App() {
 					<Route path="/baseline" element={<Layout />} />
 					<Route path="/consent" element={<Consent />} />
 					<Route path="/register" element={<Register />} />
-
 					<Route path="/login" element={<Login />} />
 				</Routes>
 			</Router>

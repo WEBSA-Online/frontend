@@ -73,7 +73,7 @@ ol > li {
 	color: white;
 }
 
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
 	width: 5px;
 	height: 3px;
 }
@@ -86,7 +86,7 @@ ol > li {
 ::-webkit-scrollbar-thumb {
 	background: #1565c0;
 	border-radius: 10px;
-}
+} */
 
 .timer-wrapper {
 	display: flex;

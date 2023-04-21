@@ -42,19 +42,26 @@ export default function UserMenu({ username }) {
 					aria-expanded={open ? "true" : undefined}
 					onClick={handleClick}
 				/> */}
-				<Typography sx={{ marginBottm: 0, display: { sm: "none", xs: "block" } }}>
-					<FontAwesomeIcon
-						icon={faRightFromBracket}
+				<div className="flex">
+					<p
+						className="mr-2 text-black md:text-base"
+					>
+						Logout
+					</p>
+					<Typography
 						sx={{
-							color: "white",
-							fontSize: "60px",
-							display: { xs: "block", sm: "none" },
+							color: "black",
+							marginBottm: 0,
 						}}
-					/>
-				</Typography>
-				<Typography sx={{ marginBottm: 0, display: { sm: "block", xs: "none" } }}>
-					Logout
-				</Typography>
+					>
+						<FontAwesomeIcon
+							icon={faRightFromBracket}
+							sx={{
+								fontSize: "60px",
+							}}
+						/>
+					</Typography>
+				</div>
 			</span>
 			<Menu
 				id="basic-menu"

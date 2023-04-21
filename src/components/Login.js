@@ -12,6 +12,8 @@ import {
 	getTimeOfLogin,
 } from "../redux/slices/authSlice";
 import { resetResponses, resetStep } from "../redux/slices/stepSlice";
+import Logo from "../images/websa-logo-updated.png"
+
 
 
 
@@ -104,11 +106,7 @@ export default function Register() {
 				>
 					<>
 						<span style={{ display: "flex", justifyContent: "center" }}>
-							<img
-								src="/images/websa-logo-updated.png"
-								alt="ucc-logo"
-								sx={{ margin: "0 auto" }}
-							/>
+							<img src={Logo} alt="ucc-logo" sx={{ margin: "0 auto" }} />
 						</span>
 						<TextField
 							margin="normal"
