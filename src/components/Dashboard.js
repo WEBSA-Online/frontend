@@ -132,7 +132,7 @@ export default function PersistentDrawerLeft() {
 
 			<div
 				open={open}
-				className={`min-h-screen bg-websa-green w-full flex flex-col items-center py-[10%] md:py-[3%]`}
+				className={`min-h-screen bg-websa-green w-full flex flex-col items-center py-[10%] md:py-[2%]`}
 			>
 				<div className="w-[90%] md:w-[80%]">
 					<Outlet />
