@@ -10,7 +10,7 @@ function Worksheet({title,link, status, index}) {
 						{title}
 					</p>
 					<div className="flex flex-wrap justify-center items-center mt-2">
-						<p className="text-slate-400 text-base mr-2">Worksheet {index+1}</p>
+						<p className="text-slate-400 text-sm mr-2">Worksheet {index+1}</p>
 						<Status status={status} />
 					</div>
 				</div>
