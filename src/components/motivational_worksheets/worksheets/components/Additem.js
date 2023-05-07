@@ -35,12 +35,12 @@ export default function Additem({ text, title }) {
 				<DialogContent className="px-2">
 					<InputForm type="text" placeholder="Enter change here" />
 					<RatingsForm rating={rating} setRating={setRating} />
+					<Stack direction="row" className="">
+						<Button method={handleClose} text="submit" variant="contained" />
+						<span className="mx-1"></span>
+						<Button method={handleClose} text="cancel" variant="outlined" />
+					</Stack>
 				</DialogContent>
-				<Stack direction="row" className="px-6 pb-4">
-					<Button method={handleClose} text="submit" variant="contained" />
-					<span className="mx-2"></span>
-					<Button method={handleClose} text="cancel" variant="outlined" />
-				</Stack>
 			</Dialog>
 		</div>
 	);
