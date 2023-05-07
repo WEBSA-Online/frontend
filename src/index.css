@@ -6,4 +6,7 @@
    .button {
       @apply font-websa-bold transition-all bg-websa-red hover:bg-websa-green p-2.5 rounded shadow-sm text-white font-bold text-sm 
    }
+   .button-small {
+      @apply font-websa-regular transition-all bg-websa-red hover:bg-websa-green p-2 rounded shadow-sm text-white font-bold text-xs 
+   }
 }

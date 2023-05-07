@@ -106,7 +106,7 @@ export default function Register() {
 				>
 					<>
 						<span style={{ display: "flex", justifyContent: "center" }}>
-							<img src={Logo} alt="ucc-logo" sx={{ margin: "0 auto" }} />
+							<img src={Logo} alt="websa-logo" sx={{ margin: "0 auto" }} />
 						</span>
 						<TextField
 							margin="normal"

@@ -6,11 +6,9 @@ import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { API_URL } from "../API";
 import { useSelector } from "react-redux";
-import { redirect } from "react-router-dom";
-import Logo from "../images/websa-logo-updated.png";
+import Logo from "../images/websa-logo-updated.png"; 
 
 export default function Register() {
-	const toolOneComplete = useSelector((state) => state.steps.toolOneComplete);
 	const savedResponse = useSelector((state) => state.steps.responses);
 	const navigate = useNavigate();
 	const [email, setEmail] = React.useState("");
@@ -23,11 +21,10 @@ export default function Register() {
 
 	console.log(API_URL);
 
-
 	const handleSubmit = async () => {
 		setLoading(true);
 		setError(false);
-		if(savedResponse[1] === undefined) {
+		if (savedResponse[1] === undefined) {
 			setLoading(false);
 			setError(true);
 			setErrorMsg("Looks like you haven't completed screening. Complete");
@@ -44,7 +41,6 @@ export default function Register() {
 					phone: savedResponse[10].answer,
 					password: passwordOne,
 					userData: savedResponse,
-					role:"participant",
 				});
 				setLoading(false);
 				setSuccess(true);

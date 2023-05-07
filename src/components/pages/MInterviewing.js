@@ -7,22 +7,18 @@ const miWorksheets = [
 	{
 		title: "Motivation to Change by Focusing on Outcomes",
 		status: false,
-		link: "#",
 	},
 	{
 		title: "Motivation to Change by Focusing on Advantages",
 		status: false,
-		link: "#",
 	},
 	{
 		title: "Change Encouraging Factors",
 		status: false,
-		link: "#",
 	},
 	{
 		title: "Decisional Balance Worksheet",
 		status: false,
-		link: "#",
 	},
 ];
 
@@ -51,7 +47,6 @@ export default function Home() {
 				return (
 					<WorksheetTile
 						title={value.title}
-						link={value.link}
 						index={index}
 						status={value.status}
 					/>

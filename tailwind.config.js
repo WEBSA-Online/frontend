@@ -9,7 +9,7 @@ module.exports = {
 			},
 			fontFamily: {
 				"websa-bold": ["Poppins-Bold"],
-				"websa-nromal": ["Poppins-Regular"],
+				"websa-regular": ["Poppins-Regular"],
 			},
 			animation: {
 				"ping-slow": "ping-slow 1s cubic-bezier(0, 0, 0.2, 1) infinite;",
