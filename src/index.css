@@ -9,4 +9,11 @@
    .button-small {
       @apply font-websa-regular transition-all bg-websa-red hover:bg-websa-green py-1.5 px-2 rounded shadow-sm text-white font-bold text-[10px] 
    }
+   .contained {
+      @apply mt-3 font-websa-bold transition-all bg-websa-red hover:bg-websa-green px-3 py-1 rounded shadow-sm text-white font-bold text-sm 
+   }
+
+   .outlined {
+      @apply mt-3 font-websa-regular transition-all border border-websa-red px-3 py-1 rounded shadow-sm text-websa-red font-bold text-sm 
+   }
 }

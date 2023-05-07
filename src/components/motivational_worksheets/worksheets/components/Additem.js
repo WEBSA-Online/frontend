@@ -1,16 +1,15 @@
 import * as React from "react";
-import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
-import DialogTitle from "@mui/material/DialogTitle";
-import ButtonAdd from "./ButtonAdd";
-import InputForm from "./InpurForm"
-import RatingsForm from "./ratings/AddRating"
+import {DialogTitle, Stack} from "@mui/material";
+import Button from "./buttons/Button";
+import ButtonAdd from "./buttons/ButtonAdd";
+import InputForm from "./InpurForm";
+import RatingsForm from "./ratings/AddRating";
 
-export default function Additem({text, title}) {
+export default function Additem({ text, title }) {
 	const [open, setOpen] = React.useState(false);
-   const [rating, setRating] = React.useState(2);
+	const [rating, setRating] = React.useState(2);
 
 	const handleClickOpen = () => {
 		setOpen(true);
@@ -35,14 +34,13 @@ export default function Additem({text, title}) {
 				</DialogTitle>
 				<DialogContent className="px-2">
 					<InputForm type="text" placeholder="Enter change here" />
-               <RatingsForm rating={rating} setRating={setRating} />
+					<RatingsForm rating={rating} setRating={setRating} />
 				</DialogContent>
-				<DialogActions>
-					<Button onClick={handleClose}>Cancel</Button>
-					<Button onClick={handleClose} autoFocus>
-						Submit
-					</Button>
-				</DialogActions>
+				<Stack direction="row" className="px-6 pb-4">
+					<Button method={handleClose} text="submit" variant="contained" />
+					<span className="mx-2"></span>
+					<Button method={handleClose} text="cancel" variant="outlined" />
+				</Stack>
 			</Dialog>
 		</div>
 	);
