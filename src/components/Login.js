@@ -38,8 +38,6 @@ export default function Register() {
 		dispatch(resetStep(0));
 	}
 
-	console.log(isPageLoaded)
-
 	const handleSubmit = async () => {
 		setLoading(true);
 		setError(false);

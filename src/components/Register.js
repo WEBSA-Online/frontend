@@ -21,9 +21,6 @@ export default function Register() {
 	const [error, setError] = React.useState(false);
 	const [errorMsg, setErrorMsg] = React.useState(false);
 
-	console.log(API_URL);
-
-
 	const handleSubmit = async () => {
 		setLoading(true);
 		setError(false);

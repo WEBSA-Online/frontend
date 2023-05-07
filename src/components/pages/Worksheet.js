@@ -3,7 +3,7 @@ import { useParams, useSearchParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-import WorksheetOne from "../motivational_worksheets/worksheets/One";
+import WorksheetOne from "../motivational_worksheets/worksheets/Worksheet1";
 
 export default function Worksheet() {
 	const [searchParams] = useSearchParams();
