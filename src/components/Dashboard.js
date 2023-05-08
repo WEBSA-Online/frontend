@@ -137,20 +137,22 @@ export default function PersistentDrawerLeft() {
 				<div className="w-[90%] md:w-[80%]">
 					<Outlet />
 				</div>
-				<ul className="mt-6">
-					{pages.map((value) => {
-						return (
-							<li className="md:inline-block mb-4 md:mr-6 md:mb-0">
-								{" "}
-								<Link to={value.link}>
-									<span className="text-green-200 hover:text-white hover:underline">
-										{value.name}
-									</span>
-								</Link>
-							</li>
-						);
-					})}
-				</ul>
+				{userDetails.selection === "control" ? null : (
+					<ul className="mt-6">
+						{pages.map((value) => {
+							return (
+								<li className="md:inline-block mb-4 md:mr-6 md:mb-0">
+									{" "}
+									<Link to={value.link}>
+										<span className="text-green-200 hover:text-white hover:underline">
+											{value.name}
+										</span>
+									</Link>
+								</li>
+							);
+						})}
+					</ul>
+				)}
 			</div>
 		</Box>
 	);

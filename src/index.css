@@ -14,6 +14,6 @@
    }
 
    .outlined {
-      @apply mt-3 font-websa-regular transition-all border border-websa-red px-3 py-1 rounded shadow-sm text-websa-red font-bold text-sm 
+      @apply mt-3 font-websa-regular transition-all border border-slate-300 px-3 py-1 hover:bg-slate-200 rounded shadow-sm text-websa-red font-bold text-sm 
    }
 }

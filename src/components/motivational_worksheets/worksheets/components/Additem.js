@@ -7,9 +7,11 @@ import ButtonAdd from "./buttons/ButtonAdd";
 import InputForm from "./InpurForm";
 import RatingsForm from "./ratings/AddRating";
 
-export default function Additem({ text, title }) {
+export default function Additem({text, title }) {
 	const [open, setOpen] = React.useState(false);
 	const [rating, setRating] = React.useState(2);
+	const [inputText, setInputText] = React.useState("");
+	let array = [];
 
 	const handleClickOpen = () => {
 		setOpen(true);
@@ -18,6 +20,15 @@ export default function Additem({ text, title }) {
 	const handleClose = () => {
 		setOpen(false);
 	};
+
+	const formData = {
+		text: inputText,
+		ratings: rating,
+	};
+
+	const submitdata =()=> {
+		
+	}
 
 	return (
 		<div>
@@ -35,7 +46,7 @@ export default function Additem({ text, title }) {
 				<DialogContent className="px-2">
 					<InputForm type="text" placeholder="Enter change here" />
 					<RatingsForm rating={rating} setRating={setRating} />
-					<Stack direction="row" className="">
+					<Stack direction="row" className="mt-3.5">
 						<Button method={handleClose} text="submit" variant="contained" />
 						<span className="mx-1"></span>
 						<Button method={handleClose} text="cancel" variant="outlined" />
