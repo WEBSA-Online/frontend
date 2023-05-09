@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from "react-router-dom";
-import Status from "../motivational_worksheets/Status";
+import Status from "./Status";
 
 
 function Worksheet({title,link, status, index}) {

@@ -9,6 +9,8 @@ export default function Home() {
 	const [data, setData] = React.useState("");
 	const userDetails = useSelector((state) => state.auth.userDetails);
 
+	console.log(userDetails);
+
 	const fetchUserdata = async () => {
 		try {
 			const response = await axios.get(`${API_URL}/user/`, {

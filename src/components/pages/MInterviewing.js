@@ -1,6 +1,7 @@
 import React from "react";
-import Progress from "../motivational_worksheets/CircularProgress";
-import WorksheetTile from "../motivational_worksheets/Worksheet";
+import Progress from "../motivational_worksheets/worksheets/components/CircularProgress";
+import WorksheetTile from "../motivational_worksheets/WorksheetTemp";
+import { useWorksheets } from "../motivational_worksheets/worksheets/hooks/APIdata";
 
 const miWorksheets = [
 	{ title: "Significance of Behavioral Change", status: false, link: "#" },
@@ -23,6 +24,21 @@ const miWorksheets = [
 ];
 
 export default function Home() {
+	const { data, loading, error } = useWorksheets();	
+
+	let tasks = 0;
+	const numOfWorksheets = 5
+
+	if (loading === false && error.status === false) {
+		
+	}
+
+	miWorksheets.forEach((value)=>{
+
+	})
+
+
+
 	return (
 		<div className="mt-6 divide-y">
 			<div className="bg-slate-200 p-5 rounded-t-lg flex flex-wrap items-center justify-center sm:justify-between">
@@ -34,22 +50,19 @@ export default function Home() {
 					<Progress
 						size={50}
 						strokeWidth={6}
-						percentage={0}
+						percentage={tasks}
 						fontSize="17px"
 						x="50%"
 						y="22%"
 						dy="20px"
 						color="green"
+						total={numOfWorksheets}
 					/>
 				</div>
 			</div>
 			{miWorksheets.map((value, index) => {
 				return (
-					<WorksheetTile
-						title={value.title}
-						index={index}
-						status={value.status}
-					/>
+					<WorksheetTile title={value.title} index={index} status={value.status} />
 				);
 			})}
 		</div>

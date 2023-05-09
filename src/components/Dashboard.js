@@ -134,11 +134,8 @@ export default function PersistentDrawerLeft() {
 				open={open}
 				className={`min-h-screen bg-websa-green w-full flex flex-col items-center py-[10%] md:py-[2%]`}
 			>
-				<div className="w-[90%] md:w-[80%]">
-					<Outlet />
-				</div>
 				{userDetails.selection === "control" ? null : (
-					<ul className="mt-6">
+					<ul className="mb-6">
 						{pages.map((value) => {
 							return (
 								<li className="md:inline-block mb-4 md:mr-6 md:mb-0">
@@ -153,6 +150,9 @@ export default function PersistentDrawerLeft() {
 						})}
 					</ul>
 				)}
+				<div className="w-[90%] md:w-[80%]">
+					<Outlet />
+				</div>
 			</div>
 		</Box>
 	);

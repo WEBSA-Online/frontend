@@ -8,7 +8,8 @@ const CircularProgress = ({
 	fontSize,
 	dy,
 	x,
-	y
+	y,
+	total
 }) => {
 	const [progress, setProgress] = useState(0);
 	useEffect(() => {
@@ -18,7 +19,7 @@ const CircularProgress = ({
 	const viewBox = `0 0 ${size} ${size}`;
 	const radius = (size - strokeWidth) / 2;
 	const circumference = radius * Math.PI * 2;
-	const dash = (progress * circumference) / 6;
+	const dash = (progress * circumference) / total;
 
 	return (
 		<svg width={size} height={size} viewBox={viewBox}>
@@ -50,7 +51,7 @@ const CircularProgress = ({
 				dy={dy}
 				textAnchor="middle"
 			>
-				{percentage === 0 ? `${percentage}/6` : percentage === 1 ? `${percentage}/6` : percentage === 2 ? `${percentage}/6` : percentage === 3 ? `${percentage}/6` : percentage === 4 ? `${percentage}/6` : percentage === 5 ? `${percentage}/6` : '6/6'}
+				{percentage === 0 ? `${percentage}/${total}` : percentage === 1 ? `${percentage}/${total}` : percentage === 2 ? `${percentage}/${total}` : percentage === 3 ? `${percentage}/${total}` : percentage === 4 ? `${percentage}/${total}` : percentage === 5 ? `${percentage}/${total}` : `${total}/${total}`}
 			</text>
 		</svg>
 	);

@@ -9,7 +9,6 @@ export default function Worksheet() {
 	const [searchParams] = useSearchParams();
 	const title = searchParams.get("title");
 	const { pageid } = useParams();
-	console.log(pageid);
 	return (
 		<>
 			<Link to="/motivational-interviewing">
@@ -24,7 +23,7 @@ export default function Worksheet() {
 				</div>
 			</div>
 			<div className="py-5 bg-white">
-				{pageid === "1" ? <WorksheetOne /> : null}
+				{pageid === "1" ? <WorksheetOne page={pageid} /> : null}
 			</div>
 		</>
 	);
