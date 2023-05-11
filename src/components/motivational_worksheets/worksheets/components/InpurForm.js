@@ -1,6 +1,6 @@
 import React from 'react'
 
-function InpurForm({ placeholder, text, setInputText, error}) {
+function InpurForm({ placeholder, text, setInputText, error, defaultValue}) {
 	return (
 		<input
 			className={`appearance-none  ${
@@ -9,6 +9,7 @@ function InpurForm({ placeholder, text, setInputText, error}) {
 			placeholder={placeholder}
 			type={text}
 			onChange={(e) => setInputText(e.target.value)}
+			defaultValue={defaultValue}
 		/>
 	);
 }

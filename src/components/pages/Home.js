@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { Box } from "@mui/material";
 import Lottie from "lottie-react";
 import groovyWalkAnimation from "../../lottie/waving-hand.json";
-import { pages } from "../Dashboard";
+
 
 export default function Home() {
 	const userDetails = useSelector((state) => state.auth.userDetails);
@@ -21,23 +21,29 @@ export default function Home() {
 			</div>
 
 			<div className="mt-6 divide-y">
-				<div className="bg-slate-200 p-6 rounded-t-lg">
-					<p className="font-medium text-lg">
-						Thank you for completing the 1st phase of the assessment.
+				{/* <div className="bg-slate-200 p-6 rounded-t-lg">
+					<p className="font-medium text-lg">We're glad you are here.</p>
+				</div> */}
+				<div className="bg-white p-6 rounded-t-lg">
+					<p className="font-medium text-base">
+						Thank you for taking the first step towards by completing the screening.
+						Your willingness to participate in this process shows that you are
+						committed to making positive changes in your life. We encourage you to
+						take a step further and complete the motivational steps to help you keep
+						track your progress.
 					</p>
+					<Link to="/motivational-interviewing">
+						<button className="mt-3 button-small">Motivate me</button>
+					</Link>
+					<p className="mt-3 font-medium text-base">
+						If you have any questions or concerns. We're here to help you every step
+						of the way, and we believe that with the right support and guidance, you
+						can overcome addiction and build a healthier, happier life.
+					</p>
+					<Link to="/contacts">
+						<button className="mt-3 button-small">Chat with a counsellor</button>
+					</Link>
 				</div>
-				{pages.slice(1).map((value)=>{
-					return (
-						<div className="bg-white p-6 flex flex-col sm:flex-row justify-center sm:justify-between items-center">
-							<p className="text-lg md:text-lg font-bold">
-								{value.name}
-							</p>
-							<Link to={value.link}>
-								<button className="mt-4 md:mt-0 button">Launch Here</button>
-							</Link>
-						</div>
-					);
-				})}
 			</div>
 		</>
 	);

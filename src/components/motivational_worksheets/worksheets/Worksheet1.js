@@ -11,7 +11,7 @@ import {
 import {useWorksheets} from "./hooks/APIdata";
 import Empty from "./components/Empty"
 import ActionPoint from "./components/ActionPoint"
-import Additem from "./components/Additem"
+import ActionModal from "./components/ActionModal"
 import Loader from "./components/utils/Loader"
 
 function Worksheet1({page}) {
@@ -50,7 +50,7 @@ function Worksheet1({page}) {
 						<p className="text-sm text-black font-websa-bold">My Enlisted Changes</p>
 						{(loading === false && error.status === false && items.length === 0) ||
 						error.status === true ? null : (
-							<Additem buttonText="Add item" title="Add Item" items={items} />
+							<ActionModal formValue="" type="add" buttonText="Add item" title="Add Item" items={items} />
 						)}
 					</div>
 
@@ -75,7 +75,9 @@ function Worksheet1({page}) {
 								return (
 									<Grid key={index} container spacing={0} className="py-3 px-4">
 										<Grid xs={12} sm={9}>
-											<p className="text-base">{index+1}. {value.text}</p>
+											<p className="text-base">
+												{index + 1}. {value.text}
+											</p>
 											<DisplayStars rating={value.ratings} />
 										</Grid>
 										<Grid
@@ -83,18 +85,21 @@ function Worksheet1({page}) {
 											sm={3}
 											className="flex justify-start sm:justify-end pt-4 mt-3 sm:mt-2"
 										>
-											<Tooltip title="Edit">
-												<FontAwesomeIcon
-													icon={faPencil}
-													className="mr-3 text-zinc-700 hover:text-orange-500 text-sm sm:text-sm cursor-pointer"
-												/>
-											</Tooltip>
-											<Tooltip title="Delete item">
-												<FontAwesomeIcon
-													icon={faTrash}
-													className="mr-3 text-zinc-700 hover:text-red-700 text-sm sm:text-sm cursor-pointer"
-												/>
-											</Tooltip>
+											{index}
+											<ActionModal
+												formValue={value}
+												type="edit"
+												title="Edit Item"
+												items={items}
+												index={index}
+											/>
+											<ActionModal
+												formValue={value}
+												type="delete"
+												title="Delete Item"
+												items={items}
+												index={index}
+											/>
 										</Grid>
 									</Grid>
 								);

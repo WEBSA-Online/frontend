@@ -1,7 +1,7 @@
 import * as React from "react";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
-import { DialogTitle, Stack } from "@mui/material";
+import { DialogTitle, Stack, Tooltip} from "@mui/material";
 import Button from "./buttons/Button";
 import ButtonAdd from "./buttons/ButtonAdd";
 import InputForm from "./InpurForm";
@@ -10,10 +10,15 @@ import { useSubmit } from "../hooks/APIdata";
 import Loader from "./utils/Loader";
 import ShowError from "./utils/ErrorMsg";
 import ShowSuccess from "./utils/SuccessMSG";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+	faPencil,
+	faTrash,
+} from "@fortawesome/free-solid-svg-icons";
 
-export default function Additem({ buttonText, title, items}) {
+export default function Additem({buttonText, title, items, type, formValue, formNum, index}) {
 	const [open, setOpen] = React.useState(false);
-	const [rating, setRating] = React.useState(5);
+	const [rating, setRating] = React.useState(formValue==="" ? 5 : formValue.ratings);
 	const [inputText, setInputText] = React.useState("");
 	const [formError, setFormError] = React.useState({ status: false, msg: "" });
 
@@ -38,10 +43,17 @@ export default function Additem({ buttonText, title, items}) {
 	};
 
 	const handleSubmit = () => {
-		if (inputText === "") {
+		if (inputText === "" && type !=="delete") {
 			setFormError({ status: true, msg: "Cannot submit empty input" });
 		} else {
-			items.push(formData);
+			if(type==="add") {
+				items.push(formData);
+			} else if(type==="edit") {
+				items.splice(index, 1);
+				items.splice(index, 0, formData);
+			} else if(type==="delete") {
+				items.splice(index, 1);
+			}			
 			const newData = {
 				worksheet_1: items,
 			};
@@ -53,16 +65,37 @@ export default function Additem({ buttonText, title, items}) {
 		}
 	};
 
+	
+
 	return (
 		<div>
-			<ButtonAdd text={buttonText} method={handleClickOpen} />
+			{type === "add" ? (
+				<ButtonAdd text={buttonText} method={handleClickOpen} />
+			) : type === "edit" ? (
+				<Tooltip title="Edit">
+					<FontAwesomeIcon
+						icon={faPencil}
+						className="mr-3 text-zinc-700 hover:text-orange-500 text-sm sm:text-sm cursor-pointer"
+						onClick={handleClickOpen}
+					/>
+				</Tooltip>
+			) : (
+				<Tooltip title="Delete item">
+					<FontAwesomeIcon
+						icon={faTrash}
+						className="mr-3 text-zinc-700 hover:text-red-700 text-sm sm:text-sm cursor-pointer"
+						onClick={handleClickOpen}
+					/>
+				</Tooltip>
+			)}
+
 			<Dialog
 				open={open}
 				onClose={handleClose}
 				aria-labelledby="alert-dialog-title"
 				aria-describedby="alert-dialog-description"
 			>
-				<div className="w-[90%] sm:w-[500px]"></div>
+				<div className="sm:w-[500px]"></div>
 
 				{loading === true ? (
 					<Loader
@@ -79,6 +112,7 @@ export default function Additem({ buttonText, title, items}) {
 									divclass="rounded mb-3 flex w-full items-center py-1 px-4 bg-green-600"
 									ErrMsg={error.status === true ? error.msg : formError.msg}
 									method={error.status === true ? closeAPIerror : closeError}
+									type={type}
 								/>
 							) : null}
 
@@ -93,19 +127,33 @@ export default function Additem({ buttonText, title, items}) {
 							) : null}
 							<h1>{title}</h1>
 						</DialogTitle>
-						<DialogContent className="px-2">
-							<InputForm
-								type="text"
-								placeholder="Enter change here"
-								setInputText={setInputText}
-								error={error.status === true ? error.status : formError.status}
-							/>
-							<RatingsForm rating={rating} setRating={setRating} />
-							<Stack direction="row" className="mt-4">
-								<Button method={handleSubmit} text="Submit" variant="contained" />
-								<span className="mx-1"></span>
-								<Button method={handleClose} text="Cancel" variant="outlined" />
-							</Stack>
+						<DialogContent>
+							{type === "delete" ? (
+								<>
+									<p>Are you sure you want to delete this item?</p>
+									<Stack direction="row" className="mt-4">
+										<Button method={handleSubmit} text="Delete" variant="contained" />
+										<span className="mx-1"></span>
+										<Button method={handleClose} text="Cancel" variant="outlined" />
+									</Stack>
+								</>
+							) : (
+								<>
+									<InputForm
+										type="text"
+										placeholder="Enter change here"
+										setInputText={setInputText}
+										error={error.status === true ? error.status : formError.status}
+										defaultValue={formValue.text}
+									/>
+									<RatingsForm rating={rating} setRating={setRating} />
+									<Stack direction="row" className="mt-4">
+										<Button method={handleSubmit} text="Submit" variant="contained" />
+										<span className="mx-1"></span>
+										<Button method={handleClose} text="Cancel" variant="outlined" />
+									</Stack>
+								</>
+							)}
 						</DialogContent>
 					</>
 				)}

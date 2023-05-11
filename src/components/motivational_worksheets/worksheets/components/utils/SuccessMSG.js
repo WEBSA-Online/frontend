@@ -2,11 +2,17 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 
-function SuccessMsg({ divclass, iconclass, textclass, ErrMsg, method }) {
+function SuccessMsg({ divclass, iconclass, textclass, type }) {
 	return (
 		<div className={divclass}>
 			<FontAwesomeIcon icon={faCircleCheck} className={iconclass} />
-			<p className={textclass}>Data successfully submitted</p>
+			{type === "add" ? (
+				<p className={textclass}>Data successfully submitted</p>
+			) : type === "edit" ? (
+				<p className={textclass}>Data edited successfully : </p>
+			) : (
+				<p className={textclass}>Data deleted successfully</p>
+			)}
 		</div>
 	);
 }

@@ -20,6 +20,7 @@ import MInterviewing from "./components/pages/MInterviewing";
 import Personal from "./components/pages/Personal";
 import Resources from "./components/pages/Resources";
 import Worksheet from "./components/pages/Worksheet";
+import Counsellors from "./components/pages/Counsellors"
 import { useDispatch } from "react-redux";
 import { resetResponses, resetStep } from "./redux/slices/stepSlice";
 import React from "react";
@@ -52,6 +53,7 @@ function App() {
 								<Route path="/" element={<Home />} exact />
 								<Route path="/practical-advice" element={<Practical />} exact />
 								<Route path="/resources" element={<Resources />} exact />
+								<Route path="/contacts" element={<Counsellors />} exact />
 								<Route path="/profile" element={<Personal />} exact />
 								<Route path="/motivational-interviewing" element={<MInterviewing />} />
 								<Route path="/worksheet/:pageid" element={<Worksheet />} />
