@@ -1,43 +1,64 @@
 import React from "react";
 import Progress from "../motivational_worksheets/worksheets/components/CircularProgress";
-import WorksheetTile from "../motivational_worksheets/WorksheetTemp";
+import WorksheetTile from "../motivational_worksheets/WorksheetTile";
 import { useWorksheets } from "../motivational_worksheets/worksheets/hooks/APIdata";
 
 const miWorksheets = [
-	{ title: "Significance of Behavioral Change", status: false, link: "#" },
+	{
+		title: "Significance of Behavioral Change",
+		status: false,
+		sheet: "worksheet_1",
+	},
 	{
 		title: "Motivation to Change by Focusing on Outcomes",
 		status: false,
+		sheet: "worksheet_2",
 	},
 	{
 		title: "Motivation to Change by Focusing on Advantages",
 		status: false,
+		sheet: "worksheet_3",
 	},
 	{
 		title: "Change Encouraging Factors",
 		status: false,
+		sheet: "worksheet_4",
 	},
 	{
 		title: "Decisional Balance Worksheet",
 		status: false,
+		sheet: "worksheet_5",
 	},
 ];
 
 export default function Home() {
-	const { data, loading, error } = useWorksheets();	
+	const { data, loading, error } = useWorksheets();
 
 	let tasks = 0;
-	const numOfWorksheets = 5
+	const numOfWorksheets = 5;
 
 	if (loading === false && error.status === false) {
-		
+		if (data.worksheet_1.length > 0){
+			tasks++;
+			miWorksheets[0].status = true
+		}
+		if (data.worksheet_2.length > 0) {
+			tasks++;
+			miWorksheets[1].status = true;
+		}
+		if (data.worksheet_3.length > 0){
+			tasks++;
+			miWorksheets[2].status = true;
+		}
+		if (data.worksheet_5.length > 0) {
+			tasks++;
+			miWorksheets[3].status = true;
+		}
+		if (data.worksheet_6.length > 0){
+			tasks++;
+			miWorksheets[4].status = true;
+		}
 	}
-
-	miWorksheets.forEach((value)=>{
-
-	})
-
-
 
 	return (
 		<div className="mt-6 divide-y">

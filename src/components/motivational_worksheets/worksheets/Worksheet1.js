@@ -1,32 +1,25 @@
 import React from "react";
-import { Stack, Tooltip } from "@mui/material";
+import { Stack } from "@mui/material";
 import DisplayStars from "./components/ratings/ReadOnly";
 import Grid from "@mui/material/Unstable_Grid2";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-	faPencil,
-	faTrash,
-	faTriangleExclamation,
-} from "@fortawesome/free-solid-svg-icons";
-import {useWorksheets} from "./hooks/APIdata";
-import Empty from "./components/Empty"
-import ActionPoint from "./components/ActionPoint"
-import ActionModal from "./components/ActionModal"
-import Loader from "./components/utils/Loader"
+import { faTriangleExclamation } from "@fortawesome/free-solid-svg-icons";
+import { useWorksheets } from "./hooks/APIdata";
+import Empty from "./components/Empty";
+import ActionPoint from "./components/ActionPoint";
+import ActionModal from "./components/ActionModal";
+import Loader from "./components/utils/Loader";
 
-function Worksheet1({page}) {
-
+function Worksheet1({ page }) {
 	const { data, loading, error } = useWorksheets();
 
-	let items = []
+	let items = [];
 
-
-	if(loading === false && error.status===false) {
+	if (loading === false && error.status === false) {
 		items = data.worksheet_1.filter((value) => {
 			return value;
 		});
 	}
-
 
 	return (
 		<>
@@ -50,7 +43,13 @@ function Worksheet1({page}) {
 						<p className="text-sm text-black font-websa-bold">My Enlisted Changes</p>
 						{(loading === false && error.status === false && items.length === 0) ||
 						error.status === true ? null : (
-							<ActionModal formValue="" type="add" buttonText="Add item" title="Add Item" items={items} />
+							<ActionModal
+								formValue=""
+								type="add"
+								buttonText="Add item"
+								title="Add Item"
+								items={items}
+							/>
 						)}
 					</div>
 
@@ -85,7 +84,6 @@ function Worksheet1({page}) {
 											sm={3}
 											className="flex justify-start sm:justify-end pt-4 mt-3 sm:mt-2"
 										>
-											{index}
 											<ActionModal
 												formValue={value}
 												type="edit"
