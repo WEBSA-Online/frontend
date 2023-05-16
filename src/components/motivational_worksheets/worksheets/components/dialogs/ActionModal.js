@@ -1,24 +1,31 @@
 import * as React from "react";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
-import { DialogTitle, Stack, Tooltip} from "@mui/material";
-import Button from "./buttons/Button";
-import ButtonAdd from "./buttons/ButtonAdd";
-import InputForm from "./InpurForm";
-import RatingsForm from "./ratings/AddRating";
-import { useSubmit } from "../hooks/APIdata";
-import Loader from "./utils/Loader";
-import ShowError from "./utils/ErrorMsg";
-import ShowSuccess from "./utils/SuccessMSG";
+import { DialogTitle, Stack, Tooltip } from "@mui/material";
+import Button from "../buttons/Button";
+import ButtonAdd from "../buttons/ButtonAdd";
+import InputForm from "../InpurForm";
+import RatingsForm from "../ratings/AddRating";
+import { useSubmit } from "../../hooks/APIdata";
+import Loader from "../utils/Loader";
+import ShowError from "../utils/ErrorMsg";
+import ShowSuccess from "../utils/SuccessMSG";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-	faPencil,
-	faTrash,
-} from "@fortawesome/free-solid-svg-icons";
+import { faPencil, faTrash } from "@fortawesome/free-solid-svg-icons";
 
-export default function Additem({buttonText, title, items, type, formValue, formNum, index}) {
+export default function Additem({
+	buttonText,
+	title,
+	items,
+	type,
+	formValue,
+	formNum,
+	index,
+}) {
 	const [open, setOpen] = React.useState(false);
-	const [rating, setRating] = React.useState(formValue==="" ? 5 : formValue.ratings);
+	const [rating, setRating] = React.useState(
+		formValue === "" ? 5 : formValue.ratings
+	);
 	const [inputText, setInputText] = React.useState("");
 	const [formError, setFormError] = React.useState({ status: false, msg: "" });
 
@@ -43,17 +50,17 @@ export default function Additem({buttonText, title, items, type, formValue, form
 	};
 
 	const handleSubmit = () => {
-		if (inputText === "" && type !=="delete") {
+		if (inputText === "" && type !== "delete") {
 			setFormError({ status: true, msg: "Cannot submit empty input" });
 		} else {
-			if(type==="add") {
+			if (type === "add") {
 				items.push(formData);
-			} else if(type==="edit") {
+			} else if (type === "edit") {
 				items.splice(index, 1);
 				items.splice(index, 0, formData);
-			} else if(type==="delete") {
+			} else if (type === "delete") {
 				items.splice(index, 1);
-			}			
+			}
 			const newData = {
 				worksheet_1: items,
 			};
@@ -64,8 +71,6 @@ export default function Additem({buttonText, title, items, type, formValue, form
 			}, 3000);
 		}
 	};
-
-	
 
 	return (
 		<div>

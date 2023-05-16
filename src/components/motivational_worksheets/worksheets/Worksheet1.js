@@ -5,9 +5,9 @@ import Grid from "@mui/material/Unstable_Grid2";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTriangleExclamation } from "@fortawesome/free-solid-svg-icons";
 import { useWorksheets } from "./hooks/APIdata";
-import Empty from "./components/Empty";
+import Empty from "./components/empty/Empty";
 import ActionPoint from "./components/ActionPoint";
-import ActionModal from "./components/ActionModal";
+import ActionModal from "./components/dialogs/ActionModal2";
 import Loader from "./components/utils/Loader";
 
 function Worksheet1({ page }) {
