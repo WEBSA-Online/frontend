@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Status from "./Status";
 
 
-function Worksheet({title,link, status, index}) {
+function Worksheet({title, status, index}) {
 
 	const url = `/worksheet/${index+1}/?title=${title}`
 	

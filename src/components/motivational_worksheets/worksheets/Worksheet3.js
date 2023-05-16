@@ -9,18 +9,18 @@ import {
 	faFaceFrown,
 } from "@fortawesome/free-solid-svg-icons";
 import { useWorksheets } from "./hooks/APIdata";
-import Empty from "./components/empty/Empty2";
+import Empty from "./components/empty/Empty3";
 import ActionPoint from "./components/ActionPoint";
-import ActionModal from "./components/dialogs/ActionModal2";
+import ActionModal from "./components/dialogs/ActionModal3";
 import Loader from "./components/utils/Loader";
 
-function Worksheet2({ page }) {
+function Worksheet3({ page }) {
 	const { data, loading, error } = useWorksheets();
 
 	let items = [];
 
 	if (loading === false && error.status === false) {
-		items = data.worksheet_2.filter((value) => {
+		items = data.worksheet_3.filter((value) => {
 			return value;
 		});
 	}
@@ -29,20 +29,23 @@ function Worksheet2({ page }) {
 		<>
 			<Stack className="px-5" spacing={2}>
 				<p className="text-base">
-					In this section, lets focus on outcomes for changes we wish to have in our
-					lives. These outcomes may be good or they may feel like a sacrifice such as
-					the loss of some friends. The outcomes are immediate consequences of your
-					change.
+					While outcomes consist of immediate consequences ( positive and/ or
+					negative), the benefits comprise of long-lived advantages or benefits of a
+					particular behavioral change. In this section we request you to list all
+					advantages or benefits of the changes you have mentioned. The terms
+					outcomes and benefits may seem much similar to each other but a slight
+					difference can be noticed between them.
 				</p>
 				<p className="text-base">
-					Given all the information we have given you, what you already know or what
-					you read about alcohol and drug use, what comes to your mind as immediate
-					positive outcomes of change. Mention the changes you want to see in
-					yourself (can repeat those already mentioned above) and state the expected
-					outcome for each change. What is likely to happen shortly after making
-					these bold changes?
+					For example, an individual who is a smoker, strives to quit smoking because
+					it is not a healthy thing.
 				</p>
-				<ActionPoint text="Mention the changes you want to see in yourself. Then list down what are the expected outcomes of each change. The outcomes may be positive or negative. " />
+				<p className="text-base">
+					The outcome of quitting smoking would be that he will stop an unhealthy
+					habit whereas the benefit will be the relief he gets from quitting smoking,
+					the wealth created from increased savings, the more healthy life and more.
+				</p>
+				<ActionPoint text="List the changes you wish to see in you and the benefits of those changes in your life." />
 			</Stack>
 			<div class="mt-5 flex justify-center">
 				<div className="w-[95%]">
@@ -81,13 +84,13 @@ function Worksheet2({ page }) {
 								return (
 									<Grid key={index} container spacing={0} className="py-3 px-4">
 										<Grid xs={12} sm={10}>
-											<Stack spacing={2} className="divide-y">
+											<div className="divide-y">
 												<p className="text-base pt-1">
 													<strong>
 														{" "}
 														<FontAwesomeIcon
 															icon={faArrowRightArrowLeft}
-															className="mr-2 text-websa-red text-sm sm:text-sm cursor-pointer"
+															className="mr-2 text-websa-red text-sm"
 														/>
 														Change:
 													</strong>{" "}
@@ -99,25 +102,13 @@ function Worksheet2({ page }) {
 														{" "}
 														<FontAwesomeIcon
 															icon={faFaceSmile}
-															className="mr-2 text-websa-red text-sm sm:text-sm cursor-pointer"
+															className="mr-2 text-websa-red text-sm"
 														/>
 														Postive:
 													</strong>{" "}
-													{value.positive}
+													{value.benefit}
 												</p>
-
-												<p className="text-base pt-1">
-													<strong>
-														{" "}
-														<FontAwesomeIcon
-															icon={faFaceFrown}
-															className="mr-2 text-websa-red text-sm sm:text-sm cursor-pointer"
-														/>
-														Negative
-													</strong>{" "}
-													{value.negative}
-												</p>
-											</Stack>
+											</div>
 										</Grid>
 										<Grid
 											xs={12}
@@ -150,4 +141,4 @@ function Worksheet2({ page }) {
 	);
 }
 
-export default Worksheet2;
+export default Worksheet3;

@@ -5,6 +5,7 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import WorksheetOne from "../motivational_worksheets/worksheets/Worksheet1";
 import WorksheetTwo from "../motivational_worksheets/worksheets/Worksheet2";
+import WorksheetThree from "../motivational_worksheets/worksheets/Worksheet3";
 
 export default function Worksheet() {
 	const [searchParams] = useSearchParams();
@@ -24,7 +25,7 @@ export default function Worksheet() {
 				</div>
 			</div>
 			<div className="py-5 bg-white">
-				{pageid === "1" ? <WorksheetOne page={pageid} /> : pageid === "2" ? <WorksheetTwo /> : null}
+				{pageid === "1" ? <WorksheetOne page={pageid} /> : pageid === "2" ? <WorksheetTwo /> : pageid === "3" ? <WorksheetThree /> : null}
 			</div>
 		</>
 	);

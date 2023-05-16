@@ -25,11 +25,8 @@ export default function Additem({
 	const [inputChange, setChange] = React.useState(
 		formValue.change === "" ? "" : formValue.change
 	);
-	const [positive, setPositive] = React.useState(
-		formValue.positive === "" ? "" : formValue.positive
-	);
-	const [negative, setNegative] = React.useState(
-		formValue.negative === "" ? "" : formValue.negative
+	const [benefit, setBenefit] = React.useState(
+		formValue.benefit === "" ? "" : formValue.benefit
 	);
 	const [formError, setFormError] = React.useState({ status: false, msg: "" });
 
@@ -38,8 +35,7 @@ export default function Additem({
 
 	const formData = {
 		change: inputChange,
-		positive:positive,
-		negative:negative,
+		benefit: benefit,
 	};
 
 	const handleClickOpen = () => {
@@ -56,8 +52,8 @@ export default function Additem({
 
 	const handleSubmit = () => {
 		if (
-			(inputChange === "" || positive === "" || negative === "") &&
-			(type !== "delete" || type !== "edit")
+			(inputChange === "" || benefit === "") &&
+			(type !== "edit" || type !== "delete")
 		) {
 			setFormError({ status: true, msg: "Cannot submit empty input" });
 		} else {
@@ -70,7 +66,7 @@ export default function Additem({
 				items.splice(index, 1);
 			}
 			const newData = {
-				worksheet_2: items,
+				worksheet_3: items,
 			};
 			submitData(newData);
 			setTimeout(() => {
@@ -109,7 +105,6 @@ export default function Additem({
 				aria-describedby="alert-dialog-description"
 			>
 				<div className="sm:w-[500px]"></div>
-
 				{loading === true ? (
 					<Loader
 						iconclass="animate-spin mr-3 text-websa-red text-5xl cursor-pointer"
@@ -155,24 +150,17 @@ export default function Additem({
 									<Stack spacing={2}>
 										<InputForm
 											type="text"
-											placeholder="Enter change here"
+											placeholder="Enter change e.g stopping passing at the bar daily"
 											setInputText={setChange}
 											error={error.status === true ? error.status : formError.status}
 											defaultValue={formValue.change}
 										/>
 										<InputForm
 											type="text"
-											placeholder="Enter positive outcome"
-											setInputText={setPositive}
+											placeholder="Enter benefit e.g improved productivity, wealth created"
+											setInputText={setBenefit}
 											error={error.status === true ? error.status : formError.status}
-											defaultValue={formValue.positive}
-										/>
-										<InputForm
-											type="text"
-											placeholder="Enter negative outcome"
-											setInputText={setNegative}
-											error={error.status === true ? error.status : formError.status}
-											defaultValue={formValue.negative}
+											defaultValue={formValue.benefit}
 										/>
 									</Stack>
 									<Stack direction="row" className="mt-4">

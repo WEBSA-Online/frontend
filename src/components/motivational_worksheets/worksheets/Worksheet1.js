@@ -43,13 +43,15 @@ function Worksheet1({ page }) {
 						<p className="text-sm text-black font-websa-bold">My Enlisted Changes</p>
 						{(loading === false && error.status === false && items.length === 0) ||
 						error.status === true ? null : (
-							<ActionModal
-								formValue=""
-								type="add"
-								buttonText="Add item"
-								title="Add Item"
-								items={items}
-							/>
+						
+								<ActionModal
+									formValue=""
+									type="add"
+									buttonText="Add item"
+									title="Add Item"
+									items={items}
+								/>
+	
 						)}
 					</div>
 

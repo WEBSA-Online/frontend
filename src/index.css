@@ -7,7 +7,7 @@
       @apply font-websa-bold transition-all bg-websa-red hover:bg-websa-green p-2.5 rounded shadow-sm text-white font-bold text-sm 
    }
    .button-small {
-      @apply font-websa-regular transition-all bg-websa-red hover:bg-websa-green py-2 px-2 rounded shadow-sm text-white font-bold text-sm md:text-xs 
+      @apply w-[100px] sm:w-auto font-websa-regular transition-all bg-websa-red hover:bg-websa-green py-2 px-2 rounded shadow-sm text-white font-bold text-xs
    }
    .contained {
       @apply font-websa-bold transition-all bg-websa-red hover:bg-websa-green px-3 py-1 rounded shadow-sm text-white font-bold text-sm 

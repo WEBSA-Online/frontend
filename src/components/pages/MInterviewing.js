@@ -37,10 +37,12 @@ export default function Home() {
 	let tasks = 0;
 	const numOfWorksheets = 5;
 
+	
+
 	if (loading === false && error.status === false) {
 		if (data.worksheet_1.length > 0){
 			tasks++;
-			miWorksheets[0].status = true
+			miWorksheets[0].status = true;
 		}
 		if (data.worksheet_2.length > 0) {
 			tasks++;
