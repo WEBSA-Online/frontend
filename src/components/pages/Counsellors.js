@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Stack } from "@mui/material";
+import Grid from "@mui/material/Unstable_Grid2";
 
 const counsellors = [
 	{ name: "Okidi Richard Owor", number: "0784062395", whatsapp: "256784062395" },
@@ -22,21 +23,25 @@ export default function Home() {
 
 			<Stack spacing={2} className="bg-white p-6">
 				<p>Tap on any contact to get in touch with any counsellor</p>
+				
+
 				{counsellors.map((value, index) => {
 					return (
-						<div key={index} className="flex w-full justify-between">
-							<p>{value.name}</p>
-							<div className="flex">
-								<p className="mr-2">{value.number}</p>
+						<Grid container>
+							<Grid xs={12} sm={6} className="mb-1 sm:mb-0">
+								<p className="text-lg font-websa-bold">{value.name}</p>
+								<p className="text-base">{value.number}</p>
+							</Grid>
+							<Grid xs={12} sm={6} className="sm:flex sm:justify-end">
 								<a
 									href={`https://wa.me/${value.whatsapp}`}
 									target="_blank"
 									rel="noreferrer"
 								>
-									<button className="button-small">Chat on whatsapp</button>
+									<button className="button-small w-full">Chat on whatsapp</button>
 								</a>
-							</div>
-						</div>
+							</Grid>
+						</Grid>
 					);
 				})}
 			</Stack>

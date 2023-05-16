@@ -6,7 +6,6 @@ import {
 	faTriangleExclamation,
 	faFaceSmile,
 	faArrowRightArrowLeft,
-	faFaceFrown,
 } from "@fortawesome/free-solid-svg-icons";
 import { useWorksheets } from "./hooks/APIdata";
 import Empty from "./components/empty/Empty3";
