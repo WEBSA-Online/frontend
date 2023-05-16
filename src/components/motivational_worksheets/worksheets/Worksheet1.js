@@ -7,7 +7,7 @@ import { faTriangleExclamation } from "@fortawesome/free-solid-svg-icons";
 import { useWorksheets } from "./hooks/APIdata";
 import Empty from "./components/empty/Empty";
 import ActionPoint from "./components/ActionPoint";
-import ActionModal from "./components/dialogs/ActionModal2";
+import ActionModal from "./components/dialogs/ActionModal";
 import Loader from "./components/utils/Loader";
 
 function Worksheet1({ page }) {
