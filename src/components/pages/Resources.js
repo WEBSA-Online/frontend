@@ -8,7 +8,7 @@ export default function Home() {
 			</div>
 			<div className="bg-white p-6">
 				<p>
-					Rescources to be uploaded soon
+					Resources to be uploaded soon
 				</p>
 			</div>
 		</div>
