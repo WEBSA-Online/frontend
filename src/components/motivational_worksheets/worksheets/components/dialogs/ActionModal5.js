@@ -38,8 +38,8 @@ export default function Additem({
 
 	const formData = {
 		change: inputChange,
-		positive:positive,
-		negative:negative,
+		positive: positive,
+		negative: negative,
 	};
 
 	const handleClickOpen = () => {
@@ -70,7 +70,7 @@ export default function Additem({
 				items.splice(index, 1);
 			}
 			const newData = {
-				worksheet_2: items,
+				worksheet_6: items,
 			};
 			submitData(newData);
 			setTimeout(() => {

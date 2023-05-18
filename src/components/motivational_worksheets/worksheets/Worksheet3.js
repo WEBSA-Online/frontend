@@ -23,7 +23,6 @@ function Worksheet3({ page }) {
 			return value;
 		});
 	}
-
 	return (
 		<>
 			<Stack className="px-5" spacing={2}>
@@ -78,7 +77,7 @@ function Worksheet3({ page }) {
 					) : items.length === 0 ? (
 						<Empty text="Add item" items={items} />
 					) : (
-						<div className="divide-y border">
+						<div className="divide-y-2 divide-teal-400 divide-dashed border">
 							{items.map((value, index) => {
 								return (
 									<Grid key={index} container spacing={0} className="py-3 px-4">

@@ -43,15 +43,13 @@ function Worksheet1({ page }) {
 						<p className="text-sm text-black font-websa-bold">My Enlisted Changes</p>
 						{(loading === false && error.status === false && items.length === 0) ||
 						error.status === true ? null : (
-						
-								<ActionModal
-									formValue=""
-									type="add"
-									buttonText="Add item"
-									title="Add Item"
-									items={items}
-								/>
-	
+							<ActionModal
+								formValue=""
+								type="add"
+								buttonText="Add item"
+								title="Add Item"
+								items={items}
+							/>
 						)}
 					</div>
 
@@ -71,7 +69,7 @@ function Worksheet1({ page }) {
 					) : items.length === 0 ? (
 						<Empty text="Add item" items={items} />
 					) : (
-						<div className="divide-y border">
+						<div className="divide-y divide-dashed border">
 							{items.map((value, index) => {
 								return (
 									<Grid key={index} container spacing={0} className="py-3 px-4">

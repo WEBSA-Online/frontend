@@ -72,7 +72,7 @@ export default function Additem({
 			setTimeout(() => {
 				closeSuccessMsg();
 				handleClose();
-			}, 3000);
+			}, 2000);
 		}
 	};
 

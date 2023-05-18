@@ -25,7 +25,6 @@ const OptionCard = ({ options, question }) => {
 			checkSelection =
 				savedResponse[page].find((value) => value.answer === options.name) !==
 				undefined;
-			
 		}	
 	} 	
 

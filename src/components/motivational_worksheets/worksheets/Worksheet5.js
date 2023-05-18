@@ -9,18 +9,18 @@ import {
 	faFaceFrown,
 } from "@fortawesome/free-solid-svg-icons";
 import { useWorksheets } from "./hooks/APIdata";
-import Empty from "./components/empty/Empty2";
+import Empty from "./components/empty/Empty5";
 import ActionPoint from "./components/ActionPoint";
-import ActionModal from "./components/dialogs/ActionModal2";
+import ActionModal from "./components/dialogs/ActionModal5";
 import Loader from "./components/utils/Loader";
 
-function Worksheet2({ page }) {
+function Worksheet5({ page }) {
 	const { data, loading, error } = useWorksheets();
 
 	let items = [];
 
 	if (loading === false && error.status === false) {
-		items = data.worksheet_2.filter((value) => {
+		items = data.worksheet_6.filter((value) => {
 			return value;
 		});
 	}
@@ -29,20 +29,18 @@ function Worksheet2({ page }) {
 		<>
 			<Stack className="px-5" spacing={2}>
 				<p className="text-base">
-					In this section, lets focus on outcomes for changes we wish to have in our
-					lives. These outcomes may be good or they may feel like a sacrifice such as
-					the loss of some friends. The outcomes are immediate consequences of your
-					change.
+					In this section we engage you in decision balance sheet construction. The
+					worksheet has change status(Change/no change) on the left and advantage
+					status (advantages/disadvantages) on the top. This is meant to help you
+					analyse advantages and disadvantages of changing or not. Fill relevant
+					information in each box as requested.
 				</p>
 				<p className="text-base">
-					Given all the information we have given you, what you already know or what
-					you read about alcohol and drug use, what comes to your mind as immediate
-					positive outcomes of change. Mention the changes you want to see in
-					yourself (can repeat those already mentioned above) and state the expected
-					outcome for each change. What is likely to happen shortly after making
-					these bold changes?
+					The objective of this exercise is to enable you elicit behavioral change by
+					focusing on both positive and negative aspects of not changing behavior and
+					changing behavior.
 				</p>
-				<ActionPoint text="Mention the changes you want to see in yourself. Then list down what are the expected outcomes of each change. The outcomes may be positive or negative. " />
+				<ActionPoint text="Fill in relevant information below" />
 			</Stack>
 			<div class="mt-5 flex justify-center">
 				<div className="w-[95%]">
@@ -89,7 +87,7 @@ function Worksheet2({ page }) {
 															icon={faArrowRightArrowLeft}
 															className="mr-2 text-websa-red text-sm sm:text-sm cursor-pointer"
 														/>
-														Change:
+														Change Status:
 													</strong>{" "}
 													{value.change}
 												</p>
@@ -101,7 +99,7 @@ function Worksheet2({ page }) {
 															icon={faFaceSmile}
 															className="mr-2 text-websa-red text-sm sm:text-sm cursor-pointer"
 														/>
-														Postive:
+														Advantage:
 													</strong>{" "}
 													{value.positive}
 												</p>
@@ -113,7 +111,7 @@ function Worksheet2({ page }) {
 															icon={faFaceFrown}
 															className="mr-2 text-websa-red text-sm sm:text-sm cursor-pointer"
 														/>
-														Negative
+														Disadvantage
 													</strong>{" "}
 													{value.negative}
 												</p>
@@ -150,4 +148,4 @@ function Worksheet2({ page }) {
 	);
 }
 
-export default Worksheet2;
+export default Worksheet5;
