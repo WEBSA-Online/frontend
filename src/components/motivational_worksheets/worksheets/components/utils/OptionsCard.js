@@ -18,7 +18,7 @@ const OptionCard = ({ option, items, index }) => {
 	return loading === true ? (
 		<Loader
 			iconclass="animate-spin mr-3 text-websa-red text-2xl cursor-pointer"
-			divclass="rounded-lg p-3 flex justify-center border border-slate-100 bg-slate-100"
+			divclass="rounded-lg p-4 flex justify-center border border-slate-100 bg-slate-100"
 		/>
 	) : (
 		<div
