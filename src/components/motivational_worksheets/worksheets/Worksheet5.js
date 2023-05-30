@@ -74,138 +74,65 @@ function Worksheet5({ page }) {
 					) : items.length === 0 ? (
 						<Empty text="Add item" items={items} />
 					) : (
-						
-						// <div className="divide-y-2 divide-teal-400 divide-dashed border">
-						// 	{items.map((value, index) => {
-						// 		return (
-						// 			<Grid key={index} container spacing={0} className="py-3 px-4">
-						// 				<Grid xs={12} sm={10}>
-						// 					<Stack spacing={2} className="divide-y">
-						// 						<p className="text-base pt-1">
-						// 							<strong>
-						// 								{" "}
-						// 								<FontAwesomeIcon
-						// 									icon={faArrowRightArrowLeft}
-						// 									className="mr-2 text-websa-red text-sm sm:text-sm cursor-pointer"
-						// 								/>
-						// 								Change Status:
-						// 							</strong>{" "}
-						// 							{value.change}
-						// 						</p>
-
-						// 						<p className="text-base pt-1">
-						// 							<strong>
-						// 								{" "}
-						// 								<FontAwesomeIcon
-						// 									icon={faFaceSmile}
-						// 									className="mr-2 text-websa-red text-sm sm:text-sm cursor-pointer"
-						// 								/>
-						// 								Advantage:
-						// 							</strong>{" "}
-						// 							{value.positive}
-						// 						</p>
-
-						// 						<p className="text-base pt-1">
-						// 							<strong>
-						// 								{" "}
-						// 								<FontAwesomeIcon
-						// 									icon={faFaceFrown}
-						// 									className="mr-2 text-websa-red text-sm sm:text-sm cursor-pointer"
-						// 								/>
-						// 								Disadvantage
-						// 							</strong>{" "}
-						// 							{value.negative}
-						// 						</p>
-						// 					</Stack>
-						// 				</Grid>
-						// 				<Grid
-						// 					xs={12}
-						// 					sm={2}
-						// 					className="flex justify-start sm:justify-end pt-4 mt-3 sm:mt-2"
-						// 				>
-						// 					<ActionModal
-						// 						formValue={value}
-						// 						type="edit"
-						// 						title="Edit Item"
-						// 						items={items}
-						// 						index={index}
-						// 					/>
-						// 					<ActionModal
-						// 						formValue={value}
-						// 						type="delete"
-						// 						title="Delete Item"
-						// 						items={items}
-						// 						index={index}
-						// 					/>
-						// 				</Grid>
-						// 			</Grid>
-						// 		);
-						// 	})}
-						// </div>
-						<div className="divide-y-2 divide-teal-400 divide-dashed border">
+						<div className="divide-y-2 divide-teal-400 divide-dashed border px-3">
 							{items.map((value, index) => {
 								return (
-									<Grid key={index} container spacing={0} className="py-3 px-4">
-										<Grid xs={12} sm={10}>
-											<Stack spacing={2} className="divide-y">
-												<p className="text-base pt-1">
-													<strong>
-														{" "}
-														<FontAwesomeIcon
-															icon={faArrowRightArrowLeft}
-															className="mr-2 text-websa-red text-sm sm:text-sm cursor-pointer"
-														/>
-														Change Status:
-													</strong>{" "}
-													{value.change}
+									<div key={index}>
+										<Grid container spacing={0} className="py-3 px-4">
+											<Grid xs={12} sm={2}>
+												<p className="font-websa-bold">Status</p>
+												<p className="font-websa-bold text-websa-red leading-normal mb-2">
+													No Change of Behavior
 												</p>
-
-												<p className="text-base pt-1">
-													<strong>
-														{" "}
-														<FontAwesomeIcon
-															icon={faFaceSmile}
-															className="mr-2 text-websa-red text-sm sm:text-sm cursor-pointer"
-														/>
-														Advantage:
-													</strong>{" "}
-													{value.positive}
+											</Grid>
+											<Grid xs={12} sm={4}>
+												<p className="font-websa-bold">Advantage</p>
+												<p>{value.noChange.positive}</p>
+											</Grid>
+											<Grid xs={12} sm={4}>
+												<p className="font-websa-bold">Disadvantages</p>
+												<p>{value.noChange.negative}</p>
+											</Grid>
+											<Grid
+												xs={12}
+												sm={2}
+												className="flex justify-start sm:justify-start pt-4 mt-3 sm:mt-2 mb-2"
+											>
+												<ActionModal
+													formValue={value}
+													type="edit"
+													title="Edit Item"
+													items={items}
+													index={index}
+												/>
+												<ActionModal
+													formValue={value}
+													type="delete"
+													title="Delete Item"
+													items={items}
+													index={index}
+												/>
+											</Grid>
+											<Grid xs={12} sm={2}>
+												<p className="font-websa-bold text-websa-red leading-normal sm:pt-2">
+													Change of Behavior
 												</p>
-
-												<p className="text-base pt-1">
-													<strong>
-														{" "}
-														<FontAwesomeIcon
-															icon={faFaceFrown}
-															className="mr-2 text-websa-red text-sm sm:text-sm cursor-pointer"
-														/>
-														Disadvantage
-													</strong>{" "}
-													{value.negative}
-												</p>
-											</Stack>
+											</Grid>
+											<Grid xs={12} sm={4}>
+												<p className="sm:pt-2">{value.change.positive}</p>
+											</Grid>
+											<Grid xs={12} sm={4}>
+												<p className="sm:pt-2">{value.change.negative}</p>
+											</Grid>
+											<Grid
+												xs={12}
+												sm={2}
+												className="flex justify-start sm:justify-start pt-4 mt-3 sm:mt-2 mb-2"
+											>
+			
+											</Grid>
 										</Grid>
-										<Grid
-											xs={12}
-											sm={2}
-											className="flex justify-start sm:justify-end pt-4 mt-3 sm:mt-2"
-										>
-											<ActionModal
-												formValue={value}
-												type="edit"
-												title="Edit Item"
-												items={items}
-												index={index}
-											/>
-											<ActionModal
-												formValue={value}
-												type="delete"
-												title="Delete Item"
-												items={items}
-												index={index}
-											/>
-										</Grid>
-									</Grid>
+									</div>
 								);
 							})}
 						</div>

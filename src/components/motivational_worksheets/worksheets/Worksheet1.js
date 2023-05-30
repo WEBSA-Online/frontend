@@ -11,7 +11,7 @@ import ActionModal from "./components/dialogs/ActionModal";
 import Loader from "./components/utils/Loader";
 
 function Worksheet1({ page }) {
-	const { data, loading, error } = useWorksheets();
+	const { data, loading, error} = useWorksheets();
 
 	let items = [];
 

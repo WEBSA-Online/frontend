@@ -12,6 +12,8 @@ import ShowError from "../utils/ErrorMsg";
 import ShowSuccess from "../utils/SuccessMSG";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencil, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { checkChange } from "../../../../../redux/slices/globalstateSlice";
+import { useDispatch } from "react-redux";
 
 export default function Additem({
 	buttonText,
@@ -28,18 +30,10 @@ export default function Additem({
 	);
 	const [inputText, setInputText] = React.useState("");
 	const [formError, setFormError] = React.useState({ status: false, msg: "" });
+	const dispatch = useDispatch();
 
-	const {
-		checkChanges,
-		submitData,
-		loading,
-		error,
-		closeAPIerror,
-		success,
-		closeSuccessMsg,
-		toggle,
-		setToggle
-	} = useSubmit();
+	const { submitData, loading, error, closeAPIerror, success, closeSuccessMsg } =
+		useSubmit();
 
 	const formData = {
 		text: inputText,
@@ -74,8 +68,7 @@ export default function Additem({
 				worksheet_1: items,
 			};
 			submitData(newData);
-			checkChanges();
-			console.log(toggle)
+			dispatch(checkChange(formData));
 			setTimeout(() => {
 				closeSuccessMsg();
 				handleClose();
@@ -157,7 +150,7 @@ export default function Additem({
 								<>
 									<InputForm
 										type="text"
-										placeholder="Enter change here"
+										placeholder="Enter change here e.g cut down on my alcohol use"
 										setInputText={setInputText}
 										error={error.status === true ? error.status : formError.status}
 										defaultValue={formValue.text}

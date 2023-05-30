@@ -163,14 +163,14 @@ export default function Additem({
 										/>
 										<InputForm
 											type="text"
-											placeholder="Enter positive outcome"
+											placeholder="Enter positive outcome e.g Reduced alcohol consumption"
 											setInputText={setPositive}
 											error={error.status === true ? error.status : formError.status}
 											defaultValue={formValue.positive}
 										/>
 										<InputForm
 											type="text"
-											placeholder="Enter negative outcome"
+											placeholder="Enter negative outcome e.g Loss of some friends"
 											setInputText={setNegative}
 											error={error.status === true ? error.status : formError.status}
 											defaultValue={formValue.negative}

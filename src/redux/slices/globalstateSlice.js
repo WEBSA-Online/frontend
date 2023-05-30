@@ -8,7 +8,8 @@ const initialState = {
 	tool3page: false,
 	registerpage:false,
 	startbaseline:true,
-	consent:""
+	consent:"",
+	items:[]
 };
 
 const globalstateSlice = createSlice({
@@ -45,6 +46,9 @@ const globalstateSlice = createSlice({
 		},
 		getConsent: (state, actions)=>{
 			state.consent = actions.payload.consent;
+		},
+		checkChange: (state, actions)=>{
+			 state.items = [...state.items, actions.payload];
 		}
 	},
 });
@@ -59,5 +63,6 @@ export const {
 	showTool3page,
 	showbaseline,
 	getConsent,
+	checkChange
 } = globalstateSlice.actions;
 export default globalstateSlice.reducer;

@@ -45,7 +45,7 @@ export default function Additem({
 		useSubmit();
 
 	const formData = {
-		noChange: { positive: positiveOne, negative: negativeOne },
+		noChange: {positive: positiveOne, negative: negativeOne },
 		change: { positive: positiveTwo, negative: negativeTwo },
 	};
 
@@ -70,7 +70,7 @@ export default function Additem({
 				negativeTwo === "") &&
 			(type !== "delete" || type !== "edit")
 		) {
-			setFormError({ status: true, msg: "Cannot submit empty input" });
+			setFormError({ status: true, msg: "Cannot submit empty input"});
 		} else {
 			if (type === "add") {
 				items.push(formData);

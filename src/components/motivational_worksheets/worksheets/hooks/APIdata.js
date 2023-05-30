@@ -1,18 +1,13 @@
 import React from "react";
 import axios from "axios";
-import { useSelector } from "react-redux";
+import { useSelector} from "react-redux";
 import { API_URL } from "../../../../API";
 
 export function useWorksheets() {
 	const [data, setData] = React.useState([]);
-	const [error, setError] = React.useState({status: false, msg: "" });
+	const [error, setError] = React.useState({ status: false, msg: ""});
 	const [loading, setLoading] = React.useState(true);
-	const [toggle, setToggle] = React.useState(false);
 	const userDetails = useSelector((state) => state.auth.userDetails);
-
-		const checkChanges = () => {
-			setToggle(!toggle);
-		};
 	
 
 	React.useEffect(() => {
@@ -27,9 +22,8 @@ export function useWorksheets() {
 			}
 		};
 		fetchData();
-	}, [ loading, userDetails, error]);
-
-   return { data, loading, error, checkChanges, toggle};
+	}, [data, loading, userDetails, error]);
+	return { data, loading, error};
 }
 
 export function useSubmit() {
@@ -46,7 +40,7 @@ export function useSubmit() {
 			setLoading(false);
 		} catch (err) {
 			setLoading(false);
-			setError({ status: true, msg: `${err.message}`});
+			setError({ status: true, msg: `${err.message}` });
 			console.log(err);
 		}
 	};
@@ -59,9 +53,7 @@ export function useSubmit() {
 		setSuccess(false);
 	};
 
-
 	React.useEffect(() => {}, [loading, success, error]);
-
 
 	return {
 		submitData,
@@ -69,7 +61,6 @@ export function useSubmit() {
 		error,
 		success,
 		closeAPIerror,
-		closeSuccessMsg,	
+		closeSuccessMsg,
 	};
 }
-
