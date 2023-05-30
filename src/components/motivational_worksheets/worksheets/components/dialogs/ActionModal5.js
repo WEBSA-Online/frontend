@@ -22,24 +22,31 @@ export default function Additem({
 	index,
 }) {
 	const [open, setOpen] = React.useState(false);
+	const [flip, setFlip] = React.useState(false);
 	const [inputChange, setChange] = React.useState(
 		formValue.change === "" ? "" : formValue.change
 	);
-	const [positive, setPositive] = React.useState(
-		formValue.positive === "" ? "" : formValue.positive
+	const [positiveOne, setPositiveOne] = React.useState(
+		formValue.positiveOne === "" ? "" : formValue.positiveOne
 	);
-	const [negative, setNegative] = React.useState(
-		formValue.negative === "" ? "" : formValue.negative
+	const [negativeOne, setNegativeOne] = React.useState(
+		formValue.negativeOne === "" ? "" : formValue.negativeOne
 	);
+	const [positiveTwo, setPositiveTwo] = React.useState(
+		formValue.positiveTwo === "" ? "" : formValue.positiveTwo
+	);
+	const [negativeTwo, setNegativeTwo] = React.useState(
+		formValue.negativeTwo === "" ? "" : formValue.negativeTwo
+	);
+
 	const [formError, setFormError] = React.useState({ status: false, msg: "" });
 
 	const { submitData, loading, error, closeAPIerror, success, closeSuccessMsg } =
 		useSubmit();
 
 	const formData = {
-		change: inputChange,
-		positive: positive,
-		negative: negative,
+		noChange: { positive: positiveOne, negative: negativeOne },
+		change: { positive: positiveTwo, negative: negativeTwo },
 	};
 
 	const handleClickOpen = () => {
@@ -56,7 +63,11 @@ export default function Additem({
 
 	const handleSubmit = () => {
 		if (
-			(inputChange === "" || positive === "" || negative === "") &&
+			(inputChange === "" ||
+				positiveOne === "" ||
+				negativeOne === "" ||
+				positiveTwo === "" ||
+				negativeTwo === "") &&
 			(type !== "delete" || type !== "edit")
 		) {
 			setFormError({ status: true, msg: "Cannot submit empty input" });
@@ -150,29 +161,46 @@ export default function Additem({
 										<Button method={handleClose} text="Cancel" variant="outlined" />
 									</Stack>
 								</>
-							) : (
+							) : flip === false ? (
 								<>
 									<Stack spacing={2}>
+										<h4>What would happen with no change of behavior</h4>
 										<InputForm
 											type="text"
-											placeholder="Enter change here"
-											setInputText={setChange}
+											placeholder="Enter advantage e.g increased savings"
+											setInputText={setPositiveOne}
 											error={error.status === true ? error.status : formError.status}
-											defaultValue={formValue.change}
-										/>
-										<InputForm
-											type="text"
-											placeholder="Enter positive outcome"
-											setInputText={setPositive}
-											error={error.status === true ? error.status : formError.status}
-											defaultValue={formValue.positive}
+											defaultValue={positiveOne}
 										/>
 										<InputForm
 											type="text"
 											placeholder="Enter negative outcome"
-											setInputText={setNegative}
+											setInputText={setNegativeOne}
 											error={error.status === true ? error.status : formError.status}
-											defaultValue={formValue.negative}
+											defaultValue={negativeOne}
+										/>
+										<div className="w-1/2">
+											<Button method={setFlip} text="Next" variant="contained" />
+										</div>
+									</Stack>
+								</>
+							) : (
+								<>
+									<Stack spacing={2}>
+										<h4>What would happen with a change of behavior</h4>
+										<InputForm
+											type="text"
+											placeholder="Enter advantage e.g increased savings"
+											setInputText={setPositiveTwo}
+											error={error.status === true ? error.status : formError.status}
+											defaultValue={positiveTwo}
+										/>
+										<InputForm
+											type="text"
+											placeholder="Enter negative outcome"
+											setInputText={setNegativeTwo}
+											error={error.status === true ? error.status : formError.status}
+											defaultValue={negativeTwo}
 										/>
 									</Stack>
 									<Stack direction="row" className="mt-4">

@@ -35,7 +35,7 @@ function Worksheet5({ page }) {
 					analyse advantages and disadvantages of changing or not. Fill relevant
 					information in each box as requested.
 				</p>
-				<p className="text-base">
+				<p className="text-base font-websa-bold">
 					The objective of this exercise is to enable you elicit behavioral change by
 					focusing on both positive and negative aspects of not changing behavior and
 					changing behavior.
@@ -74,6 +74,74 @@ function Worksheet5({ page }) {
 					) : items.length === 0 ? (
 						<Empty text="Add item" items={items} />
 					) : (
+						
+						// <div className="divide-y-2 divide-teal-400 divide-dashed border">
+						// 	{items.map((value, index) => {
+						// 		return (
+						// 			<Grid key={index} container spacing={0} className="py-3 px-4">
+						// 				<Grid xs={12} sm={10}>
+						// 					<Stack spacing={2} className="divide-y">
+						// 						<p className="text-base pt-1">
+						// 							<strong>
+						// 								{" "}
+						// 								<FontAwesomeIcon
+						// 									icon={faArrowRightArrowLeft}
+						// 									className="mr-2 text-websa-red text-sm sm:text-sm cursor-pointer"
+						// 								/>
+						// 								Change Status:
+						// 							</strong>{" "}
+						// 							{value.change}
+						// 						</p>
+
+						// 						<p className="text-base pt-1">
+						// 							<strong>
+						// 								{" "}
+						// 								<FontAwesomeIcon
+						// 									icon={faFaceSmile}
+						// 									className="mr-2 text-websa-red text-sm sm:text-sm cursor-pointer"
+						// 								/>
+						// 								Advantage:
+						// 							</strong>{" "}
+						// 							{value.positive}
+						// 						</p>
+
+						// 						<p className="text-base pt-1">
+						// 							<strong>
+						// 								{" "}
+						// 								<FontAwesomeIcon
+						// 									icon={faFaceFrown}
+						// 									className="mr-2 text-websa-red text-sm sm:text-sm cursor-pointer"
+						// 								/>
+						// 								Disadvantage
+						// 							</strong>{" "}
+						// 							{value.negative}
+						// 						</p>
+						// 					</Stack>
+						// 				</Grid>
+						// 				<Grid
+						// 					xs={12}
+						// 					sm={2}
+						// 					className="flex justify-start sm:justify-end pt-4 mt-3 sm:mt-2"
+						// 				>
+						// 					<ActionModal
+						// 						formValue={value}
+						// 						type="edit"
+						// 						title="Edit Item"
+						// 						items={items}
+						// 						index={index}
+						// 					/>
+						// 					<ActionModal
+						// 						formValue={value}
+						// 						type="delete"
+						// 						title="Delete Item"
+						// 						items={items}
+						// 						index={index}
+						// 					/>
+						// 				</Grid>
+						// 			</Grid>
+						// 		);
+						// 	})}
+						// </div>
 						<div className="divide-y-2 divide-teal-400 divide-dashed border">
 							{items.map((value, index) => {
 								return (

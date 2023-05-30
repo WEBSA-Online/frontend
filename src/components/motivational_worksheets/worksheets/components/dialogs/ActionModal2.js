@@ -33,7 +33,7 @@ export default function Additem({
 	);
 	const [formError, setFormError] = React.useState({ status: false, msg: "" });
 
-	const { submitData, loading, error, closeAPIerror, success, closeSuccessMsg } =
+	const { checkChanges, submitData, loading, error, closeAPIerror, success, closeSuccessMsg } =
 		useSubmit();
 
 	const formData = {
@@ -73,6 +73,7 @@ export default function Additem({
 				worksheet_2: items,
 			};
 			submitData(newData);
+			checkChanges();
 			setTimeout(() => {
 				closeSuccessMsg();
 				handleClose();

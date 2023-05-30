@@ -7,7 +7,13 @@ export function useWorksheets() {
 	const [data, setData] = React.useState([]);
 	const [error, setError] = React.useState({status: false, msg: "" });
 	const [loading, setLoading] = React.useState(true);
+	const [toggle, setToggle] = React.useState(false);
 	const userDetails = useSelector((state) => state.auth.userDetails);
+
+		const checkChanges = () => {
+			setToggle(!toggle);
+		};
+	
 
 	React.useEffect(() => {
 		const fetchData = async () => {
@@ -21,9 +27,9 @@ export function useWorksheets() {
 			}
 		};
 		fetchData();
-	}, [data, loading, userDetails, error]);
+	}, [ loading, userDetails, error]);
 
-   return {data, loading, error}
+   return { data, loading, error, checkChanges, toggle};
 }
 
 export function useSubmit() {
@@ -31,12 +37,12 @@ export function useSubmit() {
 	const [error, setError] = React.useState({ status: false, msg: "" });
 	const [loading, setLoading] = React.useState(false);
 	const userDetails = useSelector((state) => state.auth.userDetails);
-	
+
 	const submitData = async (newData) => {
 		setLoading(true);
 		try {
 			await axios.put(`${API_URL}/users/${userDetails.email}`, newData);
-			setSuccess(true)
+			setSuccess(true);
 			setLoading(false);
 		} catch (err) {
 			setLoading(false);
@@ -57,6 +63,13 @@ export function useSubmit() {
 	React.useEffect(() => {}, [loading, success, error]);
 
 
-	return { submitData, loading, error, success, closeAPIerror, closeSuccessMsg };
+	return {
+		submitData,
+		loading,
+		error,
+		success,
+		closeAPIerror,
+		closeSuccessMsg,	
+	};
 }
 
