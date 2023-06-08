@@ -6,7 +6,7 @@ import Grid from "@mui/material/Unstable_Grid2";
 const counsellors = [
 	{ name: "Okidi Richard Owor", number: "0784062395", whatsapp: "256784062395" },
 	{ name: "Namubiru Sylvia", number: "0758007106", whatsapp: "256758007106" },
-	{ name: "Kagere Nusurah", number: "0702224054", whatsapp: "256702224054" },
+	{ name: "Kagere Nusurah", number: "0702224064", whatsapp: "256702224064" },
 	{ name: "Nabaasa Francis", number: "0705131787", whatsapp: "256705131787" },
 	{ name: "Nakalanzi Margaret", number: "0774591965", whatsapp: "256774591965" },
 	{ name: "Nanzige Jannet", number: "0774486804", whatsapp: "256774486804" },

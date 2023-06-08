@@ -33,7 +33,9 @@ export default function Home() {
 						track your progress.
 					</p>
 					<Link to="/motivational-interviewing">
-						<button className="mt-3 button-small">Motivate me</button>
+						<button className="mt-3 button-small w-full sm:w-[15%]">
+							Motivate me
+						</button>
 					</Link>
 					<p className="mt-3 font-medium text-base">
 						If you have any questions or concerns. We're here to help you every step
@@ -41,7 +43,9 @@ export default function Home() {
 						can overcome addiction and build a healthier, happier life.
 					</p>
 					<Link to="/contacts">
-						<button className="mt-3 button-small">Chat with a counsellor</button>
+						<button className="mt-3 button-small w-full sm:w-[15%]">
+							Chat with a counsellor
+						</button>
 					</Link>
 				</div>
 			</div>

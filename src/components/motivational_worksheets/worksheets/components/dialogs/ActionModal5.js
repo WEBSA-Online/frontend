@@ -167,7 +167,7 @@ export default function Additem({
 										<h4>What would happen with no change of behavior</h4>
 										<InputForm
 											type="text"
-											placeholder="Enter advantage e.g increased savings"
+											placeholder="Enter advantage e.g keeping of social circles"
 											setInputText={setPositiveOne}
 											error={error.status === true ? error.status : formError.status}
 											defaultValue={positiveOne}

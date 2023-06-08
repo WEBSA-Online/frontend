@@ -70,11 +70,10 @@ const StartPage = () => {
 								sx={{
 									fontFamily: "Poppins-Bold",
 									color: "white",
-									fontWeight: "bold",
-									fontSize: { xs: "22px", sm:"25px", md:"25px" },
+									fontSize: { xs: "22px" },
 								}}
 							>
-								The Alcohol Use Disorders Identification Test
+								AUDIT- Alcohol Use Disorders Identification Test
 							</Typography>
 							<Typography
 								variant="h5"
@@ -84,10 +83,32 @@ const StartPage = () => {
 									fontSize: { xs: "18px" },
 								}}
 							>
-								Because alcohol use can affect your health and can interfere with
-								certain medications and treatments, it is important that we ask some
-								questions about your use of alcohol. Your answers will remain
-								confidential so please be honest.
+								Here are a few questions about alcohol use. Please answer
+								as correctly and honestly as possible by indicating which answer is
+								right for you. Your answers will remain confidential within, so please
+								be honest.
+							</Typography>
+							<Typography
+								variant="h5"
+								sx={{
+									fontFamily: "Poppins-Regular",
+									color: "white",
+									fontSize: { xs: "18px" },
+								}}
+							>
+								In the event that these results need to be shared as part of your care
+								plan, we will discuss with you why sharing is necessary, seek your
+								consent to share and ask you to sign a Release of Information Form.
+							</Typography>
+							<Typography
+								variant="h5"
+								sx={{
+									fontFamily: "Poppins-Regular",
+									color: "white",
+									fontSize: { xs: "18px" },
+								}}
+							>
+								You may refuse at any time to have these results shared.
 							</Typography>
 							<Button
 								variant="contained"
