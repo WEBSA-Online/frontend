@@ -1,8 +1,8 @@
 import React from "react";
 import TextField from "@mui/material/TextField";
-import { Box, Alert, CircularProgress } from "@mui/material";
+import { Box, Alert, CircularProgress, Stack } from "@mui/material";
 import Button from "@mui/material/Button";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { API_URL } from "../API";
 import { useDispatch } from "react-redux";
@@ -12,10 +12,7 @@ import {
 	getTimeOfLogin,
 } from "../redux/slices/authSlice";
 import { resetResponses, resetStep } from "../redux/slices/stepSlice";
-import Logo from "../images/websa-logo-updated.png"
-
-
-
+import Logo from "../images/websa-logo-updated.png";
 
 export default function Register() {
 	const navigate = useNavigate();
@@ -29,11 +26,10 @@ export default function Register() {
 	const [isPageLoaded, setIsPageLoaded] = React.useState(false);
 
 	React.useEffect(() => {
-		setIsPageLoaded(true);	
+		setIsPageLoaded(true);
 	}, []);
-		
 
-	if(isPageLoaded) {
+	if (isPageLoaded) {
 		dispatch(resetResponses());
 		dispatch(resetStep(0));
 	}
@@ -59,11 +55,11 @@ export default function Register() {
 			console.log(err.message);
 			setLoading(false);
 			setError(true);
-			if (err.message==="Network Error") {
+			if (err.message === "Network Error") {
 				setErrorMsg("Connection failed");
 			} else {
 				setErrorMsg(err.response.data.message);
-			} 			
+			}
 		}
 	};
 
@@ -102,20 +98,23 @@ export default function Register() {
 						borderRadius: "10px",
 					}}
 				>
-					<>
+					<Stack spacing={2}>
 						<span style={{ display: "flex", justifyContent: "center" }}>
 							<img src={Logo} alt="websa-logo" sx={{ margin: "0 auto" }} />
 						</span>
-						<TextField
-							margin="normal"
-							fullWidth
-							label="Enter Email"
+						<input
+							className={`appearance-none  ${
+								error === true ? `border-2 border-red-600` : `border border-gray-500`
+							} rounded w-full py-4 px-3 font-websa-regular text-black text-sm focus:outline-none focus:border-2 focus:border-emerald-500`}
+							placeholder="ENTER EMAIL ADDRESS"
+							type="email"
 							onChange={(e) => setEmail(e.target.value)}
 						/>
-						<TextField
-							margin="normal"
-							fullWidth
-							label="Enter Password"
+						<input
+							className={`appearance-none  ${
+								error === true ? `border-2 border-red-600` : `border border-gray-500`
+							}  rounded w-full py-4 px-3 font-websa-regular text-black text-sm focus:outline-none focus:border-2 focus:border-emerald-500`}
+							placeholder="ENTER PASSWORD"
 							type="password"
 							onChange={(e) => setPassword(e.target.value)}
 						/>
@@ -137,7 +136,15 @@ export default function Register() {
 								"LOGIN"
 							)}
 						</Button>
-					</>
+						<div className="flex justify-between">
+							<Link to="/lost-password">
+								<span className="text-black">Forgot password?</span>
+							</Link>
+							<Link to="/screening">
+								<span className="text-black">Sign Up</span>
+							</Link>
+						</div>
+					</Stack>
 				</Box>
 			</>
 		</div>
