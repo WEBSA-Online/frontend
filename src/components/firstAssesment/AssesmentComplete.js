@@ -71,27 +71,63 @@ const Page = () => {
 							icon={faTrophy}
 							style={{ color: "yellow", fontSize: "60px" }}
 						/>
-						<Typography
-							variant="h5"
-							sx={{ fontFamily: "Poppins-Bold", color: "white", textAlign: "center" }}
-						>
-							Thank you for participating in the screening.
-						</Typography>
-						<Typography
-							variant="h4"
-							sx={{
-								color: "white",
-								fontWeight: "bold",
-								fontFamily: "Poppins-Regular",
-								fontSize: { sm: "25px", xs: "21px" },
-								textAlign: "center",
-							}}
-						>
-							Your AUDIT score is{" "}
-							<span class="highlight-text-yellow">{alcoholScores}/40</span> <br />
-							<br />
-							DUDIT score is <span class="highlight-text-yellow">{drugScores}/40</span>
-						</Typography>
+						{alcoholScores >= 8 || drugScores >= 25 ? (
+							<>
+								<Typography
+									variant="h5"
+									sx={{
+										fontFamily: "Poppins-Bold",
+										color: "white",
+										textAlign: "center",
+									}}
+								>
+									Thank you for participating in the screening.
+								</Typography>
+								<Typography
+									variant="h4"
+									sx={{
+										color: "white",
+										fontWeight: "bold",
+										fontFamily: "Poppins-Regular",
+										fontSize: { sm: "25px", xs: "21px" },
+										textAlign: "center",
+									}}
+								>
+									Your AUDIT score is{" "}
+									<span class="highlight-text-yellow">{alcoholScores}/40</span> <br />
+									<br />
+									DUDIT score is{" "}
+									<span class="highlight-text-yellow">{drugScores}/40</span>
+								</Typography>
+							</>
+						) : (
+							<>
+								<Typography
+									variant="h5"
+									sx={{
+										fontFamily: "Poppins-Bold",
+										color: "white",
+										textAlign: "center",
+									}}
+								>
+									Thank you for taking part in this study.
+								</Typography>
+								<Typography
+									variant="h4"
+									sx={{
+										color: "white",
+										fontWeight: "bold",
+										fontFamily: "Poppins-Regular",
+										fontSize: { sm: "25px", xs: "21px" },
+										textAlign: "center",
+									}}
+								>
+									you’re at low risk. Continue living healthy. This is the end of the
+									assessment
+								</Typography>
+							</>
+						)}
+
 						{alcoholScores >= 8 || drugScores >= 25 ? (
 							<Button
 								variant="contained"

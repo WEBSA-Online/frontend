@@ -30,7 +30,7 @@ const OptionCard = ({ options, question }) => {
 
 	const handleSave = () => {
 		if (page===14){
-			if (checkSelection || counter < 1) {
+			if (checkSelection || counter < 20) {
 				dispatch(
 					saveMany({
 						question: question,
@@ -40,7 +40,7 @@ const OptionCard = ({ options, question }) => {
 				);
 			}
 		} else {
-			if (checkSelection || counter < 3) {
+			if (checkSelection || counter < 20) {
 				dispatch(
 					saveMany({
 						question: question,

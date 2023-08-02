@@ -44,16 +44,16 @@ const StartPage = () => {
 							you are most comfortable responding. Your answers are PRIVATE and will
 							only be shared with a professional counsellor.
 						</p>
-						<p className="whiteText">
+						<p className="text-white font-websa-bold">
 							Please note, there are 2 exceptions that are important for you to
 							understand. We must report and/or refer you for further screening if you
 							disclose any of the following:
 						</p>
-						<ol className="whiteText">
-							<li>You are hurting or intend to hurt someone else</li>
-							<li>You are hurting yourself or you intend to hurt yourself.</li>
+						<ol className="text-white font-websa-bold">
+							<li>1. You are hurting or intend to hurt someone else</li>
+							<li>2. You are hurting yourself or you intend to hurt yourself.</li>
 						</ol>
-						<p className="whiteText">
+						<p className="text-white font-websa-bold">
 							These exceptions exist because your safety is the most important thing
 						</p>
 					</Box>
