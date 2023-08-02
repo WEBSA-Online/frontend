@@ -131,7 +131,7 @@ export default function Register() {
 								marginTop: "10px",
 								backgroundColor: "#00a551",
 								fontWeight: 700,
-								"&:hover": { backgroundColor: "00a551" },
+								"&:hover": { backgroundColor:"00a551"},
 							}}
 							size="large"
 							fullWidth="true"

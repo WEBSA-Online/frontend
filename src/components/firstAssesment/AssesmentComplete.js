@@ -7,8 +7,10 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { API_URL } from "../../API";
 import { resetResponses, resetStep } from "../../redux/slices/stepSlice";
+import React from "react";
 
 const Page = () => {
+	const [loading, setLoading] = React.useState(false);
 	const savedResponse = useSelector((state) => state.steps.responses);
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
@@ -29,6 +31,7 @@ const Page = () => {
 		}, 0);
 
 	const submit = async()=> {
+		setLoading(true);
 		try {
 			await axios.post(`${API_URL}/general`, {
 				name: savedResponse[1].answer,
@@ -36,15 +39,20 @@ const Page = () => {
 				phone: savedResponse[10].answer,
 				userData: savedResponse,
 			});
-			if(alcoholScores >= 8 || drugScores >= 25) {				
+			if(alcoholScores >= 8 || drugScores >= 25) {								
+				setLoading(false);
+				navigate("/consent");				
+			} else {
 				dispatch(resetResponses());
-				dispatch(resetStep(0));	
-				navigate("/consent");
-			}
-			dispatch(resetResponses());
-			dispatch(resetStep(0));			
+				dispatch(resetStep(0));
+				window.location.replace("https://websaonline.com");
+			}					
 		} catch (err) {
+			setLoading(false);
 			console.log(err);
+			if(err.message==="Request failed with status code 401"){
+				window.location.replace("https://websaonline.com");
+			}
 		}
 	};
 
@@ -98,28 +106,23 @@ const Page = () => {
 								}}
 								onClick={submit}
 							>
-								Continue
+								{loading ? "loading..." : "Continue"}
 							</Button>
 						) : (
-							<a
-								href="https://websaonline.com"
-								style={{ textDecoration: "none", width: "100%", textAlign: "center" }}
+							<Button
+								variant="contained"
+								size="large"
+								sx={{
+									backgroundColor: "#fff",
+									color: "#7348cf",
+									fontWeight: "bold",
+									width: { md: "30%", sm: "50%", xs: "100%" },
+									"&:hover": { color: "#fff", backgroundColor: "#7348cf" },
+								}}
+								onClick={submit}
 							>
-								<Button
-									variant="contained"
-									size="large"
-									sx={{
-										backgroundColor: "#fff",
-										color: "#7348cf",
-										fontWeight: "bold",
-										width: { md: "30%", sm: "50%", xs: "100%" },
-										"&:hover": { color: "#fff", backgroundColor: "#7348cf" },
-									}}
-									onClick={submit}
-								>
-									End
-								</Button>
-							</a>
+								{loading ? "loading..." : "End"}
+							</Button>
 						)}
 						<Typography
 							variant="h5"

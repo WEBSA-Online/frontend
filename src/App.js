@@ -24,6 +24,9 @@ import Counsellors from "./components/pages/Counsellors"
 import { useDispatch } from "react-redux";
 import { resetResponses, resetStep } from "./redux/slices/stepSlice";
 import React from "react";
+import ResetPassword from "./components/ResetPassword";
+import ResetPasswordTemp from "./components/ResetPasswordTemp";
+import SetNewPassword from "./components/SetNewPassword";
 
 
 function App() {
@@ -65,6 +68,10 @@ function App() {
 					<Route path="/consent" element={<Consent />} />
 					<Route path="/register" element={<Register />} />
 					<Route path="/login" element={<Login />} />
+					<Route element={<ResetPasswordTemp />}>
+						<Route path="/lost-password" element={<ResetPassword />} />
+						<Route path="/reset-password/:resetcode" element={<SetNewPassword />} />
+					</Route>
 				</Routes>
 			</Router>
 		);
