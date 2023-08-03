@@ -1,11 +1,8 @@
-
 import Container from "@mui/material/Container";
 import "animate.css";
 import RadioOptions from "../utils/RadioOptions";
 import "animate.css";
 import { useSelector } from "react-redux";
-
-
 
 const details = {
 	question: "In the last 30 days, did you take 5 or more drinks at one time?",
@@ -21,7 +18,6 @@ const Page49 = () => {
 	const savedResponse = useSelector((state) => state.steps.responses);
 	const page = useSelector((state) => state.steps.activeStep);
 
-	
 	return (
 		<Container
 			fixed
@@ -30,9 +26,9 @@ const Page49 = () => {
 			}}
 		>
 			{savedResponse[page - 1].answer === "Male" ? (
-				<h1 style={{ lineHeight: "38px" }}>{details.question}</h1>
+				<h1 className="heading1">{details.question}</h1>
 			) : (
-				<h1 style={{ lineHeight: "38px" }}>{details.question2}</h1>
+				<h1 className="heading1">{details.question2}</h1>
 			)}
 			<RadioOptions details={details} />
 		</Container>

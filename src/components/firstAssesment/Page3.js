@@ -17,7 +17,7 @@ const Page3 = () => {
 			}}
 		>
 			<Stack spacing={2}>
-				<h1>{details.question}</h1>
+				<h1 className="heading1">{details.question}</h1>
 			</Stack>
 			<DatePicker />
 		</Container>

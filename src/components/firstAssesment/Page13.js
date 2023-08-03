@@ -4,7 +4,8 @@ import RadioOptions from "../utils/RadioOptions";
 import "animate.css";
 
 const details = {
-	question: "How often during the last year have you found that you were not able to stop drinking once you had started?",
+	question:
+		"How often during the last year have you found that you were not able to stop drinking once you had started?",
 	options: [
 		{ name: "Never", score: 0 },
 		{ name: "Less than a month", score: 1 },
@@ -22,7 +23,7 @@ const Page13 = () => {
 				paddingTop: "10%",
 			}}
 		>
-			<h1 style={{ lineHeight: "38px" }}>{details.question}</h1>
+			<h1 className="heading1">{details.question}</h1>
 			<RadioOptions details={details} />
 		</Container>
 	);

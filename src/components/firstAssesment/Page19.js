@@ -4,8 +4,7 @@ import RadioOptions from "../utils/RadioOptions";
 import "animate.css";
 
 const details = {
-	question:
-		"Have you or someone else been injured because of your drinking?",
+	question: "Have you or someone else been injured because of your drinking?",
 	options: [
 		{ name: "No", score: 0 },
 		{ name: "Yes but not in the last year", score: 2 },
@@ -21,7 +20,7 @@ const Page19 = () => {
 				paddingTop: "10%",
 			}}
 		>
-			<h1 style={{ lineHeight: "38px" }}>{details.question}</h1>
+			<h1 className="heading1">{details.question}</h1>
 			<RadioOptions details={details} />
 		</Container>
 	);

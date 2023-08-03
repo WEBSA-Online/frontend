@@ -1,12 +1,11 @@
-
 import Container from "@mui/material/Container";
 import "animate.css";
 import RadioOptions from "../utils/RadioOptions";
 import "animate.css";
 
-
 const details = {
-	question: "How often do you use internet(say for news, source of reading materials, social media or more)",
+	question:
+		"How often do you use internet(say for news, source of reading materials, social media or more)",
 	options: [
 		{ name: "Every hour", value: "Every hour" },
 		{ name: "Every 2-3 hours", value: "Every 2-3 hours" },
@@ -24,7 +23,7 @@ const Page38 = () => {
 				paddingTop: "10%",
 			}}
 		>
-			<h1 style={{ lineHeight: "38px" }}>{details.question}</h1>
+			<h1 className="heading1">{details.question}</h1>
 			<RadioOptions details={details} />
 		</Container>
 	);

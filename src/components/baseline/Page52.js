@@ -6,7 +6,8 @@ import "animate.css";
 import Stack from "@mui/material/Stack";
 
 const details = {
-	question: "In the last 30 days, what is the number of times you went home drunk?",
+	question:
+		"In the last 30 days, what is the number of times you went home drunk?",
 };
 
 const Page52 = () => {
@@ -20,7 +21,7 @@ const Page52 = () => {
 		>
 			<Container fixed>
 				<Stack spacing={2}>
-					<h1>{details.question}</h1>
+					<h1 className="heading1">{details.question}</h1>
 				</Stack>
 				<TextField details={details} />
 			</Container>

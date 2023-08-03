@@ -19,14 +19,9 @@ const Page8 = () => {
 	console.log(savedResponse[7].answer);
 
 	return (
-		<Container
-			fixed
-			sx={{
-				paddingTop: "10%",
-			}}
-		>
+		<Container fixed className="holder">
 			<Stack spacing={2}>
-				<h1>
+				<h1 className="heading1">
 					{previousResponse === "I am in a hall of residence"
 						? details.question
 						: previousResponse === "I am in a private hostel"

@@ -20,7 +20,7 @@ const Page34 = () => {
 				paddingTop: "10%",
 			}}
 		>
-			<h1 style={{ lineHeight: "38px" }}>{details.question}</h1>
+			<h1 className="heading1">{details.question}</h1>
 			<RadioOptions details={details} />
 		</Container>
 	);

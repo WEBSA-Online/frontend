@@ -11,19 +11,12 @@ const details = {
 
 const Page6 = () => {
 	return (
-		<Box
-			sx={{
-				display: "flex",
-				alignItems:"center"
-			}}
-		>
-			<Container fixed>
-				<Stack spacing={2}>
-					<h1>{details.question}</h1>
-				</Stack>
-				<TextField details={details} />
-			</Container>
-		</Box>
+		<Container fixed className="holder">
+			<Stack spacing={2}>
+				<h1 className="heading1">{details.question}</h1>
+			</Stack>
+			<TextField details={details} />
+		</Container>
 	);
 };
 

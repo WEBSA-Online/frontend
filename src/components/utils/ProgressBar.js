@@ -104,6 +104,8 @@ export default function ProgressMobileStepper() {
 			? false
 			: savedResponse[page].answer === ""
 			? false
+			: savedResponse[page].validationError === false
+			? false
 			: null;
 
 	return (

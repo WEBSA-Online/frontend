@@ -13,7 +13,6 @@ const TimerPage = () => {
 			sx={{
 				background: "#e9f1f2",
 				display: "flex",
-				height: "100vh",
 				paddingBottom: {xs:"100px"},
 			}}
 		>

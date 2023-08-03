@@ -1,9 +1,7 @@
-
 import Container from "@mui/material/Container";
 import "animate.css";
 import RadioOptions from "../utils/RadioOptions";
 import "animate.css";
-
 
 const details = {
 	question: "Your academic program year of study?",
@@ -25,8 +23,8 @@ const Page32 = () => {
 				paddingTop: "10%",
 			}}
 		>
-			<h1 style={{ lineHeight: "38px" }}>{details.question}</h1>
-			<RadioOptions details={details}/>
+			<h1 className="heading1">{details.question}</h1>
+			<RadioOptions details={details} />
 		</Container>
 	);
 };

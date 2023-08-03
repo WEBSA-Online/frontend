@@ -1,17 +1,13 @@
-
 import Container from "@mui/material/Container";
 import "animate.css";
 import RadioOptions from "../utils/RadioOptions";
 import "animate.css";
 
-
-
 const details = {
 	question: "What's your Gender?",
 	options: [
 		{ name: "Male", value: "Man" },
-		{ name: "Female", value: "Woman" },	
-
+		{ name: "Female", value: "Woman" },
 	],
 	direction: "row",
 };
@@ -24,7 +20,7 @@ const Page48 = () => {
 				paddingTop: "10%",
 			}}
 		>
-			<h1 style={{ lineHeight: "38px" }}>{details.question}</h1>
+			<h1 className="heading1">{details.question}</h1>
 			<RadioOptions details={details} />
 		</Container>
 	);

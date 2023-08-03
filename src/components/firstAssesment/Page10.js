@@ -10,16 +10,11 @@ const details = {
 
 const Page10 = () => {
 	return (
-		<Container
-			fixed
-			sx={{
-				paddingTop: "10%",
-			}}
-		>
+		<Container fixed className="holder">
 			<Stack spacing={2}>
-				<h1>{details.question}</h1>
+				<h1 className="heading1">{details.question}</h1>
 			</Stack>
-			<TextField details={details} />
+			<TextField details={details} validationType="phonenumber" />
 		</Container>
 	);
 };

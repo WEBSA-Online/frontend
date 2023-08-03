@@ -16,4 +16,12 @@
    .outlined {
       @apply font-websa-regular transition-all border border-slate-300 px-3 py-1 hover:bg-slate-200 rounded shadow-sm text-black font-bold text-sm 
    }
+
+   .heading1 {
+      @apply font-websa-bold text-xl sm:text-2xl mb-5
+   }
+
+   .holder {
+      @apply pt-20 sm:pt-36
+   }
 }
