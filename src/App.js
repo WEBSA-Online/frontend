@@ -27,6 +27,11 @@ import React from "react";
 import ResetPassword from "./components/ResetPassword";
 import ResetPasswordTemp from "./components/ResetPasswordTemp";
 import SetNewPassword from "./components/SetNewPassword";
+import LandingTemp from "./components/LandingTemp";
+import Landing from "./components/pages/Landing";
+import FAQs from "./components/pages/Faqs";
+import ContactUs from "./components/pages/Contactus";
+import Importance from "./components/pages/Importance";
 
 
 function App() {
@@ -49,17 +54,30 @@ function App() {
 		return (
 			<Router>
 				<Routes>
+					<Route element={<LandingTemp />}>
+						<Route path="/" element={<Landing />} />
+						<Route path="/faqs" element={<FAQs />} />
+						<Route path="/contact-us" element={<ContactUs />} />
+						<Route path="/importance" element={<Importance />} />
+					</Route>
 					<Route element={<PrivateRoutes />}>
 						<Route path="/baseline" element={<Baseline />} />
 						<Route element={<CheckBaseline />}>
 							<Route element={<Dashboard />}>
-								<Route path="/" element={<Home />} exact />
-								<Route path="/practical-advice" element={<Practical />} exact />
-								<Route path="/resources" element={<Resources />} exact />
-								<Route path="/contacts" element={<Counsellors />} exact />
-								<Route path="/profile" element={<Personal />} exact />
-								<Route path="/motivational-interviewing" element={<MInterviewing />} />
-								<Route path="/worksheet/:pageid" element={<Worksheet />} />
+								<Route path="/dashboard" element={<Home />} exact />
+								<Route
+									path="/dashboard/practical-advice"
+									element={<Practical />}
+									exact
+								/>
+								<Route path="/dashboard/resources" element={<Resources />} exact />
+								<Route path="/dashboard/contacts" element={<Counsellors />} exact />
+								<Route path="/dashboard/profile" element={<Personal />} exact />
+								<Route
+									path="/dashboard/motivational-interviewing"
+									element={<MInterviewing />}
+								/>
+								<Route path="/dashboard/worksheet/:pageid" element={<Worksheet />} />
 							</Route>
 						</Route>
 					</Route>

@@ -47,18 +47,14 @@ body {
 html {
 	height: 100%;
 }
-a {
-	text-decoration: none;
-}
+
 
 .MuiListItemButton-root:hover {
 	background-color: #c7f0dc !important;
 	transition: 0.5s;
 }
 
-a:visited {
-	color: black;
-}
+
 
 ol > li {
 	line-height: 30px;
