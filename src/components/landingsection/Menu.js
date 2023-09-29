@@ -10,7 +10,7 @@ const Menu = ({ menu }) => {
 					return (
 						<li>
 							<Link
-								className={`mr-10 font-websa-bold text-xl hover:text-green-700  ${
+								className={`mr-10 font-websa-bold text-lg hover:text-green-700  ${
 									location.pathname === value.link ? `text-green-700` : null
 								}`}
 								href={value.link}

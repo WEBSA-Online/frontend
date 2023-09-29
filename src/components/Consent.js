@@ -77,7 +77,7 @@ const Page = () => {
 									<Typography variant="h4" sx={{ color: "white", textAlign: "center" }}>
 										Thank you for participating.
 									</Typography>
-									<a style={{ textDecoration: "none" }} href="https://websaonline.com">
+									<a style={{ textDecoration: "none" }} href="/">
 										<Button
 											variant="contained"
 											size="large"
@@ -469,24 +469,15 @@ const Page = () => {
 										fontSize: "15px",
 									}}
 								>
-									I have read through the{" "}
-									<a
-										style={{ color: "red", textDecoration: "none" }}
-										href="https://websaonline.com/consent"
-										target="_blank"
-										rel="noreferrer"
-									>
-										consent
-									</a>{" "}
-									and I believe it has described to me what is going to be done, the
-									risks, the benefits involved and my rights regarding this study. I
-									understand that my decision to participate in this study will not alter
-									my usual medical care. In the use of this information, my identity will
-									be concealed. I am aware that I may withdraw at anytime. I understand
-									that by signing this form, I do not waive any of my legal rights but
-									merely indicate that I have been informed about the research study in
-									which I am voluntarily agreeing to participate. A copy of this form
-									will be provided to me.
+									I have read through the consent and I believe it has described to me
+									what is going to be done, the risks, the benefits involved and my
+									rights regarding this study. I understand that my decision to
+									participate in this study will not alter my usual medical care. In the
+									use of this information, my identity will be concealed. I am aware that
+									I may withdraw at anytime. I understand that by signing this form, I do
+									not waive any of my legal rights but merely indicate that I have been
+									informed about the research study in which I am voluntarily agreeing to
+									participate. A copy of this form will be provided to me.
 								</Typography>
 							</Box>
 						</Stack>

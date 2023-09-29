@@ -44,7 +44,7 @@ function App() {
 	
 	const previousPageUrl = document.referrer;
 
-	if (isPageLoaded && previousPageUrl === "https://websaonline.com/") {
+	if (isPageLoaded && previousPageUrl === "https://websaonline.com") {
 		dispatch(resetResponses());
 		dispatch(resetStep(0));
 	}

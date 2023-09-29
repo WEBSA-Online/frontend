@@ -43,15 +43,18 @@ const Page = () => {
 				setLoading(false);
 				navigate("/consent");				
 			} else {
+				setLoading(false);
 				dispatch(resetResponses());
 				dispatch(resetStep(0));
-				window.location.replace("https://websaonline.com");
+				navigate("/");
 			}					
 		} catch (err) {
 			setLoading(false);
 			console.log(err);
 			if(err.message==="Request failed with status code 401"){
-				window.location.replace("https://websaonline.com");
+				navigate("/");
+			} else {
+				alert(`${err.message}`)
 			}
 		}
 	};
