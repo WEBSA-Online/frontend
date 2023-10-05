@@ -49,7 +49,7 @@ export default function Register() {
 			setLoading(false);
 			setSuccess(true);
 			setTimeout(() => {
-				navigate("/");
+				navigate("/dashboard");
 			}, 2000);
 		} catch (err) {
 			console.log(err.message);

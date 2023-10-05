@@ -31,7 +31,7 @@ const BaselineComplete = () => {
 				baselineData: savedResponse,
 			});
 			localStorage.clear();
-			navigate("/");
+			navigate("/dashboard");
 		} catch (err) {
 			setLoading(false);
 			setError({status:true, msg:`${err.message}`})
