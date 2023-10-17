@@ -45,6 +45,11 @@ export default function ProgressMobileStepper() {
 			dispatch(enableTimer());
 			dispatch(handleNext());
 		} else if (
+			(page === 5 && pathname === "/screening") ||
+			(page === 7 && pathname === "/screening")
+		) {
+			dispatch(handleSkip(2));
+		} else if (
 			page === 18 &&
 			pathname === "/baseline" &&
 			savedResponse[page].answer === "No"
@@ -85,6 +90,11 @@ export default function ProgressMobileStepper() {
 	const backToPage = () => {
 		if (page === 20 && pathname !== "/baseline") {
 			dispatch(handleSkipBack(9));
+		} else if (
+			(page === 7 && pathname === "/screening") ||
+			(page === 9 && pathname === "/screening")
+		) {
+			dispatch(handleSkipBack(2));
 		} else if (page === 31 && pathname !== "/baseline") {
 			dispatch(handleSkipBack(11));
 		} else {
