@@ -53,8 +53,10 @@ const Page = () => {
 			console.log(err);
 			if(err.message==="Request failed with status code 401"){
 				navigate("/");
+			} else if (err.message === "Request failed with status code 403") {
+				navigate("/");
 			} else {
-				alert(`${err.message}`)
+				alert(`${err.message}`);
 			}
 		}
 	};
