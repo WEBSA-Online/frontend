@@ -4,15 +4,7 @@ import Menu from './Menu';
 import MobileMenu from "./MobileMenu";
 
 
-export const menu = [
-	{ name: "Home", link: "/" },
-	{ name: "FAQs", link: "/faqs" },
-	{ name: "Importance Of Study", link: "/importance" },
-	{ name: "Contact Us", link: "/contact-us" },
-];
-
-
-const Navigation = () => {
+const Navigation = ({menu}) => {
   return (
 			<div className="sticky top-0 bg-white">
 				<div className="py-3 px-5 md:container md:mx-auto sm:px-0 flex justify-between items-center">

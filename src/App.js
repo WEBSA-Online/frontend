@@ -32,6 +32,9 @@ import Landing from "./components/pages/Landing";
 import FAQs from "./components/pages/Faqs";
 import ContactUs from "./components/pages/Contactus";
 import Importance from "./components/pages/Importance";
+import AdminDashboard from "./components/admin/AdminDashboard";
+import ShowAllUsers from "./components/admin/ShowAllUsers";
+import ShowAllSelected from "./components/admin/ShowAllSelected";
 
 
 function App() {
@@ -61,6 +64,10 @@ function App() {
 						<Route path="/importance" element={<Importance />} />
 					</Route>
 					<Route element={<PrivateRoutes />}>
+						<Route element={<AdminDashboard />}>
+							<Route path="/allusers" element={<ShowAllUsers />} />
+							<Route path="/selected" element={<ShowAllSelected />} />
+						</Route>
 						<Route path="/baseline" element={<Baseline />} />
 						<Route element={<CheckBaseline />}>
 							<Route element={<Dashboard />}>
@@ -86,6 +93,7 @@ function App() {
 					<Route path="/consent" element={<Consent />} />
 					<Route path="/register" element={<Register />} />
 					<Route path="/login" element={<Login />} />
+					<Route path="/admin" element={<Login />} />
 					<Route element={<ResetPasswordTemp />}>
 						<Route path="/lost-password" element={<ResetPassword />} />
 						<Route path="/reset-password/:resetcode" element={<SetNewPassword />} />

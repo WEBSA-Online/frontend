@@ -48,9 +48,21 @@ export default function Register() {
 			dispatch(getTimeOfLogin(Date.now()));
 			setLoading(false);
 			setSuccess(true);
-			setTimeout(() => {
-				navigate("/dashboard");
-			}, 2000);
+			console.log(reponse2.data.role)
+			if(reponse2.data.role === "admin") {
+				setTimeout(() => {
+					navigate("/allusers");
+				}, 2000);
+			} else if (reponse2.data.role === "counsellor") {
+				setTimeout(() => {
+					navigate("/counsellors");
+				}, 2000);
+			}else {
+				setTimeout(() => {
+					navigate("/dashboard");
+				}, 2000);
+			}
+			
 		} catch (err) {
 			console.log(err.message);
 			setLoading(false);

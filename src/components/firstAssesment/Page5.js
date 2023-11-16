@@ -29,10 +29,10 @@ const details = {
 			name: "Ndejje University",
 			value: "Ndejje University",
 		},
-		{
-			name: "Makerere University Business School",
-			value: "Makerere University Business School",
-		},
+		// {
+		// 	name: "Makerere University Business School",
+		// 	value: "Makerere University Business School",
+		// },
 	],
 };
 
