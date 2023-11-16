@@ -6,12 +6,15 @@ import { FaSpinner } from "react-icons/fa6";
 
 function ShowAllUsers() {
 	const [data, setData] = React.useState([]);
+	const [count, setCount] = React.useState([]);
 	const [loading, setLoading] = React.useState(true);
+	const [params, setParams] = React.useState(null);
 
 	async function fetchdata() {
 		try {
-			const response = await axios.get(`${API_URL}/allusers`);
+			const response = await axios.get(`${API_URL}/allusers?${params}`);
 			setData(response.data.data);
+			setCount(response.data.count);
 			setLoading(false);
 		} catch (error) {
 			setLoading(false);
