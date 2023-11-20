@@ -16,7 +16,7 @@ const PrivateRoutes = () => {
 				const response = await axios.get(`${API_URL}/users/${userDetails.email}`);
 				setBaselineStatus(response.data.isBaselineComplete);
 				setRole(response.data.role);
-				setLoading(false)
+				setLoading(false);
 			} catch (err) {
 				setLoading(false);
 				console.log(err);
