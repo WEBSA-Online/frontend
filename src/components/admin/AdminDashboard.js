@@ -13,7 +13,7 @@ function AdminDashboard() {
 		<>
 			<Navigation menu={menu} />
 			<div className="bg-slate-100 min-h-screen">
-				<div className="container mx-auto pt-10 px-5">
+				<div className="container mx-auto pt-4 px-5">
 					<Outlet />
 				</div>
 			</div>

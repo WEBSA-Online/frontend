@@ -15,7 +15,7 @@ export default function Worksheet() {
 	const { pageid } = useParams();
 	return (
 		<>
-			<Link to="/motivational-interviewing">
+			<Link to="/dashboard/motivational-interviewing">
 				<div class="flex items-center">
 					<FontAwesomeIcon icon={faArrowLeft} className="text-green-400" />
 					<p className="text-white text-sm sm:text-base ml-2">Back</p>

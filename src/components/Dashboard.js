@@ -9,12 +9,15 @@ import { useSelector } from "react-redux";
 import Logo from "../images/websa-logo-updated.png"
 
 export const pages = [
-	{ name: "Home", link: "/" },
-	{ name: "Motivational Interviewing", link: "/motivational-interviewing" },
-	{ name: "Profile", link: "/profile" },
-	{ name: "Practical Advice", link: "/practical-advice" },
-	{ name: "Resources", link: "/resources" },
-	{ name: "Talk to a counsellor", link: "/contacts" },
+	{ name: "Home", link: "/dashboard" },
+	{
+		name: "Motivational Interviewing",
+		link: "/dashboard/motivational-interviewing",
+	},
+	{ name: "Profile", link: "/dashboard/profile" },
+	{ name: "Practical Advice", link: "/dashboard/practical-advice" },
+	{ name: "Resources", link: "/dashboard/resources" },
+	{ name: "Talk to a counsellor", link: "/dashboard/contacts" },
 ];
 
 export default function PersistentDrawerLeft() {

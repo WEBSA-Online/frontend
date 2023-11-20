@@ -61,7 +61,7 @@ function EnhancedTableHead() {
 						align="left"
 						padding={headCell.disablePadding ? "none" : "normal"}
 					>
-						<span className="font-binusu-bold text-base">{headCell.label}</span>
+						<span className="font-websa-bold text-base">{headCell.label}</span>
 					</TableCell>
 				))}
 			</TableRow>
@@ -80,10 +80,13 @@ EnhancedTableHead.propTypes = {
 
 function TableToolbar() {
 	return (
-		<Box className="pt-6 pb-4">
+		<Box className="pt-6 pb-4 flex">
 			<Typography variant="h6">
-				<span className="font-binusu-bold">All Participants Table</span>
+				<span className="font-websa-bold">All Participants Table</span>
 			</Typography>
+			<div>
+
+			</div>
 		</Box>
 	);
 }

@@ -32,7 +32,7 @@ export default function Home() {
 						take a step further and complete the motivational steps to help you keep
 						track your progress.
 					</p>
-					<Link to="/motivational-interviewing">
+					<Link to="/dashboard/motivational-interviewing">
 						<button className="mt-3 button-small w-full sm:w-[15%]">
 							Motivate me
 						</button>
@@ -42,7 +42,7 @@ export default function Home() {
 						of the way, and we believe that with the right support and guidance, you
 						can overcome addiction and build a healthier, happier life.
 					</p>
-					<Link to="/contacts">
+					<Link to="/dashboard/contacts">
 						<button className="mt-3 button-small w-full sm:w-[15%]">
 							Chat with a counsellor
 						</button>
