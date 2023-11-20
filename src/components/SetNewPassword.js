@@ -74,6 +74,9 @@ function ResetPassword() {
 					<Link to="/">
 						<span className="text-websa-green font-bold">Back to home</span>
 					</Link>
+					<Link to="/login">
+						<span className="text-websa-green font-bold">Login</span>
+					</Link>
 				</div>
 			) : (
 				<>

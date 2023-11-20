@@ -6,7 +6,8 @@ import React from "react";
 
 const PrivateRoutes = () => {
 	const userDetails = useSelector((state) => state.auth.userDetails);
-	const [baselineStatus, setBaselineStatus] = React.useState("");
+	const [baselineStatus, setBaselineStatus] = React.useState(false);
+	const [role, setRole] = React.useState("");
 	const [isLoading, setLoading] = React.useState(true)
 	
 	React.useEffect(() => {
@@ -14,6 +15,7 @@ const PrivateRoutes = () => {
 			try {
 				const response = await axios.get(`${API_URL}/users/${userDetails.email}`);
 				setBaselineStatus(response.data.isBaselineComplete);
+				setRole(response.data.role);
 				setLoading(false)
 			} catch (err) {
 				setLoading(false);
@@ -24,7 +26,11 @@ const PrivateRoutes = () => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
-	if (!isLoading) return baselineStatus ? <Outlet /> : <Navigate to="/baseline" />;
+	if (!isLoading) return role === "admin" || role === "counsellor" || baselineStatus ? (
+		<Outlet />
+	) : (
+		<Navigate to="/baseline" />
+	);
 };
 
 export default PrivateRoutes;
