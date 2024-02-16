@@ -1,12 +1,11 @@
 import axios from "axios";
 import React from "react";
 import { API_URL } from "../../API";
-import AllUsersTable from "./AllUsersTable";
+import AllUsersTable from "./tables/AllUsersTable";
 import { FaSpinner } from "react-icons/fa6";
 import Grid from "@mui/material/Unstable_Grid2";
 import Card from "@mui/material/Card";
 import { Button, CardActions, CardContent, Typography } from "@mui/material";
-
 
 function ShowAllUsers() {
 	const [data, setData] = React.useState([]);
@@ -19,7 +18,7 @@ function ShowAllUsers() {
 		async function fetchdata() {
 			try {
 				const response = await axios.get(`${API_URL}/allusers?${params}`);
-				setData(response.data.data);				
+				setData(response.data.data);
 				setLoading(false);
 			} catch (error) {
 				setLoading(false);
@@ -43,32 +42,31 @@ function ShowAllUsers() {
 			}
 		}
 		fetchdata();
-	}, []);	
+	}, []);
 
 	return (
 		<>
 			<div className="mb-8">
 				<Grid container spacing={2}>
 					{count
-					.filter((value)=>{
-						return value._id !== "I stay home"
-					})
-					.map((value, index) => {
-						return (
-							<Grid key={index} xs={12} md={3} className="mt-0">
-								<Card>
-									<div className="text-white bg-websa-green flex flex-col px-3 py-3">
-										<span className="font-websa-regular text-sm">{value._id}</span>
-										
+						.filter((value) => {
+							return value._id !== "I stay home";
+						})
+						.map((value, index) => {
+							return (
+								<Grid key={index} xs={12} md={3} className="mt-0">
+									<Card>
+										<div className="text-white bg-websa-green flex flex-col px-3 py-3">
+											<span className="font-websa-regular text-sm">{value._id}</span>
+
 											<span className="font-websa-bold mt-2 text-3xl text-yellow-200">
 												{value.count}
 											</span>
-									
-									</div>
-								</Card>
-							</Grid>
-						);
-					})}
+										</div>
+									</Card>
+								</Grid>
+							);
+						})}
 				</Grid>
 			</div>
 			<div className="flex justify-center">

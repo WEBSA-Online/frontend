@@ -1,13 +1,18 @@
 import axios from "axios";
 import React from "react";
 import { API_URL } from "../../API";
-import AllUsersTable from "./AllUsersTable";
-import InterventionTable from "./InterventionTable";
+import InterventionTable from "./tables/InterventionTable";
 import { FaSpinner } from "react-icons/fa6";
 import Grid from "@mui/material/Unstable_Grid2";
 import Card from "@mui/material/Card";
-import { Button, CardActions, CardContent, Typography, Tabs, Tab, Box } from "@mui/material";
+import {
+	Typography,
+	Tabs,
+	Tab,
+	Box,
+} from "@mui/material";
 import PropTypes from "prop-types";
+import ControlTable from "./tables/ControlTable";
 
 function CustomTabPanel(props) {
 	const { children, value, index, ...other } = props;
@@ -42,18 +47,17 @@ function a11yProps(index) {
 	};
 }
 
-
 function ShowAllSelected() {
 	const [data, setData] = React.useState([]);
 	const [count, setCount] = React.useState([]);
-  const [selectionCount, setSelectionCount] = React.useState([]);
+	const [selectionCount, setSelectionCount] = React.useState([]);
 	const [loading, setLoading] = React.useState(true);
 	const [loadCount, setLoadCount] = React.useState(true);
 	const [params, setParams] = React.useState("");
-  const [value, setValue] = React.useState(0);
+	const [value, setValue] = React.useState(0);
 
 	const handleChange = (event, newValue) => {
-			setValue(newValue);
+		setValue(newValue);
 	};
 
 	React.useEffect(() => {
@@ -77,7 +81,7 @@ function ShowAllSelected() {
 				const response = await axios.get(`${API_URL}/users`);
 				console.log(response.data);
 				setCount(response.data.count);
-        setSelectionCount(response.data.selection);
+				setSelectionCount(response.data.selection);
 				setLoadCount(false);
 			} catch (error) {
 				setLoadCount(false);
@@ -88,19 +92,16 @@ function ShowAllSelected() {
 		fetchdata();
 	}, []);
 
-  const intervention = data.filter((value)=>{
-      return value.selection === "intervention";
-  })
-
-  const control = data.filter((value) => {
-				return value.selection === "intervention";
+	const selected = data.filter((value) => {
+		return value._id !== null;
 	});
-
 
 	return (
 		<>
 			{loading === true || loadCount === true ? (
-				<FaSpinner className="animate-spin text-5xl text-center text-websa-red" />
+				<div className="flex justify-center">
+					<FaSpinner className="animate-spin text-5xl text-center text-websa-red" />
+				</div>
 			) : (
 				<Box sx={{ width: "100%" }}>
 					<Box sx={{ borderBottom: 1, borderColor: "divider" }}>
@@ -111,8 +112,7 @@ function ShowAllSelected() {
 						>
 							<Tab label="University Count" {...a11yProps(0)} />
 							<Tab label="Intervention Count" {...a11yProps(1)} />
-							<Tab label="Intervention Participants" {...a11yProps(2)} />
-							<Tab label="Control Participants" {...a11yProps(2)} />
+							<Tab label="Participant details" {...a11yProps(2)} />
 						</Tabs>
 					</Box>
 					<CustomTabPanel value={value} index={0}>
@@ -168,10 +168,7 @@ function ShowAllSelected() {
 						</div>
 					</CustomTabPanel>
 					<CustomTabPanel value={value} index={2}>
-						<InterventionTable userData={intervention} />
-					</CustomTabPanel>
-					<CustomTabPanel value={value} index={3}>
-						<InterventionTable userData={control} />
+						<InterventionTable userData={selected} />
 					</CustomTabPanel>
 				</Box>
 			)}

@@ -11,8 +11,13 @@ import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
-import { FaCircleCheck, FaCircleExclamation } from "react-icons/fa6";
 import Moment from "react-moment";
+import moment from "moment";
+import ParticipantDialog from "../ParticipantDialog";
+import SelectFilter from "../ui/SelectFilter";
+import { FaDownload } from "react-icons/fa6";
+import Papa from "papaparse";
+
 
 const headCells = [
 	{
@@ -21,33 +26,28 @@ const headCells = [
 		label: "Name",
 	},
 	{
-		id: "email",
-		disablePadding: false,
-		label: "Email",
-	},
-	{
-		id: "phone",
-		numeric: true,
-		disablePadding: false,
-		label: "Phone",
-	},
-	{
-		id: "date",
-		numeric: true,
-		disablePadding: false,
-		label: "Date Of Participation",
-	},
-	{
 		id: "university",
 		numeric: true,
 		disablePadding: false,
 		label: "University",
 	},
 	{
-		id: "data",
+		id: "created",
 		numeric: true,
 		disablePadding: false,
-		label: "Received Data?",
+		label: "Date Of Participation",
+	},
+	{
+		id: "loggedin",
+		numeric: true,
+		disablePadding: false,
+		label: "Last Logged in",
+	},
+	{
+		id: "details",
+		numeric: true,
+		disablePadding: false,
+		label: "",
 	},
 ];
 
@@ -78,23 +78,50 @@ EnhancedTableHead.propTypes = {
 	rowCount: PropTypes.number.isRequired,
 };
 
-function TableToolbar() {
+function TableToolbar({ setBaseline, setArm, downloadFn, refinedata}) {
+	const options = [
+		{ value: "Completed Baseline", bool: "true" },
+		{ value: "Didn't Complete Baseline", bool: "false" },
+	];
+	const armOptions = [
+		{ value: "Intervention arm", bool: "intervention" },
+		{ value: "Control Arm", bool: "control" },
+	];
 	return (
-		<Box className="pt-6 pb-4 flex">
+		<Box className="pt-6 pb-4 flex justify-between">
 			<Typography variant="h6">
-				<span className="font-websa-bold">All Participants Table</span>
+				<span className="font-websa-bold">Participant Details</span>
 			</Typography>
-			<div></div>
+			<div className="flex items-center space-x-5">
+				<div>
+					<span className="text-base">Sort By Arm:</span>
+					<SelectFilter setMethod={setArm} options={armOptions} />
+				</div>
+				<div>
+					<span className="text-base">Baseline Status:</span>
+					<SelectFilter setMethod={setBaseline} options={options} />
+				</div>
+				<div>
+					<button
+						onClick={() => downloadFn(refinedata)}
+						className="button-small-green flex items-space space-y-2"
+					>
+						<FaDownload className="mr-2" />
+						Download Data
+					</button>
+				</div>
+			</div>
 		</Box>
 	);
 }
 
-export default function AllUsersTable({ userData }) {
+export default function InterventionTable({ userData }) {
 	const [order, setOrder] = React.useState("asc");
 	const [orderBy, setOrderBy] = React.useState("calories");
-
 	const [page, setPage] = React.useState(0);
-	const [rowsPerPage, setRowsPerPage] = React.useState(5);
+	const [rowsPerPage, setRowsPerPage] = React.useState(10);
+	const [isBaselineComplete, setBaseline] = React.useState(false);
+	const [arm, setArm] = React.useState("");
 
 	const handleRequestSort = (event, property) => {
 		const isAsc = orderBy === property && order === "asc";
@@ -133,10 +160,74 @@ export default function AllUsersTable({ userData }) {
 	const emptyRows =
 		page > 0 ? Math.max(0, (1 + page) * rowsPerPage - userData.length) : 0;
 
+	
+	const refineddata = userData
+		.filter((value) => {
+			if (arm === "intervention") {
+				return value.selection === "intervention";
+			} else if (arm === "control") {
+				return value.selection === "control";
+			} else {
+				return value;
+			}
+		})
+		.filter((value) => {
+			if (isBaselineComplete === "false") {
+				return value.isBaselineComplete === false;
+			} else if (isBaselineComplete === "true") {
+				return value.isBaselineComplete === true;
+			} else {
+				return value;
+			}
+		})
+		.map((value) => {
+			return {
+				Name: value.name,
+				Email: value.email,
+				Phone: value.phone,
+				"Selection arm": value.selection,
+				University: value.university,
+				"Has done Baseline": value.isBaselineComplete === true ? "Yes" : "No",
+				"Last logged at": moment(value.loggedin_at).format("D-MMMM-YYYY"),
+			};
+		});
+
+
+	// Function to export data to CSV and trigger download
+	const exportDataToCSV = (data) => {
+		// Convert the data to CSV format using PapaParse
+		const csv = Papa.unparse(data);
+
+		// Create a Blob containing the CSV data
+		const csvBlob = new Blob([csv], { type: "text/csv" });
+
+		// Create a URL for the Blob
+		const csvUrl = URL.createObjectURL(csvBlob);
+
+		// Create an invisible link element to trigger the download
+		const link = document.createElement("a");
+		link.href = csvUrl;
+		link.download = "Intervention Participants.csv";
+
+		link.click();
+
+		// Clean up by revoking the URL to release resources
+		URL.revokeObjectURL(csvUrl);
+	};
+
 	return (
 		<Box sx={{ width: "100%" }}>
+			<div className="container">
+				<button onClick={() => exportDataToCSV(refineddata)}>Export to CSV</button>
+			</div>
+
 			<Paper sx={{ width: "100%", mb: 2 }} className="px-5">
-				<TableToolbar />
+				<TableToolbar
+					setBaseline={setBaseline}
+					setArm={setArm}
+					downloadFn={exportDataToCSV}
+					refinedata={refineddata}
+				/>
 				<TableContainer>
 					<Table sx={{ minWidth: 750 }} aria-labelledby="tableTitle">
 						<EnhancedTableHead
@@ -147,6 +238,24 @@ export default function AllUsersTable({ userData }) {
 						/>
 						<TableBody>
 							{userData
+								.filter((value) => {
+									if (arm === "intervention") {
+										return value.selection === "intervention";
+									} else if (arm === "control") {
+										return value.selection === "control";
+									} else {
+										return value;
+									}
+								})
+								.filter((value) => {
+									if (isBaselineComplete === "false") {
+										return value.isBaselineComplete === false;
+									} else if (isBaselineComplete === "true") {
+										return value.isBaselineComplete === true;
+									} else {
+										return value;
+									}
+								})
 								.sort(sortReferrals)
 								.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
 								.map((row, index) => {
@@ -156,30 +265,17 @@ export default function AllUsersTable({ userData }) {
 											<TableCell component="th" id={labelId} scope="row" padding="none">
 												{row.name}
 											</TableCell>
-											<TableCell align="left">{row.email}</TableCell>
+											<TableCell align="left">{row.university}</TableCell>
 											<TableCell align="left">
-												{row.provider.toUpperCase()} <br /> {row.phone}
+												{" "}
+												<Moment fromNow>{row.created_at}</Moment>
 											</TableCell>
 											<TableCell align="left">
 												{" "}
-												<Moment format="Do MMMM YYYY">{row.created_at}</Moment>
-											</TableCell>
-											<TableCell align="left">{row.university}</TableCell>
-											<TableCell align="left">
-												{row.gotMobileData ? (
-													<div className="flex">
-														<FaCircleCheck className="text-green-700 text-lg mr-1" />
-														<span>Received</span>
-													</div>
-												) : (
-													<div className="flex">
-														<FaCircleExclamation className="text-red-700 text-lg mr-1" />
-														<span>Not yet</span>
-													</div>
-												)}
+												<Moment fromNow>{row.loggedin_at}</Moment>
 											</TableCell>
 											<TableCell align="left">
-												{/* <KycResultsModal userdetails={row} /> */}
+												<ParticipantDialog userEmail={row.email} />
 											</TableCell>
 										</TableRow>
 									);

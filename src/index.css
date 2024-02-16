@@ -9,6 +9,9 @@
    .button-small {
       @apply w-[100px] sm:w-auto font-websa-regular transition-all bg-websa-red hover:bg-websa-green py-2 px-2 rounded shadow-sm text-white font-bold text-xs
    }
+   .button-small-green {
+      @apply w-[100px] sm:w-auto font-websa-regular transition-all bg-websa-green hover:bg-websa-red py-2 px-2 rounded shadow-sm text-white font-bold text-xs
+   }
    .contained {
       @apply font-websa-bold transition-all bg-websa-red hover:bg-websa-green px-3 py-1 rounded shadow-sm text-white font-bold text-sm 
    }

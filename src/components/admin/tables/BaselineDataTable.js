@@ -13,47 +13,19 @@ import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 import { FaCircleCheck, FaCircleExclamation } from "react-icons/fa6";
 import Moment from "react-moment";
+import ParticipantDialog from "../ParticipantDialog";
 
 const headCells = [
 	{
-		id: "name",
+		id: "question",
 		disablePadding: true,
-		label: "Name",
-	},
-	// {
-	// 	id: "email",
-	// 	disablePadding: false,
-	// 	label: "Email",
-	// },
-	// {
-	// 	id: "phone",
-	// 	numeric: true,
-	// 	disablePadding: false,
-	// 	label: "Phone",
-	// },
-	{
-		id: "university",
-		numeric: true,
-		disablePadding: false,
-		label: "University",
+		label: "Question",
 	},
 	{
-		id: "created",
+		id: "answer",
 		numeric: true,
 		disablePadding: false,
-		label: "Date Of Participation",
-	},
-	{
-		id: "loggedin",
-		numeric: true,
-		disablePadding: false,
-		label: "Last Logged in",
-	},
-	{
-		id: "details",
-		numeric: true,
-		disablePadding: false,
-		label: "",
+		label: "Answer",
 	},
 ];
 
@@ -88,19 +60,18 @@ function TableToolbar() {
 	return (
 		<Box className="pt-6 pb-4 flex">
 			<Typography variant="h6">
-				<span className="font-websa-bold">Intervention Arm</span>
+				<span className="font-websa-bold">Baseline Survey Data</span>
 			</Typography>
 			<div></div>
 		</Box>
 	);
 }
 
-export default function AllUsersTable({ userData }) {
+export default function BaselineDataTable({ userData }) {
 	const [order, setOrder] = React.useState("asc");
 	const [orderBy, setOrderBy] = React.useState("calories");
-
 	const [page, setPage] = React.useState(0);
-	const [rowsPerPage, setRowsPerPage] = React.useState(5);
+	const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
 	const handleRequestSort = (event, property) => {
 		const isAsc = orderBy === property && order === "asc";
@@ -151,36 +122,8 @@ export default function AllUsersTable({ userData }) {
 							onRequestSort={handleRequestSort}
 							rowCount={userData.length}
 						/>
-						<TableBody>
-							{userData
-								.sort(sortReferrals)
-								.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-								.map((row, index) => {
-									const labelId = `enhanced-table-checkbox-${index}`;
-									return (
-										<TableRow hover role="checkbox" tabIndex={-1} key={row.id}>
-											<TableCell component="th" id={labelId} scope="row" padding="none">
-												{row.name}
-											</TableCell>
-											<TableCell align="left">{row.university}</TableCell>
-											<TableCell align="left">
-												{" "}
-												<Moment fromNow>{row.created_at}</Moment>
-											</TableCell>
-											<TableCell align="left">
-												{" "}
-												<Moment fromNow>{row.loggedin_at}</Moment>
-											</TableCell>
-											<TableCell align="left">See details</TableCell>
-										</TableRow>
-									);
-								})}
-							{emptyRows > 0 && (
-								<TableRow>
-									<TableCell colSpan={6} />
-								</TableRow>
-							)}
-						</TableBody>
+                  
+					
 					</Table>
 				</TableContainer>
 				<TablePagination
