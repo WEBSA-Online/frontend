@@ -5,14 +5,8 @@ import InterventionTable from "./tables/InterventionTable";
 import { FaSpinner } from "react-icons/fa6";
 import Grid from "@mui/material/Unstable_Grid2";
 import Card from "@mui/material/Card";
-import {
-	Typography,
-	Tabs,
-	Tab,
-	Box,
-} from "@mui/material";
+import { Typography, Tabs, Tab, Box } from "@mui/material";
 import PropTypes from "prop-types";
-import ControlTable from "./tables/ControlTable";
 
 function CustomTabPanel(props) {
 	const { children, value, index, ...other } = props;

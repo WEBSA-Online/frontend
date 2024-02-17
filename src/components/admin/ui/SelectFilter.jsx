@@ -5,7 +5,7 @@ const SelectFilter = ({ setMethod, options}) => {
 		<select
 			placeholder="Baseline"
 			onChange={(e) => setMethod(e.target.value)}
-			className="mx-2 border rounded-md px-2 py-1 bg-slate-50"
+			className="mx-2 border rounded-md px-2 py-1 bg-slate-50 text-sm"
 		>
 			<option value="">Show All</option>
 			{options.map((value) => (

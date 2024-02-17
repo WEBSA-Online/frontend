@@ -78,7 +78,13 @@ EnhancedTableHead.propTypes = {
 	rowCount: PropTypes.number.isRequired,
 };
 
-function TableToolbar({ setBaseline, setArm, downloadFn, refinedata}) {
+function TableToolbar({
+	setBaseline,
+	setArm,
+	downloadFn,
+	refinedata,
+	setUniversity,
+}) {
 	const options = [
 		{ value: "Completed Baseline", bool: "true" },
 		{ value: "Didn't Complete Baseline", bool: "false" },
@@ -87,19 +93,29 @@ function TableToolbar({ setBaseline, setArm, downloadFn, refinedata}) {
 		{ value: "Intervention arm", bool: "intervention" },
 		{ value: "Control Arm", bool: "control" },
 	];
+	const universities = [
+		{ value: "Makerere Univeristy", bool: "muk" },
+		{ value: "MUBS", bool: "mubs" },
+		{ value: "Kyambogo University", bool: "kyu" },
+		{ value: "Uganda Christian University", bool: "ucu" },
+		{ value: "Uganda Martyrs University Nkozi", bool: "umun" },
+		{ value: "Ndejje University", bool: "nu" },
+		{ value: "Kampala Internatonal University", bool: "kiu" },
+	];
 	return (
 		<Box className="pt-6 pb-4 flex justify-between">
-			<Typography variant="h6">
-				<span className="font-websa-bold">Participant Details</span>
-			</Typography>
-			<div className="flex items-center space-x-5">
+			<div className="flex items-center space-x-3">
 				<div>
-					<span className="text-base">Sort By Arm:</span>
+					<span className="text-sm">Sort by Arm:</span>
 					<SelectFilter setMethod={setArm} options={armOptions} />
 				</div>
 				<div>
-					<span className="text-base">Baseline Status:</span>
+					<span className="text-sm">Sort by Baseline Status:</span>
 					<SelectFilter setMethod={setBaseline} options={options} />
+				</div>
+				<div>
+					<span className="text-sm">Sort by Univeristy:</span>
+					<SelectFilter setMethod={setUniversity} options={universities} />
 				</div>
 				<div>
 					<button
@@ -122,6 +138,7 @@ export default function InterventionTable({ userData }) {
 	const [rowsPerPage, setRowsPerPage] = React.useState(10);
 	const [isBaselineComplete, setBaseline] = React.useState(false);
 	const [arm, setArm] = React.useState("");
+	const [university, setUniversity] = React.useState("");
 
 	const handleRequestSort = (event, property) => {
 		const isAsc = orderBy === property && order === "asc";
@@ -142,7 +159,6 @@ export default function InterventionTable({ userData }) {
 	function compareISODate(a, b) {
 		const dateA = new Date(a.created_at);
 		const dateB = new Date(b.created_at);
-
 		if (dateA > dateB) return -1;
 		if (dateA < dateB) return 1;
 		return 0;
@@ -180,6 +196,20 @@ export default function InterventionTable({ userData }) {
 				return value;
 			}
 		})
+		.filter((value) => {
+			if (university === "muk") return value.university === "Makerere University";
+			if (university === "mubs")
+				return value.university === "Makerere University Business School";
+			if (university === "ucu")
+				return value.university === "Uganda Christian University";
+			if (university === "kiu")
+				return value.university === "Kampala International University";
+			if (university === "kyu") return value.university === "Kyambogo University";
+			if (university === "umun")
+				return value.university === "Uganda Martyrs University Nkozi";
+			if (university === "nu") return value.university === "Ndejje University";
+			return value;
+		})
 		.map((value) => {
 			return {
 				Name: value.name,
@@ -195,6 +225,7 @@ export default function InterventionTable({ userData }) {
 
 	// Function to export data to CSV and trigger download
 	const exportDataToCSV = (data) => {
+		// console.log(data)
 		// Convert the data to CSV format using PapaParse
 		const csv = Papa.unparse(data);
 
@@ -217,16 +248,13 @@ export default function InterventionTable({ userData }) {
 
 	return (
 		<Box sx={{ width: "100%" }}>
-			<div className="container">
-				<button onClick={() => exportDataToCSV(refineddata)}>Export to CSV</button>
-			</div>
-
 			<Paper sx={{ width: "100%", mb: 2 }} className="px-5">
 				<TableToolbar
 					setBaseline={setBaseline}
 					setArm={setArm}
 					downloadFn={exportDataToCSV}
 					refinedata={refineddata}
+					setUniversity={setUniversity}
 				/>
 				<TableContainer>
 					<Table sx={{ minWidth: 750 }} aria-labelledby="tableTitle">
@@ -255,6 +283,16 @@ export default function InterventionTable({ userData }) {
 									} else {
 										return value;
 									}
+								})
+								.filter((value) => {
+									if (university === "muk") return value.university === "Makerere University";
+									if (university === "mubs") return value.university === "Makerere University Business School";
+									if (university === "ucu") return value.university === "Uganda Christian University";
+									if (university === "kiu") return value.university === "Kampala International University";
+									if (university === "kyu") return value.university === "Kyambogo University";
+									if (university === "umun") return value.university === "Uganda Martyrs University Nkozi";
+									if (university === "nu") return value.university === "Ndejje University";
+									return value;
 								})
 								.sort(sortReferrals)
 								.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
