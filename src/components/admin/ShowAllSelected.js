@@ -73,7 +73,6 @@ function ShowAllSelected() {
 		async function fetchdata() {
 			try {
 				const response = await axios.get(`${API_URL}/users`);
-				console.log(response.data);
 				setCount(response.data.count);
 				setSelectionCount(response.data.selection);
 				setLoadCount(false);

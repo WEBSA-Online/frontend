@@ -57,14 +57,14 @@ function TableToolbar() {
 	return (
 		<Box className="pt-6 pb-4 flex">
 			<Typography variant="h6">
-				<span className="font-websa-bold">Baseline Survey Data</span>
+				<span className="font-websa-bold">Initial Survey Data</span>
 			</Typography>
 			<div></div>
 		</Box>
 	);
 }
 
-export default function BaselineDataTable({ userData }) {
+export default function InitialSurveryTable({ userData }) {
 	const [order, setOrder] = React.useState("asc");
 	const [orderBy, setOrderBy] = React.useState("calories");
 	const [page, setPage] = React.useState(0);
@@ -107,15 +107,18 @@ export default function BaselineDataTable({ userData }) {
 	const emptyRows =
 		page > 0 ? Math.max(0, (1 + page) * rowsPerPage - userData.length) : 0;
 
+
+   console.log(userData);
+
 	return (
 		<Box sx={{ width: "100%" }}>
 			<Paper sx={{ width: "100%", mb: 2 }} className="px-5">
 				<TableToolbar
-					// setBaseline={setBaseline}
-					// setArm={setArm}
-					// downloadFn={exportDataToCSV}
-					// refinedata={refineddata}
-					// setUniversity={setUniversity}
+				// setBaseline={setBaseline}
+				// setArm={setArm}
+				// downloadFn={exportDataToCSV}
+				// refinedata={refineddata}
+				// setUniversity={setUniversity}
 				/>
 				<TableContainer>
 					<Table sx={{ minWidth: 750 }} aria-labelledby="tableTitle">
@@ -127,6 +130,7 @@ export default function BaselineDataTable({ userData }) {
 						/>
 						<TableBody>
 							{userData
+                        .filter((value)=> value !==null)
 								.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
 								.map((row, index) => {
 									const labelId = `enhanced-table-checkbox-${index}`;

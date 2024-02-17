@@ -13,6 +13,10 @@ import { Tabs, Tab } from "@mui/material";
 import PropTypes from "prop-types";
 import Moment from "react-moment";
 import BaselineDataTable from "./tables/BaselineDataTable";
+import InitialSurveryTable from "./tables/IntialSurveyTable";
+import Papa from "papaparse";
+import { SiMicrosoftexcel } from "react-icons/si";
+import moment from "moment";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
 	return <Slide direction="up" ref={ref} {...props} />;
@@ -73,6 +77,7 @@ export default function ParticipantDialog({ userEmail }) {
 		async function fetchdata() {
 			try {
 				const response = await axios.get(`${API_URL}/users/${userEmail}`);
+
 				setData(response.data);
 				setLoading(false);
 			} catch (error) {
@@ -83,6 +88,46 @@ export default function ParticipantDialog({ userEmail }) {
 		}
 		fetchdata();
 	}, [userEmail]);
+
+	// Function to export data to CSV and trigger download
+	const exportDataToCSV = (data) => {
+		// console.log(data)
+		// Convert the data to CSV format using PapaParse
+		const csv = Papa.unparse(data);
+
+		// Create a Blob containing the CSV data
+		const csvBlob = new Blob([csv], { type: "text/csv" });
+
+		// Create a URL for the Blob
+		const csvUrl = URL.createObjectURL(csvBlob);
+
+		// Create an invisible link element to trigger the download
+		const link = document.createElement("a");
+		link.href = csvUrl;
+		link.download = "Intervention Participants.csv";
+
+		link.click();
+
+		// Clean up by revoking the URL to release resources
+		URL.revokeObjectURL(csvUrl);
+	};
+
+	const newUserData = {
+		Name: data.name,
+		Email: data.email,
+		Phone: data.phone,
+		"Selection arm": data.selection,
+		"Has done Baseline": data.isBaselineComplete === true ? "Yes" : "No",
+		"Last logged at": moment(data.loggedin_at).format("D-MMMM-YYYY"),
+	};
+
+	const refineddata = data.userData?.filter((value) => value !== null);
+
+	refineddata.forEach((obj, index) => {
+		newUserData[`Question ${index + 1}`] = `Answer: ${obj.question}`;
+	});
+
+	console.log(newUserData);
 
 	return (
 		<React.Fragment>
@@ -104,14 +149,24 @@ export default function ParticipantDialog({ userEmail }) {
 						<Box sx={{ position: "relative" }}>
 							<Toolbar className="bg-websa-green flex justify-between text-white">
 								<p className="text-2xl">{data.name}</p>
-								<IconButton
-									edge="start"
-									color="inherit"
-									onClick={handleClose}
-									aria-label="close"
-								>
-									<CloseIcon />
-								</IconButton>
+								<div className="flex">
+									<button
+										className="bg-white flex items-center text-websa-green text-base mr-5 px-2 py-1 rounded-sm font-websa-bold"
+										onClick={() => exportDataToCSV([newUserData])}
+									>
+										<SiMicrosoftexcel className="mr-2" />
+										Download Data
+									</button>
+									<IconButton
+										edge="start"
+										color="inherit"
+										onClick={handleClose}
+										aria-label="close"
+									>
+										<span className="text-sm">Close</span>
+										<CloseIcon />
+									</IconButton>
+								</div>
 							</Toolbar>
 						</Box>
 						<Box sx={{ width: "100%" }}>
@@ -148,14 +203,17 @@ export default function ParticipantDialog({ userEmail }) {
 											: "Participlant has not completed"}
 									</li>
 									<li>
-										<strong>Last Logged in</strong>: <Moment fromNow>{data.loggedin_at}</Moment>
+										<strong>Last Logged in</strong>:{" "}
+										<Moment fromNow>{data.loggedin_at}</Moment>
 									</li>
 								</ol>
 							</CustomTabPanel>
 							<CustomTabPanel value={value} index={1}>
-								<BaselineDataTable userData={data} />
+								<BaselineDataTable userData={data.baselineData} />
 							</CustomTabPanel>
-							<CustomTabPanel value={value} index={2}></CustomTabPanel>
+							<CustomTabPanel value={value} index={2}>
+								<InitialSurveryTable userData={data.userData} />
+							</CustomTabPanel>
 							<CustomTabPanel value={value} index={3}></CustomTabPanel>
 						</Box>
 					</>

@@ -173,8 +173,7 @@ export default function InterventionTable({ userData }) {
 	}
 
 	// Avoid a layout jump when reaching the last page with empty rows.
-	const emptyRows =
-		page > 0 ? Math.max(0, (1 + page) * rowsPerPage - userData.length) : 0;
+	const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - userData.length) : 0;
 
 	
 	const refineddata = userData
@@ -221,7 +220,6 @@ export default function InterventionTable({ userData }) {
 				"Last logged at": moment(value.loggedin_at).format("D-MMMM-YYYY"),
 			};
 		});
-
 
 	// Function to export data to CSV and trigger download
 	const exportDataToCSV = (data) => {
