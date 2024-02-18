@@ -14,9 +14,8 @@ import PropTypes from "prop-types";
 import Moment from "react-moment";
 import BaselineDataTable from "./tables/BaselineDataTable";
 import InitialSurveryTable from "./tables/IntialSurveyTable";
-import Papa from "papaparse";
-import { SiMicrosoftexcel } from "react-icons/si";
 import moment from "moment";
+import { FaRegSadTear } from "react-icons/fa";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
 	return <Slide direction="up" ref={ref} {...props} />;
@@ -89,29 +88,6 @@ export default function ParticipantDialog({ userEmail }) {
 		fetchdata();
 	}, [userEmail]);
 
-	// Function to export data to CSV and trigger download
-	const exportDataToCSV = (data) => {
-		// console.log(data)
-		// Convert the data to CSV format using PapaParse
-		const csv = Papa.unparse(data);
-
-		// Create a Blob containing the CSV data
-		const csvBlob = new Blob([csv], { type: "text/csv" });
-
-		// Create a URL for the Blob
-		const csvUrl = URL.createObjectURL(csvBlob);
-
-		// Create an invisible link element to trigger the download
-		const link = document.createElement("a");
-		link.href = csvUrl;
-		link.download = "Intervention Participants.csv";
-
-		link.click();
-
-		// Clean up by revoking the URL to release resources
-		URL.revokeObjectURL(csvUrl);
-	};
-
 	const newUserData = {
 		Name: data.name,
 		Email: data.email,
@@ -121,13 +97,33 @@ export default function ParticipantDialog({ userEmail }) {
 		"Last logged at": moment(data.loggedin_at).format("D-MMMM-YYYY"),
 	};
 
-	const refineddata = data.userData?.filter((value) => value !== null);
+	const newUserBaselineData = {
+		Name: data.name,
+		Email: data.email,
+		Phone: data.phone,
+		"Selection arm": data.selection,
+		"Has done Baseline": data.isBaselineComplete === true ? "Yes" : "No",
+		"Last logged at": moment(data.loggedin_at).format("D-MMMM-YYYY"),
+	};
 
-	refineddata.forEach((obj, index) => {
+	const getScores = (data) =>{
+		const filtered = data?.filter((value) => value.score !== undefined);
+		return filtered?.reduce(
+			(accumulator, currentValue) => accumulator + currentValue.score, 0
+		);
+	}
+
+	const refineddata = data.userData?.filter((value) => value !== null);
+	const refinedBaseline = data.baselineData?.filter((value) => value !== null);
+
+
+	refineddata?.forEach((obj, index) => {
 		newUserData[`Question ${index + 1}`] = `Answer: ${obj.question}`;
 	});
 
-	console.log(newUserData);
+	refinedBaseline?.forEach((obj, index) => {
+		newUserBaselineData[`Question ${index + 1}`] = `Answer: ${obj.question}`;
+	});
 
 	return (
 		<React.Fragment>
@@ -150,13 +146,6 @@ export default function ParticipantDialog({ userEmail }) {
 							<Toolbar className="bg-websa-green flex justify-between text-white">
 								<p className="text-2xl">{data.name}</p>
 								<div className="flex">
-									<button
-										className="bg-white flex items-center text-websa-green text-base mr-5 px-2 py-1 rounded-sm font-websa-bold"
-										onClick={() => exportDataToCSV([newUserData])}
-									>
-										<SiMicrosoftexcel className="mr-2" />
-										Download Data
-									</button>
 									<IconButton
 										edge="start"
 										color="inherit"
@@ -174,12 +163,16 @@ export default function ParticipantDialog({ userEmail }) {
 								<Tabs
 									value={value}
 									onChange={handleChange}
-									aria-label="basic tabs example"
+									TabIndicatorProps={{
+										sx: {
+											backgroundColor: "#a70707", // Change this to your desired color
+										},
+									}}
 								>
-									<Tab label="Personal Information" {...a11yProps(0)} />
-									<Tab label="Baseline Survey Data" {...a11yProps(1)} />
-									<Tab label="Endline Survery Data" {...a11yProps(2)} />
-									<Tab label="Intitial Survey Data" {...a11yProps(2)} />
+									<Tab style={{ color: "black", fontWeight: "bold" }} label="Personal Information" {...a11yProps(0)} />
+									<Tab style={{ color: "black", fontWeight: "bold" }} label="Intitial Survey Data" {...a11yProps(1)} />
+									<Tab style={{ color: "black", fontWeight: "bold" }} label="Baseline Survey Data" {...a11yProps(2)} />
+									<Tab style={{ color: "black", fontWeight: "bold" }} label="Endline Survery Data" {...a11yProps(2)} />
 								</Tabs>
 							</Box>
 							<CustomTabPanel value={value} index={0}>
@@ -208,13 +201,44 @@ export default function ParticipantDialog({ userEmail }) {
 									</li>
 								</ol>
 							</CustomTabPanel>
-							<CustomTabPanel value={value} index={1}>
-								<BaselineDataTable userData={data.baselineData} />
+							<CustomTabPanel value={value} index={1} className="bg-slate-200 px-16">
+								<InitialSurveryTable
+									userData={data.userData}
+									newUserData={newUserData}
+									scores={getScores(refineddata)}
+									name={data.name}
+								/>
 							</CustomTabPanel>
-							<CustomTabPanel value={value} index={2}>
-								<InitialSurveryTable userData={data.userData} />
+							<CustomTabPanel
+								value={value}
+								index={2}
+								className={`bg-slate-200 px-16 ${
+									data?.isBaselineComplete === false ? "h-screen" : null
+								}`}
+							>
+								{data?.isBaselineComplete ? (
+									<BaselineDataTable
+										userData={data.baselineData}
+										name={data.name}
+										newUserBaselineData={newUserBaselineData}
+									/>
+								) : (
+									<div className="p-4 bg-white font-websa-bold flex flex-col items-center mx-auto">
+										<FaRegSadTear className="text-6xl text-red-700" />
+										<p className="mt-3 text-lg">Participant Has Not Done Baseline</p>
+									</div>
+								)}
 							</CustomTabPanel>
-							<CustomTabPanel value={value} index={3}></CustomTabPanel>
+							<CustomTabPanel
+								value={value}
+								index={3}
+								className="bg-slate-200 h-screen px-16"
+							>
+								<div className="p-4 bg-white font-websa-bold flex flex-col items-center mx-auto">
+									<FaRegSadTear className="text-6xl text-red-700" />
+									<p className="mt-3 text-lg">Participant Has Not Done Endline</p>
+								</div>
+							</CustomTabPanel>
 						</Box>
 					</>
 				)}

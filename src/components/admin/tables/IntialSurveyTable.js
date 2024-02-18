@@ -11,6 +11,8 @@ import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
+import { SiMicrosoftexcel } from "react-icons/si";
+import Papa from "papaparse";
 
 const headCells = [
 	{
@@ -53,18 +55,51 @@ EnhancedTableHead.propTypes = {
 	rowCount: PropTypes.number.isRequired,
 };
 
-function TableToolbar() {
+function TableToolbar({ newUserData, scores, name}) {
+	// Function to export data to CSV and trigger download
+	const exportDataToCSV = (data) => {
+		// console.log(data)
+		// Convert the data to CSV format using PapaParse
+		const csv = Papa.unparse(data);
+
+		// Create a Blob containing the CSV data
+		const csvBlob = new Blob([csv], { type: "text/csv" });
+
+		// Create a URL for the Blob
+		const csvUrl = URL.createObjectURL(csvBlob);
+
+		// Create an invisible link element to trigger the download
+		const link = document.createElement("a");
+		link.href = csvUrl;
+		link.download = `${name}-initial-survey-details.csv`;
+
+		link.click();
+
+		// Clean up by revoking the URL to release resources
+		URL.revokeObjectURL(csvUrl);
+	};
 	return (
-		<Box className="pt-6 pb-4 flex">
+		<Box className="pt-6 pb-4 flex justify-between">
 			<Typography variant="h6">
 				<span className="font-websa-bold">Initial Survey Data</span>
 			</Typography>
-			<div></div>
+			<div className="flex items-center">
+				<div>
+					<p className="font-websa-bold text-lg mr-5">Total Score from Survey: {scores}</p>
+				</div>
+				<button
+					className="bg-websa-green flex items-center text-white text-xs px-3 py-2 rounded-sm font-websa-regular"
+					onClick={() => exportDataToCSV([newUserData])}
+				>
+					<SiMicrosoftexcel className="mr-2" />
+					Download Data
+				</button>
+			</div>
 		</Box>
 	);
 }
 
-export default function InitialSurveryTable({ userData }) {
+export default function InitialSurveryTable({ userData, newUserData, scores, name}) {
 	const [order, setOrder] = React.useState("asc");
 	const [orderBy, setOrderBy] = React.useState("calories");
 	const [page, setPage] = React.useState(0);
@@ -85,40 +120,18 @@ export default function InitialSurveryTable({ userData }) {
 		setPage(0);
 	};
 
-	// Sort dates
-	function compareISODate(a, b) {
-		const dateA = new Date(a.created_at);
-		const dateB = new Date(b.created_at);
-
-		if (dateA > dateB) return -1;
-		if (dateA < dateB) return 1;
-		return 0;
-	}
-
-	function sortReferrals(a, b) {
-		if (a.created_at > b.created_at) {
-			return -1;
-		} else {
-			return 1;
-		}
-	}
 
 	// Avoid a layout jump when reaching the last page with empty rows.
 	const emptyRows =
 		page > 0 ? Math.max(0, (1 + page) * rowsPerPage - userData.length) : 0;
 
-
-   console.log(userData);
-
 	return (
 		<Box sx={{ width: "100%" }}>
 			<Paper sx={{ width: "100%", mb: 2 }} className="px-5">
 				<TableToolbar
-				// setBaseline={setBaseline}
-				// setArm={setArm}
-				// downloadFn={exportDataToCSV}
-				// refinedata={refineddata}
-				// setUniversity={setUniversity}
+					newUserData={newUserData}
+					scores={scores}
+					name={name}
 				/>
 				<TableContainer>
 					<Table sx={{ minWidth: 750 }} aria-labelledby="tableTitle">
@@ -130,7 +143,7 @@ export default function InitialSurveryTable({ userData }) {
 						/>
 						<TableBody>
 							{userData
-                        .filter((value)=> value !==null)
+								.filter((value) => value !== null)
 								.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
 								.map((row, index) => {
 									const labelId = `enhanced-table-checkbox-${index}`;

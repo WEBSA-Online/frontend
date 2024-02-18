@@ -9,10 +9,12 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
-import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
-import { FaCircleCheck, FaCircleExclamation } from "react-icons/fa6";
+import { FaCircleCheck, FaCircleExclamation, FaDownload } from "react-icons/fa6";
 import Moment from "react-moment";
+import SelectFilter from "../ui/SelectFilter";
+import moment from "moment";
+import Papa from "papaparse";
 
 const headCells = [
 	{
@@ -78,14 +80,74 @@ EnhancedTableHead.propTypes = {
 	rowCount: PropTypes.number.isRequired,
 };
 
-function TableToolbar() {
-	return (
-		<Box className="pt-6 pb-4 flex">
-			<Typography variant="h6">
-				<span className="font-websa-bold">All Participants Table</span>
-			</Typography>
-			<div>
+function TableToolbar({
+	setNetwork,
+	setUniversity,
+	setGotData,
+	filteteredData,
+}) {
+	const networkProvider = [
+		{ value: "MTN", bool: "mtn" },
+		{ value: "Airtel", bool: "airtel" }
+	];
+	const gotData = [
+		{ value: "Received Data", bool: "true" },
+		{ value: "Hasn't Received Data", bool: "false" },
+	];
+	const universities = [
+		{ value: "Makerere Univeristy", bool: "muk" },
+		{ value: "MUBS", bool: "mubs" },
+		{ value: "Kyambogo University", bool: "kyu" },
+		{ value: "Uganda Christian University", bool: "ucu" },
+		{ value: "Uganda Martyrs University Nkozi", bool: "umun" },
+		{ value: "Ndejje University", bool: "nu" },
+		{ value: "Kampala Internatonal University", bool: "kiu" },
+	];
+	const exportDataToCSV = (data) => {
+		// console.log(data)
+		// Convert the data to CSV format using PapaParse
+		const csv = Papa.unparse(data);
 
+		// Create a Blob containing the CSV data
+		const csvBlob = new Blob([csv], { type: "text/csv" });
+
+		// Create a URL for the Blob
+		const csvUrl = URL.createObjectURL(csvBlob);
+
+		// Create an invisible link element to trigger the download
+		const link = document.createElement("a");
+		link.href = csvUrl;
+		link.download = `All-Participants-General-Data.csv`;
+
+		link.click();
+
+		// Clean up by revoking the URL to release resources
+		URL.revokeObjectURL(csvUrl);
+	};
+	return (
+		<Box className="pt-6 pb-4 flex justify-between">
+			<div className="flex items-center space-x-3">
+				<div>
+					<span className="text-sm">Sort by Network:</span>
+					<SelectFilter setMethod={setNetwork} options={networkProvider} />
+				</div>
+				<div>
+					<span className="text-sm">Sort by Data Bundles:</span>
+					<SelectFilter setMethod={setGotData} options={gotData} />
+				</div>
+				<div>
+					<span className="text-sm">Sort by Univeristy:</span>
+					<SelectFilter setMethod={setUniversity} options={universities} />
+				</div>
+				<div>
+					<button
+						onClick={() => exportDataToCSV(filteteredData)}
+						className="button-small-green flex items-space space-y-2"
+					>
+						<FaDownload className="mr-2" />
+						Download Data
+					</button>
+				</div>
 			</div>
 		</Box>
 	);
@@ -94,9 +156,11 @@ function TableToolbar() {
 export default function AllUsersTable({ userData }) {
 	const [order, setOrder] = React.useState("asc");
 	const [orderBy, setOrderBy] = React.useState("calories");
-
 	const [page, setPage] = React.useState(0);
-	const [rowsPerPage, setRowsPerPage] = React.useState(5);
+	const [rowsPerPage, setRowsPerPage] = React.useState(25);
+	const [network, setNetwork] = React.useState("");
+	const [university, setUniversity] = React.useState("");
+	const [gotData, setGotData] = React.useState("");
 
 	const handleRequestSort = (event, property) => {
 		const isAsc = orderBy === property && order === "asc";
@@ -114,15 +178,6 @@ export default function AllUsersTable({ userData }) {
 	};
 
 	// Sort dates
-	function compareISODate(a, b) {
-		const dateA = new Date(a.created_at);
-		const dateB = new Date(b.created_at);
-
-		if (dateA > dateB) return -1;
-		if (dateA < dateB) return 1;
-		return 0;
-	}
-
 	function sortReferrals(a, b) {
 		if (a.created_at > b.created_at) {
 			return -1;
@@ -135,10 +190,62 @@ export default function AllUsersTable({ userData }) {
 	const emptyRows =
 		page > 0 ? Math.max(0, (1 + page) * rowsPerPage - userData.length) : 0;
 
+	
+	const filteteredData = userData
+		.filter((value) => {
+			if (network === "mtn") {
+				return value.provider === "mtn";
+			} else if (network === "airtel") {
+				return value.provider === "airtel";
+			} else {
+				return value;
+			}
+		})
+		.filter((value) => {
+			if (gotData === "false") {
+				return value.gotMobileData === false;
+			} else if (gotData === "true") {
+				return value.gotMobileData === true;
+			} else {
+				return value;
+			}
+		})
+		.filter((value) => {
+			if (university === "muk") return value.university === "Makerere University";
+			if (university === "mubs")
+				return value.university === "Makerere University Business School";
+			if (university === "ucu")
+				return value.university === "Uganda Christian University";
+			if (university === "kiu")
+				return value.university === "Kampala International University";
+			if (university === "kyu") return value.university === "Kyambogo University";
+			if (university === "umun")
+				return value.university === "Uganda Martyrs University Nkozi";
+			if (university === "nu") return value.university === "Ndejje University";
+			return value;
+		})
+		.sort(sortReferrals)
+		.map((value) => {
+			return {
+				Name: value.name,
+				Email: value.email,
+				Phone: value.phone,
+				Network: value.provider,
+				University: value.university,
+				"Received internet data": value.gotMobileData === true ? "Yes" : "No",
+				"Date of Participation": moment(value.created_at).format("D-MMMM-YYYY"),
+			};
+		});
+
 	return (
 		<Box sx={{ width: "100%" }}>
 			<Paper sx={{ width: "100%", mb: 2 }} className="px-5">
-				<TableToolbar />
+				<TableToolbar
+					setNetwork={setNetwork}
+					setUniversity={setUniversity}
+					setGotData={setGotData}
+					filteteredData={filteteredData}
+				/>
 				<TableContainer>
 					<Table sx={{ minWidth: 750 }} aria-labelledby="tableTitle">
 						<EnhancedTableHead
@@ -149,6 +256,41 @@ export default function AllUsersTable({ userData }) {
 						/>
 						<TableBody>
 							{userData
+								.filter((value) => {
+									if (network === "mtn") {
+										return value.provider === "mtn";
+									} else if (network === "airtel") {
+										return value.provider === "airtel";
+									} else {
+										return value;
+									}
+								})
+								.filter((value) => {
+									if (gotData === "false") {
+										return value.gotMobileData === false;
+									} else if (gotData === "true") {
+										return value.gotMobileData === true;
+									} else {
+										return value;
+									}
+								})
+								.filter((value) => {
+									if (university === "muk")
+										return value.university === "Makerere University";
+									if (university === "mubs")
+										return value.university === "Makerere University Business School";
+									if (university === "ucu")
+										return value.university === "Uganda Christian University";
+									if (university === "kiu")
+										return value.university === "Kampala International University";
+									if (university === "kyu")
+										return value.university === "Kyambogo University";
+									if (university === "umun")
+										return value.university === "Uganda Martyrs University Nkozi";
+									if (university === "nu")
+										return value.university === "Ndejje University";
+									return value;
+								})
 								.sort(sortReferrals)
 								.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
 								.map((row, index) => {
@@ -160,7 +302,7 @@ export default function AllUsersTable({ userData }) {
 											</TableCell>
 											<TableCell align="left">{row.email}</TableCell>
 											<TableCell align="left">
-												{row.provider.toUpperCase()} <br/> {row.phone}
+												{row.provider.toUpperCase()} <br /> {row.phone}
 											</TableCell>
 											<TableCell align="left">
 												{" "}

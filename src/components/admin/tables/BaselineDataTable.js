@@ -11,6 +11,8 @@ import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
+import { SiMicrosoftexcel } from "react-icons/si";
+import Papa from "papaparse";
 
 const headCells = [
 	{
@@ -53,18 +55,49 @@ EnhancedTableHead.propTypes = {
 	rowCount: PropTypes.number.isRequired,
 };
 
-function TableToolbar() {
+function TableToolbar({newUserBaselineData, name }) {
+	// Function to export data to CSV and trigger download
+	const exportDataToCSV = (data) => {
+		// console.log(data)
+		// Convert the data to CSV format using PapaParse
+		const csv = Papa.unparse(data);
+
+		// Create a Blob containing the CSV data
+		const csvBlob = new Blob([csv], { type: "text/csv" });
+
+		// Create a URL for the Blob
+		const csvUrl = URL.createObjectURL(csvBlob);
+
+		// Create an invisible link element to trigger the download
+		const link = document.createElement("a");
+		link.href = csvUrl;
+		link.download = `${name}-baseline-survey-details.csv`;
+
+		link.click();
+
+		// Clean up by revoking the URL to release resources
+		URL.revokeObjectURL(csvUrl);
+	};
 	return (
-		<Box className="pt-6 pb-4 flex">
+		<Box className="pt-6 pb-4 flex justify-between">
 			<Typography variant="h6">
 				<span className="font-websa-bold">Baseline Survey Data</span>
 			</Typography>
-			<div></div>
+			<div className="flex items-center">
+				<button
+					className="bg-websa-green flex items-center text-white text-xs px-3 py-2 rounded-sm font-websa-regular"
+					onClick={() => exportDataToCSV([newUserBaselineData])}
+				>
+					<SiMicrosoftexcel className="mr-2" />
+					Download Data
+				</button>
+			</div>
 		</Box>
 	);
 }
 
-export default function BaselineDataTable({ userData }) {
+
+export default function BaselineDataTable({ userData, newUserBaselineData, name}) {
 	const [order, setOrder] = React.useState("asc");
 	const [orderBy, setOrderBy] = React.useState("calories");
 	const [page, setPage] = React.useState(0);
@@ -110,13 +143,7 @@ export default function BaselineDataTable({ userData }) {
 	return (
 		<Box sx={{ width: "100%" }}>
 			<Paper sx={{ width: "100%", mb: 2 }} className="px-5">
-				<TableToolbar
-					// setBaseline={setBaseline}
-					// setArm={setArm}
-					// downloadFn={exportDataToCSV}
-					// refinedata={refineddata}
-					// setUniversity={setUniversity}
-				/>
+				<TableToolbar newUserBaselineData={newUserBaselineData} name={name} />
 				<TableContainer>
 					<Table sx={{ minWidth: 750 }} aria-labelledby="tableTitle">
 						<EnhancedTableHead

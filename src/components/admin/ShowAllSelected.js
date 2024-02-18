@@ -101,11 +101,27 @@ function ShowAllSelected() {
 						<Tabs
 							value={value}
 							onChange={handleChange}
-							aria-label="basic tabs example"
+							TabIndicatorProps={{
+								sx: {
+									backgroundColor: "#a70707",
+								},
+							}}
 						>
-							<Tab label="University Count" {...a11yProps(0)} />
-							<Tab label="Intervention Count" {...a11yProps(1)} />
-							<Tab label="Participant details" {...a11yProps(2)} />
+							<Tab
+								style={{ color: "black", fontWeight: "bold" }}
+								label="University Count"
+								{...a11yProps(0)}
+							/>
+							<Tab
+								style={{ color: "black", fontWeight: "bold" }}
+								label="Intervention Count"
+								{...a11yProps(1)}
+							/>
+							<Tab
+								style={{ color: "black", fontWeight: "bold" }}
+								label="Participant details"
+								{...a11yProps(2)}
+							/>
 						</Tabs>
 					</Box>
 					<CustomTabPanel value={value} index={0}>
