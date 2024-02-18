@@ -24,9 +24,11 @@ const Menu = ({ menu }) => {
 				})}
 				{location.pathname === "/allusers" || location.pathname === "/selected" ? (
 					<li>
-						<button className="font-websa-bold transition-all bg-websa-red hover:bg-websa-green py-2 px-2.5 rounded shadow-sm w-[100px] text-white font-bold text-sm">
-							LOG OUT
-						</button>
+						<Link to="/login">
+							<button className="font-websa-bold transition-all bg-websa-red hover:bg-websa-green py-2 px-2.5 rounded shadow-sm w-[100px] text-white font-bold text-sm">
+								LOG OUT
+							</button>
+						</Link>
 					</li>
 				) : (
 					<li>
