@@ -17,7 +17,6 @@ import SelectFilter from "../ui/SelectFilter";
 import { FaDownload } from "react-icons/fa6";
 import Papa from "papaparse";
 
-
 const headCells = [
 	{
 		id: "name",
@@ -154,15 +153,6 @@ export default function InterventionTable({ userData }) {
 		setPage(0);
 	};
 
-	// Sort dates
-	function compareISODate(a, b) {
-		const dateA = new Date(a.created_at);
-		const dateB = new Date(b.created_at);
-		if (dateA > dateB) return -1;
-		if (dateA < dateB) return 1;
-		return 0;
-	}
-
 	function sortReferrals(a, b) {
 		if (a.created_at > b.created_at) {
 			return -1;
@@ -172,9 +162,11 @@ export default function InterventionTable({ userData }) {
 	}
 
 	// Avoid a layout jump when reaching the last page with empty rows.
-	const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - userData.length) : 0;
-
+	const emptyRows =
+		page > 0 ? Math.max(0, (1 + page) * rowsPerPage - userData.length) : 0;
 	
+	const refinedBaseline = userData?.filter((value, index) => value.baselineData[index] !== undefined);
+
 	const refineddata = userData
 		.filter((value) => {
 			if (arm === "intervention") {
@@ -208,8 +200,9 @@ export default function InterventionTable({ userData }) {
 			if (university === "nu") return value.university === "Ndejje University";
 			return value;
 		})
-		.map((value) => {
-			return {
+		.map((value, index) => {
+			const refinedBaseline = value.baselineData.filter((elem) => elem !== null);
+			const newdata = {
 				Name: value.name,
 				Email: value.email,
 				Phone: value.phone,
@@ -218,7 +211,27 @@ export default function InterventionTable({ userData }) {
 				"Has done Baseline": value.isBaselineComplete === true ? "Yes" : "No",
 				"Last logged at": moment(value.loggedin_at).format("D-MMMM-YYYY"),
 			};
-		});
+			refinedBaseline?.forEach((obj, index) => {
+				if(index >= 11 && index <= 14){
+					if(index === 13){
+						newdata[
+							`Question ${index + 1}: ${obj[0].question},`
+						] = `Answer: ${obj[0].answer}`;
+					} else {
+						newdata[
+							`Question ${index + 1}: ${obj[0].question}`
+						] = `Answer: ${obj[0].answer}`;
+					}					
+				} else {
+					newdata[
+						`Question ${index + 1}: ${obj.question}`
+					] = `Answer: ${obj.answer}`;
+				}				
+			});
+			return newdata
+		});	
+
+	console.log("checking baseline", refineddata);
 
 	// Function to export data to CSV and trigger download
 	const exportDataToCSV = (data) => {
@@ -282,13 +295,20 @@ export default function InterventionTable({ userData }) {
 									}
 								})
 								.filter((value) => {
-									if (university === "muk") return value.university === "Makerere University";
-									if (university === "mubs") return value.university === "Makerere University Business School";
-									if (university === "ucu") return value.university === "Uganda Christian University";
-									if (university === "kiu") return value.university === "Kampala International University";
-									if (university === "kyu") return value.university === "Kyambogo University";
-									if (university === "umun") return value.university === "Uganda Martyrs University Nkozi";
-									if (university === "nu") return value.university === "Ndejje University";
+									if (university === "muk")
+										return value.university === "Makerere University";
+									if (university === "mubs")
+										return value.university === "Makerere University Business School";
+									if (university === "ucu")
+										return value.university === "Uganda Christian University";
+									if (university === "kiu")
+										return value.university === "Kampala International University";
+									if (university === "kyu")
+										return value.university === "Kyambogo University";
+									if (university === "umun")
+										return value.university === "Uganda Martyrs University Nkozi";
+									if (university === "nu")
+										return value.university === "Ndejje University";
 									return value;
 								})
 								.sort(sortReferrals)

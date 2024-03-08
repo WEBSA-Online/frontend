@@ -83,8 +83,6 @@ function ShowAllUsers() {
 		fetchdata();
 	}, []);
 
-	console.log(count)
-
 	return (
 		<>
 			{loading === true || loadCount === true ? (

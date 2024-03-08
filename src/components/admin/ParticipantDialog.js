@@ -118,11 +118,13 @@ export default function ParticipantDialog({ userEmail }) {
 
 
 	refineddata?.forEach((obj, index) => {
-		newUserData[`Question ${index + 1}`] = `Answer: ${obj.question}`;
+		newUserData[`Question ${index + 1}: ${obj.answer}`] = `Answer: ${obj.answer}`;
 	});
 
 	refinedBaseline?.forEach((obj, index) => {
-		newUserBaselineData[`Question ${index + 1}`] = `Answer: ${obj.question}`;
+		newUserBaselineData[
+			`Question ${index + 1}:  ${obj.answer}`
+		] = `Answer: ${obj.answer}`;
 	});
 
 	return (
